@@ -1,0 +1,30 @@
+import 'package:flutter/material.dart';
+
+const transparent = Colors.transparent;
+const white = Color(0xFFFFFFFF);
+const black = Color(0xFF08011D); // Fully visible black
+const blacklight = Color(0xFFBBBBBB); // Fully visible black
+const maroon = Color(0xFFBD1734); // Fully visible maroon
+const red = Color(0xFFB82132); // Fully visible maroon
+// const red = Color.fromARGB(255, 223, 15, 0); // Fully visible maroon
+const redlight = Color(0xFFD24545); // Fully visible maroon
+
+const silver = Color.fromARGB(255, 239, 240, 241);
+const green = Color.fromRGBO(12, 95, 115, 1);
+const green1 = Color.fromRGBO(14, 102, 124, 1);
+const green2 = Color.fromRGBO(15, 116, 142, 1);
+const owhite = Color(0xFFFDF6F1);
+
+
+
+
+
+
+Color primaryColor = const Color(0xffA088D5);
+Color secondaryColor = const Color(0xff6b37e5);
+Color whiteColor = Colors.white;
+Color blackColor = Colors.black;
+Color? greyColor = Colors.grey[800];
+Color disabledColor = Colors.grey;
+Color errorColor = Colors.red;
+Color linkColor = Color.fromARGB(255, 6, 97, 172);
