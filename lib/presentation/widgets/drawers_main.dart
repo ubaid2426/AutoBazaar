@@ -1,6 +1,7 @@
 
 import 'package:autobazzaar/components/navigation.dart';
 import 'package:autobazzaar/core/theme/colors.dart';
+import 'package:autobazzaar/presentation/screens/AutoSalesMain/autosalesmain.dart';
 import 'package:autobazzaar/presentation/screens/login/splash_screen3.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -72,6 +73,12 @@ class _MainDrawerState extends State<MainDrawer> {
                   // ignore: deprecated_member_use
                   fontawesome: FontAwesomeIcons.home,
                   navigateTo: Navigation(),
+                ),
+                  const ManyOption(
+                  menuTitle: "Auto Classified",
+                  // ignore: deprecated_member_use
+                  fontawesome: FontAwesomeIcons.car,
+                  navigateTo: AutoSalesMain(),
                 ),
                 const ManyOption(
                   menuTitle: "Login",

@@ -4,9 +4,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class DataCarousel extends StatefulWidget {
+  final bool show;
   final List<Car> carList;
 
-  const DataCarousel({super.key, required this.carList});
+  const DataCarousel({super.key, required this.carList, required this.show});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -157,7 +158,88 @@ class _DataCarouselState extends State<DataCarousel> {
     );
   }
 
-  // 🏎️ Car Card Widget
+  // // 🏎️ Car Card Widget
+  // Widget _buildCarCard(Car car) {
+  //   return SizedBox(
+  //     width: MediaQuery.of(context).size.width * 0.60,
+  //     child: Card(
+  //       color: silver,
+  //       elevation: 3,
+  //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+  //       child: Padding(
+  //         padding: const EdgeInsets.all(8.0),
+  //         child: Column(
+  //           crossAxisAlignment: CrossAxisAlignment.start,
+  //           children: [
+  //             Image.asset(car.image, height: 90, fit: BoxFit.cover),
+  //             const SizedBox(height: 10),
+
+  //             // Car Name
+  //             Text(
+  //               car.name,
+  //               style: const TextStyle(
+  //                 fontSize: 14,
+  //                 fontWeight: FontWeight.bold,
+  //               ),
+  //             ),
+
+  //             // Car Description
+  //             Text(
+  //               car.description,
+  //               maxLines: 2,
+  //               overflow: TextOverflow.ellipsis,
+  //               style: const TextStyle(fontSize: 12, color: Colors.grey),
+  //             ),
+
+  //             const SizedBox(height: 5),
+
+  //             // Pricing Row
+  //             Text(
+  //               "KWD ${car.discountPrice.toStringAsFixed(0)}",
+  //               style: const TextStyle(
+  //                 fontSize: 14,
+  //                 fontWeight: FontWeight.bold,
+  //               ),
+  //             ),
+  //             const SizedBox(width: 5),
+  //             Text(
+  //               "KWD ${car.fullPrice.toStringAsFixed(0)}",
+  //               style: const TextStyle(
+  //                 fontSize: 12,
+  //                 color: Colors.grey,
+  //                 decoration: TextDecoration.lineThrough,
+  //               ),
+  //             ),
+  //             const SizedBox(width: 5),
+  //             Text(
+  //               "${car.offPercentage}% off",
+  //               style: const TextStyle(fontSize: 12, color: Colors.red),
+  //             ),
+
+  //             const SizedBox(height: 5),
+
+  //             // Star Rating & Reviews
+  //             Row(
+  //               spacing: 5,
+  //               children: [
+  //                 _buildStarRating(car.stars),
+  //                 Text(
+  //                   car.totalVotes.toString(),
+  //                   style: const TextStyle(color: Colors.grey, fontSize: 10),
+  //                 ),
+  //                      const SizedBox(width: 5),
+  //                   Text(
+  //                   car.timeAgo,
+  //                   style: const TextStyle(color: Colors.grey, fontSize: 10),
+  //                 ),
+  //               ],
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
   Widget _buildCarCard(Car car) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.60,
@@ -170,7 +252,43 @@ class _DataCarouselState extends State<DataCarousel> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(car.image, height: 90, fit: BoxFit.cover),
+              // Icons Row
+              if (widget.show == true)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.push_pin, color: red),
+
+                        // Image.asset('assets/icons/pin.png', width: 20),
+                        const SizedBox(width: 5),
+                        Icon(Icons.emoji_events, color: Colors.amber),
+
+                        // Image.asset('assets/icons/badge.png', width: 20),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.bookmark_border,
+                          size: 20,
+                          color: Colors.black87,
+                        ),
+                        const SizedBox(width: 8),
+                        Icon(Icons.share, size: 20, color: Colors.black87),
+                      ],
+                    ),
+                  ],
+                ),
+
+              const SizedBox(height: 8),
+
+              // Car Image
+              Center(
+                child: Image.asset(car.image, height: 90, fit: BoxFit.contain),
+              ),
+
               const SizedBox(height: 10),
 
               // Car Name
@@ -192,7 +310,7 @@ class _DataCarouselState extends State<DataCarousel> {
 
               const SizedBox(height: 5),
 
-              // Pricing Row
+              // Price
               Text(
                 "KWD ${car.discountPrice.toStringAsFixed(0)}",
                 style: const TextStyle(
@@ -200,35 +318,16 @@ class _DataCarouselState extends State<DataCarousel> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(width: 5),
-              Text(
-                "KWD ${car.fullPrice.toStringAsFixed(0)}",
-                style: const TextStyle(
-                  fontSize: 12,
-                  color: Colors.grey,
-                  decoration: TextDecoration.lineThrough,
-                ),
-              ),
-              const SizedBox(width: 5),
-              Text(
-                "${car.offPercentage}% off",
-                style: const TextStyle(fontSize: 12, color: Colors.red),
-              ),
 
               const SizedBox(height: 5),
 
-              // Star Rating & Reviews
+              // Rating & Votes
               Row(
-                spacing: 5,
                 children: [
                   _buildStarRating(car.stars),
+                  const SizedBox(width: 4),
                   Text(
                     car.totalVotes.toString(),
-                    style: const TextStyle(color: Colors.grey, fontSize: 10),
-                  ),
-                       const SizedBox(width: 5),
-                    Text(
-                    car.timeAgo,
                     style: const TextStyle(color: Colors.grey, fontSize: 10),
                   ),
                 ],

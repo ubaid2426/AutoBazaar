@@ -17,7 +17,7 @@ class _AutoClassifiedState extends State<AutoClassified>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 5, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
   }
 
   @override
@@ -124,7 +124,6 @@ class _AutoClassifiedState extends State<AutoClassified>
                     Tab(child: Text("Auto Shops \nServices", textAlign: TextAlign.center, style: TextStyle(fontSize: 14))),
                     Tab(child: Text("Auto \nRental", textAlign: TextAlign.center, style: TextStyle(fontSize: 14))),
                     Tab(child: Text("Auto \nWanted", textAlign: TextAlign.center, style: TextStyle(fontSize: 14))),
-                    // Tab(child: Text("Auto  &\nParts", textAlign: TextAlign.center, style: TextStyle(fontSize: 14))),
                   ],
                 ),
               ),
@@ -139,7 +138,6 @@ class _AutoClassifiedState extends State<AutoClassified>
                     _buildTabContent("Auto Shops & Services Content"),
                     _buildTabContent("Auto Rental Content"),
                     _buildTabContent("Auto Wanted Content"),
-                    _buildTabContent("Auto Parts Content"),
                   ],
                 ),
               ),

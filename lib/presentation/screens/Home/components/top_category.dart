@@ -1,4 +1,7 @@
 import 'package:autobazzaar/core/theme/colors.dart';
+// import 'package:autobazzaar/models/vehicle_category.dart';
+import 'package:autobazzaar/presentation/screens/AutoSalesMain/Vehicle_type/components/vehicle_categories.dart';
+import 'package:autobazzaar/presentation/screens/AutoSalesMain/Vehicle_type/vehicle_main.dart';
 // import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/presentation/screens/Home/components/vehicle.dart';
 import 'package:flutter/material.dart';
@@ -6,14 +9,21 @@ import 'package:flutter/material.dart';
 class TopCategories extends StatelessWidget {
   final bool showAutoClassified;
   final List<Map<String, String>> categories;
-  const TopCategories({super.key, required this.showAutoClassified, required this.categories});
+  const TopCategories({
+    super.key,
+    required this.showAutoClassified,
+    required this.categories,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: redlight, // Main container background
-        borderRadius: BorderRadius.vertical(top: Radius.circular(50), bottom: Radius.circular(50),),
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(50),
+          bottom: Radius.circular(50),
+        ),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.shade300,
@@ -59,9 +69,42 @@ class TopCategories extends StatelessWidget {
                     ),
                     itemCount: categories.length,
                     itemBuilder: (context, index) {
-                      return TeslaStyleCard(
-                        title: categories[index]["title"]!,
-                        image: categories[index]["image"]!,
+                      return GestureDetector(
+                        // onTap: () {
+                          onTap:
+                          () {
+                            final title = categories[index]['title'];
+                            Widget? screen;
+
+                            switch (title) {
+                              case "Vehicles":
+                                screen = const VehicleMain();
+                                break;
+                              case "Auto \nParts":
+                                // screen = const AutoPartsScreen();
+                                break;
+                              case "Auto \nScraps":
+                                // screen = const AutoScrapsScreen();
+                                break;
+                              case "Accidentals \nAutos":
+                                // screen = const AccidentalsAutosScreen();
+                                break;
+                            }
+
+                            if (screen != null) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => screen!,
+                                ),
+                              );
+                            }
+                          },
+                        // },
+                        child: TeslaStyleCard(
+                          title: categories[index]["title"]!,
+                          image: categories[index]["image"]!,
+                        ),
                       );
                     },
                   ),

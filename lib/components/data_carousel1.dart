@@ -233,10 +233,14 @@ class _DataCarousel1State extends State<DataCarousel1> {
                     style: const TextStyle(color: Colors.grey, fontSize: 10),
                   ),
                   //  const SizedBox(width: 5),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(FontAwesomeIcons.bagShopping),
-                    color: black,
+                  SizedBox(
+                    height: 30,
+                    width: 30,
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: Icon(FontAwesomeIcons.bagShopping),
+                      color: black,
+                    ),
                   ),
                 ],
               ),

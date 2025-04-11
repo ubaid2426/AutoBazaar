@@ -54,7 +54,7 @@ class AutoSales extends StatelessWidget {
         //   },
         //   title: title,
         // ),
-        DataCarousel(carList: carList),
+        DataCarousel(carList: carList, show: false,),
       ],
     );
   }

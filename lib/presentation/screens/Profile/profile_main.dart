@@ -2,6 +2,7 @@ import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/presentation/screens/Profile/buy_credits.dart';
 import 'package:autobazzaar/presentation/screens/Profile/edit_profile.dart';
 import 'package:autobazzaar/presentation/screens/Profile/my_listings.dart';
+import 'package:autobazzaar/presentation/screens/Profile/payment.dart';
 import 'package:flutter/material.dart';
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -89,7 +90,7 @@ class ProfileScreen extends StatelessWidget {
                   icon: Icons.local_shipping,
                   title: "Listing Credit", navigateTo: BuyCreditsScreen(),
                 ),
-                ProfileMenuItem(icon: Icons.wallet, title: "Payment Method", navigateTo: Extra(title: "Payment Method",) ),
+                ProfileMenuItem(icon: Icons.wallet, title: "Payment Method", navigateTo: PaymentMethod() ),
                 ProfileMenuItem(
                   icon: Icons.history,
                   title: "My History", navigateTo: Extra(title: "History",),

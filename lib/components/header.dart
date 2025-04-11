@@ -1,3 +1,4 @@
+import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
@@ -24,9 +25,7 @@ class Header extends StatelessWidget {
               ),
               TextButton.icon(
                 style: TextButton.styleFrom(
-                  backgroundColor: const Color(
-                    0xFFA3432B,
-                  ), // Reddish brown color
+                  backgroundColor: red,
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(
                     horizontal: 12,
@@ -37,7 +36,7 @@ class Header extends StatelessWidget {
                   ),
                 ),
                 onPressed: onViewAll,
-                icon: const Icon(Icons.arrow_forward, size: 18),
+                icon: const Icon(Icons.arrow_forward, size: 18, color: white,),
                 label: const Text('View all'),
               ),
             ],

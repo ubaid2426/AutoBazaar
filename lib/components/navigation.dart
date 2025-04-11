@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:autobazzaar/core/theme/colors.dart';
+import 'package:autobazzaar/presentation/screens/AutosNews/autos_news.dart';
 import 'package:autobazzaar/presentation/screens/Home/home_main.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/listing_category.dart';
 import 'package:autobazzaar/presentation/screens/Profile/profile_main.dart';
@@ -36,7 +37,7 @@ class _NavigationState extends State<Navigation> with TickerProviderStateMixin {
   final List<Widget> screens = [
     const HomeScreen(),
     const HomeScreen(),
-    const HomeScreen(),
+    const AutoNewsScreen(),
     const ProfileScreen(),
     // const HomeScreen(),
   ];
