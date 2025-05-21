@@ -20,7 +20,7 @@ class AutojobMain extends StatelessWidget {
           SizedBox(height: 10),
           TopCategories(
             showAutoClassified: false,
-            categories: autojob,
+            categories: autojob, h1: 200, h2: 140,
           ), 
           // PromoCarousel(promoList: promoCards),
           // SizedBox(height: 10),

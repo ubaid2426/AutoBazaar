@@ -1,3 +1,4 @@
+import 'package:autobazzaar/presentation/widgets/drawers_main.dart';
 import 'package:flutter/material.dart';
 import 'package:autobazzaar/core/theme/colors.dart';
 
@@ -8,7 +9,8 @@ class CustomSliverAppBar extends StatelessWidget {
   const CustomSliverAppBar({
     super.key,
     this.location = "Kuwait",
-    this.onFilterTap, required this.backarrow,
+    this.onFilterTap,
+    required this.backarrow,
   });
 
   @override
@@ -32,7 +34,7 @@ class CustomSliverAppBar extends StatelessWidget {
                           icon:
                               backarrow
                                   ? SizedBox(width: 40)
-                                  : const Icon(Icons.menu, color: Colors.white),
+                                  : const Icon(Icons.menu, color: red),
                           onPressed:
                               () =>
                                   backarrow

@@ -9,16 +9,18 @@ import 'package:flutter/material.dart';
 class TopCategories extends StatelessWidget {
   final bool showAutoClassified;
   final List<Map<String, String>> categories;
+  final double h1;
+  final double h2;
   const TopCategories({
     super.key,
     required this.showAutoClassified,
-    required this.categories,
+    required this.categories, required this.h1, required this.h2,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 320,
+      height: h1,
       decoration: BoxDecoration(
         color: redlight, // Main container background
         borderRadius: BorderRadius.vertical(
@@ -61,10 +63,10 @@ class TopCategories extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16),
-      
+
                   // GridView for Cards
                   SizedBox(
-                    height: 260,
+                    height: h2,
                     child: GridView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
@@ -118,7 +120,7 @@ class TopCategories extends StatelessWidget {
                                 );
                                 break;
                             }
-                  
+
                             if (screen != null) {
                               Navigator.push(
                                 context,
@@ -138,7 +140,7 @@ class TopCategories extends StatelessWidget {
                       },
                     ),
                   ),
-      
+
                   // SizedBox(height: 10),
                 ],
               ),

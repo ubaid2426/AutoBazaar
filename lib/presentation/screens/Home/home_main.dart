@@ -11,6 +11,7 @@ import 'package:autobazzaar/presentation/screens/Home/Screens/auto_sales.dart';
 import 'package:autobazzaar/presentation/screens/Home/components/top_category.dart';
 import 'package:autobazzaar/presentation/screens/Home/components/vehicle.dart';
 import 'package:autobazzaar/presentation/screens/Showroom/Showroom_ad/popular_showroom.dart';
+import 'package:autobazzaar/presentation/widgets/drawers_main.dart';
 // import 'package:autobazzaar/presentation/screens/Home/components/vehicle.dart';
 // import 'package:autobazzaar/presentation/screens/Showroom/Showroom_ad/popular_showroom.dart';
 // import 'package:autobazzaar/presentation/widgets/drawers_main.dart';
@@ -34,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MainDrawer(),
       // appBar: CustomSliverAppBar(),
       body: CustomScrollView(
         // child: Row(
@@ -49,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
               // SizedBox(height: 30),
               TopCategories(
                 showAutoClassified: true,
-                categories: categories,
+                categories: categories, h1: 320, h2: 260,
               ),
               // Will show it // Base Layer
               // if (showAutoClassified)

@@ -24,7 +24,7 @@ class AutoWantedMain extends StatelessWidget {
           SizedBox(height: 10),
           TopCategories(
             showAutoClassified: false,
-            categories: autosalecategories,
+            categories: autosalecategories, h1: 200, h2: 160,
           ), // Will hide it
           // PromoCarousel(promoList: promoCards),
           SizedBox(height: 10),

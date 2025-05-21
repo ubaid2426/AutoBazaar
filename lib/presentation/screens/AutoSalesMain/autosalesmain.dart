@@ -96,7 +96,7 @@ class AutoSalesMain extends StatelessWidget {
               const SizedBox(height: 10),
               TopCategories(
                 showAutoClassified: false,
-                categories: autosalecategories,
+                categories: autosalecategories, h1: 200, h2: 160,
               ),
               const SizedBox(height: 10),
               Header(title: "Vehicle", onViewAll: () {}),
