@@ -1,3 +1,4 @@
+import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/incolor.dart';
 import 'package:flutter/material.dart';
 
@@ -10,26 +11,6 @@ class ExteriorColor extends StatefulWidget {
 
 class _ExteriorColorState extends State<ExteriorColor> {
   final TextEditingController _searchController = TextEditingController();
-
-  final List<Map<String, dynamic>> carColors = [
-    {"name": "Baby Blue", "color": Colors.lightBlueAccent},
-    {"name": "Beige", "color": Color(0xFFF5F5DC)},
-    {"name": "Black", "color": Colors.black},
-    {"name": "Blue", "color": Colors.blue},
-    {"name": "Bronze", "color": Color(0xFFCD7F32)},
-    {"name": "Brown", "color": Colors.brown},
-    {"name": "Gold", "color": Color(0xFFFFD700)},
-    {"name": "Green", "color": Colors.green},
-    {"name": "Grey", "color": Colors.grey},
-    {"name": "Orange", "color": Colors.orange},
-    {"name": "Pink", "color": Colors.pink},
-    {"name": "Purple", "color": Colors.purple},
-    {"name": "Red", "color": Colors.red},
-    {"name": "Silver", "color": Color(0xFFC0C0C0)},
-    {"name": "White", "color": Colors.white},
-    {"name": "Yellow", "color": Colors.yellow},
-    {"name": "Other", "color": Colors.transparent},
-  ];
 
   final List<String> topColors = ["White", "Black", "Grey", "Silver", "Red"];
 

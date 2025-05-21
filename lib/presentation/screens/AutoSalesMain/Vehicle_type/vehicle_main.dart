@@ -1,110 +1,45 @@
 // import 'package:autobazzaar/components/Header.dart';
 // import 'package:autobazzaar/components/data_carousel.dart';
+import 'package:autobazzaar/components/custom_appbarsearch.dart';
 import 'package:autobazzaar/components/data_carousel.dart';
 import 'package:autobazzaar/components/header.dart';
 import 'package:autobazzaar/components/home_carousel.dart';
 // import 'package:autobazzaar/components/image_ad.dart';
-import 'package:autobazzaar/components/main_filter.dart';
+// import 'package:autobazzaar/components/main_filter.dart';
 import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/presentation/screens/AutoSalesMain/Vehicle_type/components/vehicle_categories.dart';
+import 'package:autobazzaar/presentation/screens/AutoSalesMain/Vehicle_type/vehicle_detail.dart';
 // import 'package:autobazzaar/presentation/screens/Home/components/top_category.dart';
 // import 'package:autobazzaar/presentation/widgets/button.dart';
 import 'package:autobazzaar/presentation/widgets/drawers_main.dart';
+import 'package:autobazzaar/presentation/widgets/horizontal_filter.dart';
+import 'package:autobazzaar/presentation/widgets/shortfilter.dart';
 // import 'package:autobazzaar/presentation/widgets/shortfilter.dart';
 import 'package:flutter/material.dart';
 
-class VehicleMain extends StatelessWidget {
+class VehicleMain extends StatefulWidget {
+  // final String type;
   const VehicleMain({super.key});
 
+  @override
+  State<VehicleMain> createState() => _VehicleMainState();
+}
+
+class _VehicleMainState extends State<VehicleMain> {
+  String? selectedCategoryName;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: white,
       drawer: MainDrawer(), // Left side drawer
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(150), // Custom height for the header
-        child: Container(
-          decoration: BoxDecoration(
-            color: red,
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(25), // Rounded bottom corners
-            ),
-          ),
-          padding: EdgeInsets.only(top: 50, left: 15, right: 15),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Builder(
-                    builder:
-                        (context) => IconButton(
-                          icon: Icon(Icons.menu, color: Colors.white),
-                          onPressed: () => Scaffold.of(context).openDrawer(),
-                        ),
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "Your location",
-                        style: TextStyle(color: Colors.white70, fontSize: 14),
-                      ),
-                      Text(
-                        "Kuwait",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.filter_list, color: Colors.white),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MainFilter()),
-                      );
-                      // Filter action
-                    },
-                  ),
-                ],
-              ),
-              SizedBox(height: 30),
-              Container(
-                height: 50,
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Row(
-                  children: [
-                    Icon(Icons.search, color: Colors.grey),
-                    SizedBox(width: 10),
-                    Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: "Search any Product..",
-                          border: InputBorder.none,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      appBar: CustomSearchAppBar(backarrow: true),
       body: ListView(
         children: [
           SizedBox(height: 20),
           PromoCarousel(promoList: promoCards),
           SizedBox(height: 20),
-            Header(
+          Header(
             title: "Browse By Auto-types",
             onViewAll: () {
               //        Navigator.push(
@@ -116,8 +51,50 @@ class VehicleMain extends StatelessWidget {
               // );
             },
           ),
-          VehicleGridPager(),
-                    Header(
+          VehicleGridPager(
+            onCategoryTap: (category) {
+              setState(() {
+                selectedCategoryName = category.name;
+              });
+              Widget? screen;
+              switch (category.name) {
+                case "Car":
+                case "Motor bike":
+                case "Quad/Buggy":
+                case "Water Crafts":
+                case "Taxi":
+                case "3-Wheeler":
+                case "Van":
+                case "Bus":
+                case "Lorry":
+                case "RV/Camper van":
+                case "Other":
+                  screen = VehicleDetail(
+                    title: '${category.name} data',
+                    rateshow: false,
+                    timeshow: true, type: selectedCategoryName??"Car",
+                  );
+                  break;
+              }
+
+              if (screen != null) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => screen!),
+                );
+              }
+            },
+
+            page: dummyVehicleCategories,
+            height: 390,
+            count: 4,
+            ratio: 1,
+            svg: false,
+          ),
+          SizedBox(height: 20),
+          HorizontalFilter(type: selectedCategoryName??"Car",),
+          ShortFilter(),
+          Header(
             title: "Car",
             onViewAll: () {
               //        Navigator.push(
@@ -131,9 +108,18 @@ class VehicleMain extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Text("Top User Ads", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+            child: Text(
+              "Top User Ads",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
           ),
-            DataCarousel(carList: carList, show: true,),
+          DataCarousel(
+            carList: carList,
+            show: true,
+            shouldShowTilde: false,
+            rateshow: false,
+            timeshow: true,
+          ),
           Header(
             title: "Motor Bike",
             onViewAll: () {
@@ -148,9 +134,18 @@ class VehicleMain extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Text("Top User Ads", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+            child: Text(
+              "Top User Ads",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
           ),
-            DataCarousel(carList: carList, show: true,),
+          DataCarousel(
+            carList: carList,
+            show: true,
+            shouldShowTilde: false,
+            rateshow: false,
+            timeshow: true,
+          ),
           Header(
             title: "3 Wheeler",
             onViewAll: () {
@@ -165,9 +160,18 @@ class VehicleMain extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Text("Top User Ads", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+            child: Text(
+              "Top User Ads",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
           ),
-            DataCarousel(carList: carList, show: true,),
+          DataCarousel(
+            carList: carList,
+            show: true,
+            shouldShowTilde: false,
+            rateshow: false,
+            timeshow: true,
+          ),
         ],
       ),
     );

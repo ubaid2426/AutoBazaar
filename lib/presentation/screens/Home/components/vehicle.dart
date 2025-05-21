@@ -47,8 +47,6 @@ class _AutoClassifiedState extends State<AutoClassified>
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(50),
               topRight: Radius.circular(50),
-              // bottomLeft: Radius.circular(50),
-              // bottomRight: Radius.circular(50),
             ),
             boxShadow: const [
               BoxShadow(
@@ -110,21 +108,23 @@ class _AutoClassifiedState extends State<AutoClassified>
               ),
 
               // Tab Bar
-              Container(
-                color: Colors.white,
-                child: TabBar(
-                  controller: _tabController,
-                  isScrollable: true,
-                  labelColor: Colors.black,
-                  unselectedLabelColor: Colors.grey,
-                  indicatorColor: Colors.black,
-                  labelStyle: const TextStyle(fontWeight: FontWeight.bold),
-                  tabs: const [
-                    Tab(child: Text("Auto \nSales", textAlign: TextAlign.center, style: TextStyle(fontSize: 14))),
-                    Tab(child: Text("Auto Shops \nServices", textAlign: TextAlign.center, style: TextStyle(fontSize: 14))),
-                    Tab(child: Text("Auto \nRental", textAlign: TextAlign.center, style: TextStyle(fontSize: 14))),
-                    Tab(child: Text("Auto \nWanted", textAlign: TextAlign.center, style: TextStyle(fontSize: 14))),
-                  ],
+              Center(
+                child: Container(
+                  color: Colors.white,
+                  child: TabBar(
+                    controller: _tabController,
+                    isScrollable: true,
+                    labelColor: Colors.black,
+                    unselectedLabelColor: Colors.grey,
+                    indicatorColor: Colors.black,
+                    labelStyle: const TextStyle(fontWeight: FontWeight.bold),
+                    tabs: const [
+                      Tab(child: Text("Auto \nSales", textAlign: TextAlign.center, style: TextStyle(fontSize: 14))),
+                      Tab(child: Text("Auto Shops \nServices", textAlign: TextAlign.center, style: TextStyle(fontSize: 14))),
+                      Tab(child: Text("Auto \nRental", textAlign: TextAlign.center, style: TextStyle(fontSize: 14))),
+                      Tab(child: Text("Auto \nWanted", textAlign: TextAlign.center, style: TextStyle(fontSize: 14))),
+                    ],
+                  ),
                 ),
               ),
 

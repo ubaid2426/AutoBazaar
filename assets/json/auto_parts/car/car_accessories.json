@@ -1,0 +1,58 @@
+{
+  "Car Care": {
+    "image": "assets/images/auto_parts/car_spare_part/car_care.png",
+    "items": [
+      "Air freshener",
+      "car shampoo",
+      "car top covers",
+      "car window shades",
+      "car wax",
+      "compounds",
+      "coolants",
+      "engine cleanser",
+      "glass cleanser",
+      "interior care",
+      "leather care",
+      "microfiber clothes",
+      "paint",
+      "polishes",
+      "pressure washers",
+      "scratch remover",
+      "sealant/glass coat",
+      "tyre care",
+      "vacuum cleaners",
+      "others"
+    ]
+  },
+  "Security & Sensors": {
+    "image": "assets/images/auto_parts/car_spare_part/security.png",
+    "items": [
+      "Cameras",
+      "Parking Sensors",
+      "Security Alarm Systems"
+    ]
+  },
+  "Tools & Gadgets": {
+    "image": "assets/images/auto_parts/car_spare_part/tool.jpg",
+    "items": [
+      "Air Compressor",
+      "Car Jack",
+      "Jump Starter Kits",
+      "Key Chains",
+      "Tool Kits",
+      "Tow Hooks & Chains",
+      "Paint Gauge",
+      "Tyre Pressure Gauge"
+    ]
+  },
+  "Tyres & Wheels": {
+    "image": "assets/images/listing_form/shops.png",
+    "items": [
+      "Alloy Wheels",
+      "Tyres",
+      "Wheel Bearings",
+      "Wheel Covers",
+      "Others"
+    ]
+  }
+}

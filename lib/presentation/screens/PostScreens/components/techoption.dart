@@ -143,7 +143,7 @@ class _TechOptionsState extends State<TechOptions> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>  BodyTypeScreen(),
+                        builder: (context) =>  BodyTypeScreen(category: 'Auto Sales',),
                       ),
                     );
                   },

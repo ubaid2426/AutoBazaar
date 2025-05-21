@@ -1,0 +1,136 @@
+{
+  "Audio/video": {
+    "image": "assets/images/auto_parts/car_spare_part/audio_videos.png",
+    "items": [
+      "Amplifiers",
+      "Audio accessories",
+      "base tubes",
+      "cables",
+      "players",
+      "speakers",
+      "video displays (lcd/dvd)",
+      "woofers",
+      "others"
+    ]
+  },
+  "Brakes": {
+    "image": "assets/images/auto_parts/car_spare_part/brake.png",
+    "items": [
+      "brake pads",
+      "brake parts",
+      "brake shoe",
+      "discs",
+      "drums",
+      "others"
+    ]
+  },
+  "engine & mechanical": {
+    "image": "assets/images/auto_parts/car_spare_part/engine.png",
+    "items": [
+      "A/C Belt",
+      "Air Conditioning and Heating",
+      "Belts",
+      "Clutches",
+      "Complete Engines",
+      "Condensor",
+      "Crand,Pistons & Components",
+      "Fan Belt",
+      "Filters",
+      "Fuel Pump",
+      "Gasket & Seals",
+      "Hoses & Pipes",
+      "Radiator,Fans & Cooling Parts",
+      "Spark Plugs",
+      "Suspension",
+      "Timing Belts",
+      "Turbos & Superchargers",
+      "water Pumps",
+      "Petrol Injectors Pump"
+    ]
+  },
+  "Exterior": {
+    "image": "assets/images/auto_parts/car_spare_part/exterior.png",
+    "items": [
+      "Bumper Styling",
+      "Bumpers",
+      "Bumpers & Components",
+      "Bonnets",
+      "Doors",
+      "Hoods",
+      "Car Mirrors",
+      "Chrome Accessories",
+      "Door Gaurds",
+      "Emblems & Stickers",
+      "Fenders",
+      "Grills",
+      "Gaurds",
+      "Immobilizers",
+      "Metal Logos",
+      "Mirrors/Screens",
+      "Mud Gaurds",
+      "Rear View Cameras",
+      "Side Mirrors",
+      "Spoiler & Body Kits",
+      "Sun Visors",
+      "Trunk",
+      "Viper Blades",
+      "Window Tint",
+      "Others"
+    ]
+  },
+  "interior": {
+    "image": "assets/images/auto_parts/car_spare_part/interior.png",
+    "items": [
+      "Armrest",
+      "Carpets",
+      "Cigerette Lighters",
+      "Door Parts",
+      "Floor Mats",
+      "Gear Knobs",
+      "Mobile Charger & Holders",
+      "Seat Belt",
+      "Seat Covers",
+      "Seats",
+      "Shades",
+      "Steering Covers",
+      "Trunk Mats",
+      "Others"
+    ]
+  },
+  "Lights & Electrical": {
+    "image": "assets/images/auto_parts/car_spare_part/light_electric.png",
+    "items": [
+      "Alarm Sysytem",
+      "Bar Lights",
+      "Batteries",
+      "Bulbs",
+      "Cables",
+      "Central Locking System",
+      "Fog Lamps",
+      "Headlights",
+      "HID's",
+      "Horns",
+      "Ignition Switch",
+      "Indicator Lights",
+      "Interior Lights",
+      "LED's",
+      "Lights",
+      "Navigation",
+      "Plug Wire",
+      "Plugs",
+      "Tail Lights",
+      "Others"
+    ]
+  },
+  "Oil & Lubricants": {
+    "image": "assets/images/auto_parts/car_spare_part/oil_lubricant.png",
+    "items": [
+      "ATF/MTF Oil",
+      "Brake Oil",
+      "CVTF Oil",
+      "Engine Oil",
+      "Gear Oil",
+      "PSF Oil"
+    ]
+  }
+}

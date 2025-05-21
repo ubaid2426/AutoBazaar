@@ -51,13 +51,15 @@ dependencies:
   custom_pop_up_menu: ^1.2.4
   email_validator: ^3.0.0
   font_awesome_flutter: ^10.8.0
-  google_maps_flutter: ^2.10.1
+  # google_maps_flutter: ^2.10.1
   dotted_border: ^2.1.0
   carousel_slider: ^5.0.0
+  table_calendar: ^3.2.0
+  url_launcher: ^6.3.1
   share_plus: ^10.1.4
   smooth_page_indicator: ^1.2.1
   dot_navigation_bar: ^1.0.2
-  country_state_city: ^0.1.6
+  country_state_city_pro: ^0.0.6
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -90,10 +92,19 @@ flutter:
     - assets/images/home/
     - assets/images/bodytype/
     - assets/images/showroom/
+    - assets/images/icons/
+    - assets/images/auto_parts/
+    - assets/images/auto_job/
+    - assets/images/auto_parts/car_spare_part/
+    - assets/images/auto_parts/motorbike/
     - assets/images/credit_card/
     - icons/
     - assets/videos/car_type/
+    - assets/videos/payment/
     - assets/json/
+    - assets/json/auto_parts/car/
+    - assets/json/auto_parts/motorbike/
+    - assets/json/auto_services/
     # - assets/data/car_data.json
   #   - images/a_dot_ham.jpeg
 

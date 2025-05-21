@@ -1,0 +1,32 @@
+{
+  "Exhaust": {
+    "image": "assets/images/auto_parts/car_spare_part/exhaust.jpg",
+    "items": [
+      "Full Systems",
+      "Slip Ons",
+      "Headers and Links Pipes",
+      "Exhaust Accessories"
+    ]
+  },
+  "Body Parts": {
+    "image": "assets/images/auto_parts/bike_spare.png",
+    "items": [
+      "Axle Blocks",
+      "Body Mount Hardware",
+      "Bodywork",
+      "Chain Guards",
+      "Fender Eliminators",
+      "Fenders",
+      "Frame Sliders",
+      "Graphic Kits and Decals",
+      "License Plate Accessories",
+      "Mirror Block Off Plates",
+      "Mirrors",
+      "Miscellaneous Body",
+      "Ram Air Tubes",
+      "Seats and Seat Cowls",
+      "Swingarm Spools",
+      "Tank Accessories"
+    ]
+  }
+}

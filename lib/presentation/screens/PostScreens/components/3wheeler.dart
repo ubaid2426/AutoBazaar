@@ -145,7 +145,7 @@ class _ThreeWheelerScreenState extends State<ThreeWheelerScreen> {
                                 builder: (context) => ModelScreen(
                                   brand: brand,
                                   models: threeWheelerData[brand]!,
-                                  icon: getIconForType(widget.type),
+                                  icon: getIconForType(widget.type), filteruse: false,
                                 ),
                               ),
                             );

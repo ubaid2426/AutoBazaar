@@ -1,313 +1,242 @@
-import 'package:autobazzaar/core/theme/colors.dart';
-import 'package:autobazzaar/components/brand_dropdown.dart';
-import 'package:autobazzaar/components/category_dropdown.dart';
-import 'package:autobazzaar/components/drop_down1.dart';
-// import 'package:autobazzaar/components/dropdown2.dart';
-import 'package:autobazzaar/components/multiple_select_dropdown.dart';
-import 'package:autobazzaar/data/models/dummy_data.dart';
-import 'package:autobazzaar/models/brand_item.dart';
-import 'package:dotted_border/dotted_border.dart';
+// import 'dart:convert';
+// import 'package:autobazzaar/core/theme/colors.dart';
+// import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Shop_Service/auto_service_sub_options.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
+// import 'package:autobazzaar/models/vehicle_category.dart';
+// import 'package:autobazzaar/presentation/screens/AutoSalesMain/Vehicle_type/components/vehicle_categories.dart';
+
+// class AutoServicePost extends StatelessWidget {
+//   final String autotype;
+
+//   const AutoServicePost({super.key, required this.autotype});
+
+//   Future<Map<String, dynamic>> loadSubCategoryData() async {
+//     final assetPath = 'assets/json/auto_services/auto_service_list.json';
+//     final String jsonString = await rootBundle.loadString(assetPath);
+//     return json.decode(jsonString);
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: white,
+//       appBar: AppBar(
+//         title: Text("Choose service category"),
+//         backgroundColor: red,
+//       ),
+//       // appBar: CustomSearchAppBar(backarrow: true),
+//       body: SingleChildScrollView(
+//         child: Column(
+//           children: [
+//             // PromoCarousel(promoList: promoCards),
+//             // const SizedBox(height: 20),
+//             Padding(
+//               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   const Padding(
+//                     padding: EdgeInsets.symmetric(horizontal: 8.0),
+//                     child: Text(
+//                       "Browse By Categories",
+//                       style: TextStyle(
+//                         fontSize: 22,
+//                         fontWeight: FontWeight.bold,
+//                         letterSpacing: 1.1,
+//                         color: Colors.black87,
+//                       ),
+//                     ),
+//                   ),
+//                   const SizedBox(height: 16),
+
+//                   FutureBuilder<Map<String, dynamic>>(
+//                     future: loadSubCategoryData(),
+//                     builder: (context, snapshot) {
+//                       if (snapshot.connectionState == ConnectionState.waiting) {
+//                         return const Center(child: CircularProgressIndicator());
+//                       } else if (snapshot.hasError) {
+//                         return const Center(
+//                           child: Text("Failed to load categories"),
+//                         );
+//                       }
+
+//                       final data = snapshot.data ?? {};
+//                       final keys = data.keys.toList();
+//                       final totalItems = keys.length;
+
+//                       // Dynamically determine height
+//                       double gridHeight;
+//                       if (totalItems <= 4) {
+//                         gridHeight = 150;
+//                       } else if (totalItems <= 8) {
+//                         gridHeight = 300;
+//                       } else if (totalItems <= 12) {
+//                         gridHeight = 450;
+//                       } else {
+//                         gridHeight = 450;
+//                       }
+
+//                       // Convert map to VehicleCategory list for the grid
+//                       final categoryList =
+//                           keys.map((key) {
+//                             final imagePath = data[key]['image'] ?? '';
+//                             return VehicleCategory(
+//                               name: key,
+//                               imagePath: imagePath,
+//                             );
+//                           }).toList();
+
+//                       return Column(
+//                         children: [
+//                           VehicleGridPager(
+//                             page: categoryList,
+//                             height: gridHeight,
+//                             onCategoryTap: (category) {
+//                               final items =
+//                                   data[category.name]['items']
+//                                       as List<dynamic>? ??
+//                                   [];
+//                               Navigator.push(
+//                                 context,
+//                                 MaterialPageRoute(
+//                                   builder:
+//                                       (_) => AutoServiceDetailScreen(
+//                                         categoryTitle: category.name,
+//                                         items: List<String>.from(items),
+//                                       ),
+//                                 ),
+//                               );
+//                             },
+
+//                             count: 4,
+//                             ratio: .6,
+//                             svg: true,
+//                           ),
+//                         ],
+//                       );
+//                     },
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-// import '../data/dummy_data.dart';
-// import '../widgets/dropdown_component.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:autobazzaar/core/theme/colors.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Shop_Service/auto_service_sub_options.dart';
 
-class ShopService extends StatefulWidget {
-  final String title;
-  // final String name;
-  const ShopService({super.key, required this.title});
+class AutoServicePost extends StatelessWidget {
+  final String autotype;
 
-  @override
-  // ignore: library_private_types_in_public_api
-  _ShopServiceState createState() => _ShopServiceState();
-}
+  const AutoServicePost({super.key, required this.autotype});
 
-class _ShopServiceState extends State<ShopService> {
-  int? autoPart;
-  BrandItem? selectedBrand;
-  int? autoCategoryType;
-  int? autoSubCategoryType;
-  int? selectedBodyCondition;
-  int? autoCondition;
-  int? selectedYear;
-  int? origin;
-  int? selectedPayment;
-  bool isSignupSelected = true;
-  LatLng? selectedLocation;
-  late GoogleMapController mapController;
-  String? selectedMainCategory;
-  List<String> selectedSubCategories = [];
-  List<String> working = [];
-  // void _onMapCreated(GoogleMapController controller) {
-  //   mapController = controller;
-  // }
-
-  // void _onTap(LatLng position) {
-  //   setState(() {
-  //     selectedLocation = position;
-  //   });
-  // }
+  Future<Map<String, dynamic>> loadSubCategoryData() async {
+    final assetPath = 'assets/json/auto_services/auto_service_list.json';
+    final String jsonString = await rootBundle.loadString(assetPath);
+    return json.decode(jsonString);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: white,
+      backgroundColor: const Color(0xFFF9FAFB), // light background
       appBar: AppBar(
-        title: Text(widget.title),
-        backgroundColor: redlight,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.menu, color: Colors.black),
-            onPressed: () {},
-          ),
-        ],
+        title: const Text("Choose Service Category"),
+        backgroundColor: red,
+        elevation: 0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              children: [
-                TextField(
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.search),
-                    hintText: "Search any auto type",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 30),
-                DottedBorder(
-                  dashPattern: [8, 4],
-                  strokeWidth: 1,
-                  strokeCap: StrokeCap.round,
-                  padding: EdgeInsets.all(40),
-                  // borderType: BorderType.Oval,
-                  // radius: Radius.circular(40),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Brand",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      // SizedBox(height: 5),
-                      SizedBox(height: 15),
-                      BrandDropdown(
-                        brands: brands,
-                        onSelected: (brand) {
-                          setState(() {
-                            selectedBrand = brand;
-                          });
-                        },
-                      ),
-                      SizedBox(height: 15),
-                      CategoryDropdown(
-                        onMainCategoryChanged: (value) {
-                          setState(() {
-                            selectedMainCategory = value;
-                            selectedSubCategories = []; // Reset selection
-                          });
-                        },
-                        onSubCategoryChanged: (value) {
-                          setState(() {
-                            selectedSubCategories = value;
-                          });
-                        },
-                        mainCategories: mainCategories,
-                        subCategories: subCategories,
-                        title: 'Service Type',
-                        titlesub: 'Seervice Sub-Type',
-                      ),
-                      SizedBox(height: 15),
-                      MultiSelectDropdown(
-                        title: "Working Hours",
-                        // items: autoConditionType,
-                        // selectedIndex: autoCondition,
-                        onSelectionChanged: (index) {
-                          setState(() {
-                            working = index;
-                          });
-                        }, options: workingHours,
-                      ),
-                      // SizedBox(height: 15),
-                      // DropDownComponent1(
-                      //   title1: "Year",
-                      //   items1: years,
-                      //   selectedIndex1: selectedYear,
-                      //   onChanged1: (index) {
-                      //     setState(() {
-                      //       selectedYear = index;
-                      //     });
-                      //   },
-                      // ),
-                      SizedBox(height: 15),
-                      DropDownComponent(
-                        title: "Origin",
-                        items: autoOrigin,
-                        selectedIndex: origin,
-                        onChanged: (index) {
-                          setState(() {
-                            origin = index;
-                          });
-                        },
-                      ),
-                      SizedBox(height: 15),
-                      _buildTextField("Price", "Price...."),
-                      SizedBox(height: 15),
-                      DropDownComponent(
-                        title: "Payment Method",
-                        items: autoPayment,
-                        selectedIndex: selectedPayment,
-                        onChanged: (index) {
-                          setState(() {
-                            selectedPayment = index;
-                          });
-                        },
-                      ),
-                      SizedBox(height: 15),
-                      // _buildTextField("Payment Method"),
-                      _buildTextField("Contact Details", "Contact Details...."),
-                      SizedBox(height: 15),
-                      _buildTextField("Area", "Area...."), SizedBox(height: 15),
-                      _buildTextField("Governorate", "Governorate...."),
-                      SizedBox(height: 15),
+      body: FutureBuilder<Map<String, dynamic>>(
+        future: loadSubCategoryData(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError || snapshot.data == null) {
+            return const Center(child: Text("Failed to load categories"));
+          }
 
-                      SizedBox(height: 30),
-                      // Map Placeholder
-                      // SizedBox(
-                      //   height: 300,
-                      //   child: GoogleMap(
-                      //           onMapCreated: _onMapCreated,
-                      //           initialCameraPosition: CameraPosition(
-                      //             target: LatLng(31.5204, 74.3587), // Default location (Lahore)
-                      //             zoom: 14,
-                      //           ),
-                      //           markers: selectedLocation != null
-                      //               ? {
-                      //   Marker(
-                      //     markerId: MarkerId("selected"),
-                      //     position: selectedLocation!,
-                      //   ),
-                      //                 }
-                      //               : {},
-                      //           onTap: _onTap,
-                      //         ),
-                      // ),
+          final data = snapshot.data!;
+          final keys = data.keys.toList();
 
-                      // Buttons
-                      Center(
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            /// Signup Button
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  isSignupSelected = true;
-                                });
-                                //   Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) => RegisterForm(),
-                                //   ),
-                                // );
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 12,
-                                  horizontal: 30,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: isSignupSelected ? blacklight : red,
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(30),
-                                    bottomLeft: Radius.circular(30),
-                                  ),
-                                ),
-                                child: const Text(
-                                  "Draft",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+            child: GridView.builder(
+              shrinkWrap: true,
+              itemCount: keys.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 4,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                childAspectRatio: 0.56,
+              ),
+              itemBuilder: (context, index) {
+                final key = keys[index];
+                final imagePath = data[key]['image'] ?? '';
+                final items = List<String>.from(data[key]['items'] ?? []);
+
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (_) => AutoServiceDetailScreen(
+                              categoryTitle: key,
+                              items: items,
                             ),
-                            const SizedBox(width: 10),
-
-                            /// Guest Button
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  isSignupSelected = false;
-                                });
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 12,
-                                  horizontal: 30,
-                                ),
-                                decoration: BoxDecoration(
-                                  color:
-                                      isSignupSelected
-                                          ? redlight
-                                          : Colors.black54,
-                                  borderRadius: const BorderRadius.only(
-                                    topRight: Radius.circular(30),
-                                    bottomRight: Radius.circular(30),
-                                  ),
-                                ),
-                                child: const Text(
-                                  "Submit",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
+                      ),
+                    );
+                  },
+                  child: Column(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 225, 221, 221),
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.05),
+                              blurRadius: 8,
+                              offset: const Offset(0, 4),
                             ),
                           ],
+                        ),
+                        padding: const EdgeInsets.all(15),
+                        child:
+                            imagePath.isNotEmpty
+                                ? SvgPicture.asset(
+                                  imagePath,
+                                  height: 60,
+                                  width: 60,
+                                  fit: BoxFit.cover,
+                                )
+                                : const SizedBox.shrink(),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        key,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF1A1A1A),
                         ),
                       ),
                     ],
                   ),
-                ),
-              ],
+                );
+              },
             ),
-          ),
-        ),
+          );
+        },
       ),
-    );
-  }
-
-  Widget _buildTextField(String label, String placeholder) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(height: 5),
-        TextField(
-          decoration: InputDecoration(
-            hintText: placeholder,
-            focusColor: const Color.fromARGB(255, 248, 1, 1),
-            fillColor: black,
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-          ),
-        ),
-        SizedBox(height: 15),
-      ],
     );
   }
 }

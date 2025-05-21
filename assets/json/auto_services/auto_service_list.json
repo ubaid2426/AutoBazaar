@@ -1,0 +1,196 @@
+{
+  "Auto Inspection Center": {
+    "image": "assets/images/icons/auto_inspection.svg",
+    "items": [
+      "General traffic department annual inspection",
+      "Car registration renewal",
+      "Only inspection",
+      "Others"
+    ]
+  },
+  "Traffic Department Services": {
+    "image": "assets/images/icons/trafic_service.svg",
+    "items": [
+      "License renewal",
+      "Others"
+    ]
+  },
+  "Mechanical Electrical Repairing": {
+    "image": "assets/images/icons/auto_mech.svg",
+    "items": [
+      "Dynamo/alternator",
+      "Self-starter/ignition",
+      "Compressor",
+      "AC service & repair",
+      "Radiator & condenser",
+      "Engine",
+      "Engine tuning",
+      "Gear",
+      "CVT gear",
+      "Double gear (4X4)",
+      "Suspensions & Axle work",
+      "Diagnostic check & recommendations",
+      "Exhaust work",
+      "RIMs",
+      "Brakes (Disks & caliper)",
+      "ABS",
+      "Air bags(SRS)",
+      "Power steering work",
+      "Fuel pump",
+      "Oil pump",
+      "Water pump",
+      "LCD",
+      "Sensor work",
+      "Sunroof",
+      "Convertible roof fix",
+      "Cental Lock System fix",
+      "Central Windows Fix",
+      "Heating/cooling seats",
+      "Timing belt",
+      "Emission failure repair",
+      "Hydraulic work",
+      "Differential work",
+      "Others"
+    ]
+  },
+  "Auto General Works": {
+    "image": "assets/images/icons/auto_general_works.svg",
+    "items": [
+      "Mechanical work",
+      "Electrical work",
+      "Engine oil/filter change",
+      "Gear oil/filter change",
+      "Tire puncture",
+      "Battery",
+      "Serpentine belt",
+      "Thermostat",
+      "Air filter repair",
+      "Fuel injector service and repair",
+      "Window electric work",
+      "Door lock Sytem",
+      "Others"
+    ]
+  },
+  "Auto Body Repairing": {
+    "image": "assets/images/icons/auto_body_repairing.svg",
+    "items": ["Denting", "Painting", "Polishing", "Dent removal (without painting)"]
+  },
+  "Auto Wash": {
+    "image": "assets/images/icons/auto_washing.svg",
+    "items": ["Interior", "Exterior"]
+  },
+  "Auto Care": {
+    "image": "assets/images/icons/auto_care.svg",
+    "items": [
+      "Polishing",
+      "Paint protector",
+      "Detailing",
+      "Polishing",
+      "Sticker service",
+      "nano ceramic",
+      "Dent removal (without painting)",
+      "Tinting"
+    ]
+  },
+  "Auto Interior Work": {
+    "image": "assets/images/icons/auto_interior_works.svg",
+    "items": ["Dashboard repair", "Seat repair", "Seat cushioning"]
+  },
+  "Auto Wench": {
+    "image": "assets/images/icons/auto_winch.svg",
+    "items": [
+      "Towing",
+      "Battery change",
+      "Jump start",
+      "Oil and filter change",
+      "Tire puncture",
+      "Others"
+    ]
+  },
+  "Mobile Workshops": {
+    "image": "assets/images/icons/auto_home_service.svg",
+    "items": [
+      "Towing",
+      "Battery change",
+      "Jump start",
+      "Oil and filter change",
+      "Tire puncture",
+      "Others"
+    ]
+  },
+  "Auto Key Makers": {
+    "image": "assets/images/icons/auto_key_maker.svg",
+    "items": []
+  },
+  "Auto Electric Vehicles": {
+    "image": "assets/images/icons/auto_electrical_vehicle.svg",
+    "items": []
+  },
+  "Scrapyard Shops": {
+    "image": "assets/images/icons/auto_scrapyard.svg",
+    "items": []
+  },
+  "Paint Shops": {
+    "image": "assets/images/icons/paint_shop.svg",
+    "items": []
+  },
+  "Pick and Drop": {
+    "image": "assets/images/icons/heavyvehicle_autotransporter.svg",
+    "items": []
+  },
+  "Auto Carrier": {
+    "image": "assets/images/icons/auto_carrier.svg",
+    "items": []
+  },
+  "Taxi Offices": {
+    "image": "assets/images/icons/auto_rent_office.svg",
+    "items": []
+  },
+  "Taxi Services": {
+    "image": "assets/images/icons/taxi_service.svg",
+    "items": []
+  },
+  "Auto Rental": {
+    "image": "assets/images/icons/auto_for_rent.svg",
+    "items": []
+  },
+  "Auto Tyre Shop": {
+    "image": "assets/images/icons/auto_tyre_shop.svg",
+    "items": ["Condition (new/used)"]
+  },
+  "Auto PartsShop": {
+    "image": "assets/images/icons/spare_parts.svg",
+    "items": [
+      "Type",
+      "Auto body parts",
+      "Auto spare parts",
+      "Auto accessories",
+      "Origin (American/Asian/European)",
+      "Brand"
+    ]
+  },
+  "Auto Insurance": {
+    "image": "assets/images/icons/auto_insurance.svg",
+    "items": []
+  },
+  "Auto Financing": {
+    "image": "assets/images/icons/auto_financing.svg",
+    "items": []
+  },
+  "Auto Learning": {
+    "image": "assets/images/icons/driving_school.svg",
+    "items": []
+  },
+  "Auto Glass Work": {
+    "image": "assets/images/icons/auto_glass.svg",
+    "items": ["Repair", "Replaceable side mirror"]
+  },
+  "Auto Dealers": {
+    "image": "assets/images/icons/auto_dealer.svg",
+    "items": []
+  },
+  "Others": {
+    "image": "assets/images/icons/others.svg",
+    "items": []
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "Exterior": {
+    "image": "assets/images/auto_parts/car_spare_part/exterior.png",
+    "items": [
+      "Bumper Styling",
+      "Bumpers",
+      "Bumpers & Components",
+      "Bonnets",
+      "Doors",
+      "Hoods",
+      "Mirrors",
+      "Chrome Accessories",
+      "Fenders",
+      "Grills",
+      "Gaurds",
+      "Immobilizers",
+      "Metal Logos",
+      "Mirrors/Screens",
+      "Mud Gaurds",
+      "Rear View Cameras",
+      "Side Mirrors",
+      "Spoiler & Body Kits",
+      "Sun Visors",
+      "Trunk",
+      "Viper Blades",
+      "Window Tint",
+      "Others"
+    ]
+  },
+  "Interior": {
+    "image": "assets/images/auto_parts/car_spare_part/interior.png",
+    "items": [
+      "Armrest",
+      "Carpets",
+      "Cigerette Lighters",
+      "Door Parts",
+      "Floor Mats",
+      "Gear Knobs",
+      "Mobile Charger & Holders",
+      "Seat Belt",
+      "Seat Covers",
+      "Seats",
+      "Shades",
+      "Steering Covers",
+      "Trunk Mats",
+      "Others"
+    ]
+  },
+  "Lights & Electrical": {
+    "image": "assets/images/auto_parts/car_spare_part/light_electric.png",
+    "items": [
+      "Bulbs",
+      "Cables",
+      "Central Locking System",
+      "Fog Lamps",
+      "Headlights",
+      "HID's",
+      "Indicator Lights",
+      "Interior Lights",
+      "LED's",
+      "Lights",
+      "Navigation",
+      "Plug Wire",
+      "Plugs",
+      "Tail Lights",
+      "Others"
+    ]
+  },
+  "Security & Sensors": {
+    "image": "assets/images/auto_parts/car_spare_part/security.png",
+    "items": [
+      "Cameras",
+      "Locks",
+      "Parking Sensors",
+      "Security Alarm Systems"
+    ]
+  }
+}

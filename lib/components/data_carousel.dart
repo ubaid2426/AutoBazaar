@@ -6,8 +6,16 @@ import 'package:flutter/material.dart';
 class DataCarousel extends StatefulWidget {
   final bool show;
   final List<Car> carList;
-
-  const DataCarousel({super.key, required this.carList, required this.show});
+  final bool shouldShowTilde;
+  final bool rateshow;
+  final bool timeshow;
+  const DataCarousel({
+    super.key,
+    required this.carList,
+    required this.show,
+    required this.shouldShowTilde,
+    required this.rateshow, required this.timeshow,
+  });
 
   @override
   // ignore: library_private_types_in_public_api
@@ -158,88 +166,6 @@ class _DataCarouselState extends State<DataCarousel> {
     );
   }
 
-  // // 🏎️ Car Card Widget
-  // Widget _buildCarCard(Car car) {
-  //   return SizedBox(
-  //     width: MediaQuery.of(context).size.width * 0.60,
-  //     child: Card(
-  //       color: silver,
-  //       elevation: 3,
-  //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-  //       child: Padding(
-  //         padding: const EdgeInsets.all(8.0),
-  //         child: Column(
-  //           crossAxisAlignment: CrossAxisAlignment.start,
-  //           children: [
-  //             Image.asset(car.image, height: 90, fit: BoxFit.cover),
-  //             const SizedBox(height: 10),
-
-  //             // Car Name
-  //             Text(
-  //               car.name,
-  //               style: const TextStyle(
-  //                 fontSize: 14,
-  //                 fontWeight: FontWeight.bold,
-  //               ),
-  //             ),
-
-  //             // Car Description
-  //             Text(
-  //               car.description,
-  //               maxLines: 2,
-  //               overflow: TextOverflow.ellipsis,
-  //               style: const TextStyle(fontSize: 12, color: Colors.grey),
-  //             ),
-
-  //             const SizedBox(height: 5),
-
-  //             // Pricing Row
-  //             Text(
-  //               "KWD ${car.discountPrice.toStringAsFixed(0)}",
-  //               style: const TextStyle(
-  //                 fontSize: 14,
-  //                 fontWeight: FontWeight.bold,
-  //               ),
-  //             ),
-  //             const SizedBox(width: 5),
-  //             Text(
-  //               "KWD ${car.fullPrice.toStringAsFixed(0)}",
-  //               style: const TextStyle(
-  //                 fontSize: 12,
-  //                 color: Colors.grey,
-  //                 decoration: TextDecoration.lineThrough,
-  //               ),
-  //             ),
-  //             const SizedBox(width: 5),
-  //             Text(
-  //               "${car.offPercentage}% off",
-  //               style: const TextStyle(fontSize: 12, color: Colors.red),
-  //             ),
-
-  //             const SizedBox(height: 5),
-
-  //             // Star Rating & Reviews
-  //             Row(
-  //               spacing: 5,
-  //               children: [
-  //                 _buildStarRating(car.stars),
-  //                 Text(
-  //                   car.totalVotes.toString(),
-  //                   style: const TextStyle(color: Colors.grey, fontSize: 10),
-  //                 ),
-  //                      const SizedBox(width: 5),
-  //                   Text(
-  //                   car.timeAgo,
-  //                   style: const TextStyle(color: Colors.grey, fontSize: 10),
-  //                 ),
-  //               ],
-  //             ),
-  //           ],
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
   Widget _buildCarCard(Car car) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.60,
@@ -311,8 +237,15 @@ class _DataCarouselState extends State<DataCarousel> {
               const SizedBox(height: 5),
 
               // Price
+              // Text(
+              //   "Initial Price: KWD ${car.discountPrice.toStringAsFixed(0)}",
+              //   style: const TextStyle(
+              //     fontSize: 14,
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
               Text(
-                "KWD ${car.discountPrice.toStringAsFixed(0)}",
+                "Price: KWD${widget.shouldShowTilde ? '~' : ''} ${car.discountPrice.toStringAsFixed(0)}",
                 style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -322,16 +255,22 @@ class _DataCarouselState extends State<DataCarousel> {
               const SizedBox(height: 5),
 
               // Rating & Votes
-              Row(
-                children: [
-                  _buildStarRating(car.stars),
-                  const SizedBox(width: 4),
-                  Text(
-                    car.totalVotes.toString(),
-                    style: const TextStyle(color: Colors.grey, fontSize: 10),
-                  ),
-                ],
-              ),
+              if (widget.rateshow == true)
+                Row(
+                  children: [
+                    _buildStarRating(car.stars),
+                    const SizedBox(width: 4),
+                    Text(
+                      car.totalVotes.toString(),
+                      style: const TextStyle(color: Colors.grey, fontSize: 10),
+                    ),
+                  ],
+                ),
+              if (widget.timeshow == true)
+                Text(
+                  car.timeAgo.toString(),
+                  style: const TextStyle(color: Colors.grey, fontSize: 10),
+                ),
             ],
           ),
         ),

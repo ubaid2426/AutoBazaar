@@ -1,0 +1,105 @@
+{
+  "Drive": {
+    "image": "assets/images/auto_parts/car_spare_part/chain.avif",
+    "items": [
+      "Chain and sprocket Kits",
+      "Chains & Master Links",
+      "Sprockets"
+    ]
+  },
+  "Fuel & Air": {
+    "image": "assets/images/auto_parts/car_spare_part/fuel_air.webp",
+    "items": [
+      "Air Filters",
+      "Air Filter Accessories",
+      "Air Cleaner Kits",
+      "Fuel Management",
+      "Velocity Stacks"
+    ]
+  },
+  "Engine Parts Accessories": {
+    "image": "assets/images/auto_parts/car_spare_part/engine.png",
+    "items": [
+      "Camshafts",
+      "Case Covers and Guards",
+      "Clutch Kits and Components",
+      "Cylinder Heads",
+      "Big Bore Kits",
+      "Gaskets",
+      "Oil Filler and Drain Plugs",
+      "Oil Filters",
+      "Piston Kits",
+      "Radiator Guards and Hoses",
+      "Spark Plugs",
+      "Stators and Regulators",
+      "Valve Train and Accessories"
+    ]
+  },
+  "Controls": {
+    "image": "assets/images/auto_parts/car_spare_part/control.jpg",
+    "items": [
+      "Cables",
+      "Foot Controls",
+      "Hand Controls",
+      "Steering Dampers"
+    ]
+  },
+  "Brakes": {
+    "image": "assets/images/auto_parts/car_spare_part/brake.png",
+    "items": [
+      "Brake Accessories",
+      "Brake Bleeders",
+      "Brake Levers",
+      "Brake Lines",
+      "Brake Master Cylinders",
+      "Brake Pads",
+      "Brake Rotors"
+    ]
+  },
+  "Lights and Electrical": {
+    "image": "assets/images/auto_parts/car_spare_part/light_electric.png",
+    "items": [
+      "Accent Lighting",
+      "Batteries and Chargers",
+      "Bulbs",
+      "Cameras",
+      "Headlights",
+      "Tail Lights",
+      "Turn Signals"
+    ]
+  },
+  "Suspension": {
+    "image": "assets/images/auto_parts/car_spare_part/suspension.jpg",
+    "items": [
+      "Fork Accessories",
+      "Lowering Links",
+      "Shocks",
+      "Swingarm Extensions"
+    ]
+  },
+  "Tires and Wheels": {
+    "image": "assets/images/auto_parts/car_spare_part/tires_wheels.jpg",
+    "items": [
+      "Tires",
+      "Wheels",
+      "Tire and Wheel Accessories",
+      "Tire Care"
+    ]
+  },
+  "Dash and Gauges": {
+    "image": "assets/images/auto_parts/car_spare_part/dash.jpg",
+    "items": [
+      "Gauges",
+      "Lap Timers",
+      "Radar Detectors",
+      "Computers"
+    ]
+  },
+  "Security": {
+    "image": "assets/images/auto_parts/car_spare_part/security.png",
+    "items": [
+      "Alarms",
+      "Security Locks and Accessories"
+    ]
+  }
+}

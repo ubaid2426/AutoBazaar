@@ -1,4 +1,6 @@
 // import 'package:autobazzaar/components/buildTextField.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Accident_Autos/accident_auto_form.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Scraps_Autos/scraps_auto_form.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/3wheeler.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/brand_show.dart';
 import 'package:autobazzaar/components/buildTextField.dart';
@@ -6,12 +8,13 @@ import 'package:autobazzaar/presentation/screens/PostScreens/components/postingi
 import 'package:autobazzaar/core/constants/validators.dart';
 import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Auto_Parts/auto_parts_form.dart';
-import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Vehicle_Listing/vehicle_listing_form.dart';
-import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Wanted/auto_wanted.dart';
+// import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Vehicle_Listing/vehicle_listing_form.dart';
+// import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Wanted/auto_wanted.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Shop_Service/shop_service.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/years.dart';
 // import 'package:autobazzaar/screens/PostScreens/listing_main.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+// import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 class CarPostAdScreen extends StatefulWidget {
@@ -56,26 +59,31 @@ class _CarPostAdScreenState extends State<CarPostAdScreen> {
           type == "Taxi" ||
           type == "Motor bike" ||
           type == "Water Crafts") {
-        screen = BrandScreen(type: type);
+        screen = BrandScreen(type: type, filteruse: false,);
       } else if (type == "Quad/Buggy" || type == "3-Wheeler") {
         screen = ThreeWheelerScreen(type: type);
       } else if (type == "Van" ||
           type == "Lorry" ||
           type == "Bus" ||
-          type == "RV/Camper van") {}
+          type == "RV/Camper van") {
+        screen = YearScreen();
+      }
       // screen = VehicleAuotsForm(
       //   title: 'Vehicle Form',
       // ); // Replace with the actual screen
     } else if (name == "Shop &\n Services") {
-      screen = ShopService(
-        title: 'Shop & Service',
+      screen = AutoServicePost(
+        autotype: type,
+        // title: 'Shop & Service',
       ); // Replace with actual screen
     } else if (namesub == "Auto\n Parts") {
       screen = AutoPartsForm(
         title: 'Auto Part Form',
       ); // Replace with actual screen
-    } else if (name == "Auto \n Wanted") {
-      screen = AutoWanted(); // Replace with actual screen
+    } else if (namesub == "Accidental & Autos") {
+      screen = AccidentAutoForm(); // Replace with actual screen
+    } else if (namesub == "Scraps & Autos") {
+      screen = ScrapsAutosForm(); // Replace with actual screen
     } else {
       // screen = VehicleAuotsForm(title: title); // Default screen
     }
@@ -84,16 +92,16 @@ class _CarPostAdScreenState extends State<CarPostAdScreen> {
 
   final List<String> titleOptions = ["SUV", "Sedan", "Hatchback", "Truck"];
 
-  void _pickImage() async {
-    final picker = ImagePicker();
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+  // void _pickImage() async {
+  //   final picker = ImagePicker();
+  //   final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
-    if (pickedFile != null) {
-      setState(() {
-        selectedImages.add(File(pickedFile.path));
-      });
-    }
-  }
+  //   if (pickedFile != null) {
+  //     setState(() {
+  //       selectedImages.add(File(pickedFile.path));
+  //     });
+  //   }
+  // }
 
   @override
   void initState() {

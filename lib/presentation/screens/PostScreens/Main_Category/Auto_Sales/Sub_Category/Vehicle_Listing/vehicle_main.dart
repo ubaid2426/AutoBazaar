@@ -13,7 +13,7 @@ class VehicleSelectionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print(name);
+    print(name);
     print(namesub);
     return Scaffold(
       appBar: AppBar(

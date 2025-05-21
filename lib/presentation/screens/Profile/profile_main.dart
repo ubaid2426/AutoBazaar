@@ -84,7 +84,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 ProfileMenuItem(
                   icon: Icons.credit_card,
-                  title: "Draft Listing",
+                  title: "Draft Listing",  navigateTo: Extra(title: "Draft Listing",),
                 ),
                 ProfileMenuItem(
                   icon: Icons.local_shipping,

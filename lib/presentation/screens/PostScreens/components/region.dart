@@ -1,11 +1,13 @@
 // car_year_screen.dart
 import 'package:autobazzaar/data/models/dummy_data.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/state_area.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/transmission.dart';
 import 'package:flutter/material.dart';
 // import 'dummy_years.dart'; // Import the dummy data
 
 class RegionScreen extends StatefulWidget {
-  const RegionScreen({super.key});
+  final String category;
+  const RegionScreen({super.key, required this.category});
 
   @override
   _RegionScreenState createState() => _RegionScreenState();
@@ -14,7 +16,12 @@ class RegionScreen extends StatefulWidget {
 class _RegionScreenState extends State<RegionScreen> {
   List<String> filteredregion = regionalSpecifications;
   final TextEditingController _searchController = TextEditingController();
-
+  Map<String, Widget Function()> categoryRoutes = {
+    "Auto Sales": () => TransmissionScreen(),
+    "Shop Services": () => StateArea(),
+    // "Trucks": () => TruckDetailsScreen(),
+    // Add more mappings
+  };
   @override
   void initState() {
     super.initState();
@@ -81,15 +88,30 @@ class _RegionScreenState extends State<RegionScreen> {
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       trailing: Icon(Icons.chevron_right),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => TransmissionScreen(),
-                          ),
-                        );
-                        // Handle year selection
-                        print("Selected region: $year");
+                       onTap: () {
+                        final nextScreenBuilder = categoryRoutes[widget.category];
+
+                        if (nextScreenBuilder != null) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => nextScreenBuilder(),
+                            ),
+                          );
+                        } else {
+                          // Fallback or error
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                "No screen found for category: ${widget.category}",
+                              ),
+                            ),
+                          );
+                        }
+
+                        // print(
+                        //   "Selected Body Type: ${item["title"]} in category: ${widget.category}",
+                        // );
                       },
                     ),
                   );

@@ -1,0 +1,34 @@
+{
+  "Electronic Accessories": {
+    "image": "assets/images/auto_parts/bike_accessories.png",
+    "items": [
+      "Accessory Mounts",
+      "Auxiliary Power Kits",
+      "Communication",
+      "Heated Grips",
+      "Ipod and MP3 Accessories",
+      "Lap Timers",
+      "Radar Detectors",
+      "Sound Systems"
+    ]
+  },
+  "Windscreens Accessories": {
+    "image": "assets/images/auto_parts/car_spare_part/wind_accessories.jpg",
+    "items": [
+      "Lowers and Wind Deflectors",
+      "Windscreens",
+      "Windscreen Bolts",
+      "Windscreen Mounting Hardware"
+    ]
+  },
+  "Luggage": {
+    "image": "assets/images/auto_parts/car_spare_part/luggage.avif",
+    "items": [
+      "Saddlebags",
+      "Tail Bags",
+      "Tank Bags",
+      "Luggage Mounts and Accessories",
+      "Windshield and Fork Bags"
+    ]
+  }
+}

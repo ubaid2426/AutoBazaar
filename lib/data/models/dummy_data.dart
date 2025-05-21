@@ -8,6 +8,7 @@ import 'package:autobazzaar/models/drop_down_item.dart';
 import 'package:autobazzaar/models/listing_main.dart';
 import 'package:autobazzaar/models/promo_card.dart';
 import 'package:autobazzaar/models/vehicle_category.dart';
+import 'package:flutter/material.dart';
 // import 'package:basic_dropdown_button/custom_dropdown_button.dart';
 
 List<Listing> dummyListings = [
@@ -60,6 +61,18 @@ List<Listing> dummyListings = [
     dateAdded: DateTime.now().subtract(Duration(days: 30)),
   ),
 ];
+List<String> autoTypes = [
+  "Car",
+  "Motor bike",
+  "Van",
+  "3-Wheeler",
+  "Taxi",
+  "Bus",
+  "Lorry",
+  "Quad/Buggy",
+  "RV/Camper van",
+  "Water Crafts",
+];
 
 List<VehicleCategory> dummyVehicleCategories = [
   VehicleCategory(
@@ -103,15 +116,16 @@ List<VehicleCategory> dummyVehicleCategories = [
     imagePath: "assets/images/vehicle_category/water_craft.png",
   ),
 ];
-  final List<Map<String, dynamic>> bodyTypes = [
-    {"title": "Bus - Van", "image": "assets/images/bodytype/van.png"},
-    {"title": "Convertible", "image": "assets/images/bodytype/convertible.png"},
-    {"title": "Coupe", "image": "assets/images/bodytype/coupe.png"},
-    {"title": "HatchBack", "image": "assets/images/bodytype/hatchback.png"},
-    {"title": "PickUp", "image": "assets/images/bodytype/pickup.png"},
-    {"title": "Sedan", "image": "assets/images/bodytype/sedan.png"},
-    {"title": "SUV", "image": "assets/images/bodytype/suv.png"},
-  ];
+
+final List<Map<String, dynamic>> bodyTypes = [
+  {"title": "Bus - Van", "image": "assets/images/bodytype/van.png"},
+  {"title": "Convertible", "image": "assets/images/bodytype/convertible.png"},
+  {"title": "Coupe", "image": "assets/images/bodytype/coupe.png"},
+  {"title": "HatchBack", "image": "assets/images/bodytype/hatchback.png"},
+  {"title": "PickUp", "image": "assets/images/bodytype/pickup.png"},
+  {"title": "Sedan", "image": "assets/images/bodytype/sedan.png"},
+  {"title": "SUV", "image": "assets/images/bodytype/suv.png"},
+];
 List<DropdownItem> categoryTypes = [
   DropdownItem(id: 1, name: "Sedan"),
   DropdownItem(id: 2, name: "SUV"),
@@ -119,7 +133,7 @@ List<DropdownItem> categoryTypes = [
   DropdownItem(id: 4, name: "Truck"),
 ];
 
-List<DropdownItem> autoTypes = [
+List<DropdownItem> autofueltype = [
   DropdownItem(id: 1, name: "Petrol"),
   DropdownItem(id: 2, name: "Diesel"),
   DropdownItem(id: 3, name: "Electric"),
@@ -181,11 +195,31 @@ const List<String> yearspost = [
 ];
 final List<BrandItem> bodyTypes1 = [
   BrandItem(id: 1, name: "Van", imagePath: "assets/images/bodytype/van.png"),
-  BrandItem(id: 2, name: "Convertible", imagePath: "assets/images/bodytype/convertible.png"),
-  BrandItem(id: 3, name: "Coupe", imagePath: "assets/images/bodytype/coupe.png"),
-  BrandItem(id: 4, name: "HatchBack", imagePath: "assets/images/bodytype/hatchback.png"),
-  BrandItem(id: 5, name: "PickUp", imagePath: "assets/images/bodytype/pickup.png"),
-  BrandItem(id: 6, name: "Sedan", imagePath: "assets/images/bodytype/sedan.png"),
+  BrandItem(
+    id: 2,
+    name: "Convertible",
+    imagePath: "assets/images/bodytype/convertible.png",
+  ),
+  BrandItem(
+    id: 3,
+    name: "Coupe",
+    imagePath: "assets/images/bodytype/coupe.png",
+  ),
+  BrandItem(
+    id: 4,
+    name: "HatchBack",
+    imagePath: "assets/images/bodytype/hatchback.png",
+  ),
+  BrandItem(
+    id: 5,
+    name: "PickUp",
+    imagePath: "assets/images/bodytype/pickup.png",
+  ),
+  BrandItem(
+    id: 6,
+    name: "Sedan",
+    imagePath: "assets/images/bodytype/sedan.png",
+  ),
   BrandItem(id: 7, name: "SUV", imagePath: "assets/images/bodytype/suv.png"),
 ];
 
@@ -433,18 +467,10 @@ final List<String> mainCategories = [
   "Auto Body Parts",
   "Auto Accessories",
 ];
-final List<String> transmission= [
-  "Automatic",
-  "Manual",
-];
-final List<String> payment= [
-  "Cash",
-  "Installments",
-];
-final List<String> used= [
-  "New",
-  "Used",
-];
+
+final List<String> transmission = ["Automatic", "Manual"];
+final List<String> payment = ["Cash", "Installments"];
+final List<String> used = ["New", "Used"];
 // dummy_car_seats.dart
 const List<String> carSeats = [
   "2 Seater",
@@ -484,19 +510,121 @@ const List<String> carTechnologyOptions = [
   "Over-the-Air Updates",
 ];
 
-  final List<String> interiorOptions = [
-    "Air Condition",
-    "Airbags",
-    "Alarm System",
-    "AUX / USB Input",
-    "CD player",
-    "Leather Seats",
-    "Navigation System",
-    "Rear Camera",
-    "Bluetooth",
-    "Power Steering",
-    "Cruise Control",
+final List<String> interiorOptions = [
+  "Air Condition",
+  "Airbags",
+  "Alarm System",
+  "AUX / USB Input",
+  "CD player",
+  "Leather Seats",
+  "Navigation System",
+  "Rear Camera",
+  "Bluetooth",
+  "Power Steering",
+  "Cruise Control",
+];
+final List<String> exteriorOptions = [
+  "Alloy Wheels",
+  "Sunroof / Moonroof",
+  "LED Headlights",
+  "Fog Lights",
+  "Rear Spoiler",
+  "Roof Rails",
+  "Tow Hitch",
+  "Tinted Windows",
+  "Power Mirrors",
+  "Running Boards",
+  "Body Kit",
+];
+  final List<Map<String, dynamic>> carColors = [
+    {"name": "Baby Blue", "color": Colors.lightBlueAccent},
+    {"name": "Beige", "color": Color(0xFFF5F5DC)},
+    {"name": "Black", "color": Colors.black},
+    {"name": "Blue", "color": Colors.blue},
+    {"name": "Bronze", "color": Color(0xFFCD7F32)},
+    {"name": "Brown", "color": Colors.brown},
+    {"name": "Gold", "color": Color(0xFFFFD700)},
+    {"name": "Green", "color": Colors.green},
+    {"name": "Grey", "color": Colors.grey},
+    {"name": "Orange", "color": Colors.orange},
+    {"name": "Pink", "color": Colors.pink},
+    {"name": "Purple", "color": Colors.purple},
+    {"name": "Red", "color": Colors.red},
+    {"name": "Silver", "color": Color(0xFFC0C0C0)},
+    {"name": "White", "color": Colors.white},
+    {"name": "Yellow", "color": Colors.yellow},
+    {"name": "Other", "color": Colors.transparent},
   ];
+  final List<String> batteryCapacities = [
+  "20 kWh",
+  "24 kWh",
+  "30 kWh",
+  "35 kWh",
+  "40 kWh",
+  "50 kWh",
+  "60 kWh",
+  "64 kWh",
+  "70 kWh",
+  "75 kWh",
+  "80 kWh",
+  "90 kWh",
+  "100 kWh",
+  "110 kWh",
+  "120+ kWh"
+];
+final List<String> batteryRanges = [
+  "100 km",
+  "150 km",
+  "200 km",
+  "250 km",
+  "300 km",
+  "350 km",
+  "400 km",
+  "450 km",
+  "500 km",
+  "550 km",
+  "600 km",
+  "650 km",
+  "700+ km"
+];
+    final List<String> originOptions = [
+  'All',
+  'Local',
+  'Imported',
+  'GCC Spec',
+  'American Spec',
+  'Japanese Spec',
+  'European Spec',
+  'Other',
+];
+    final List<String> listingOptions = [
+    'All',
+    'For sale',
+    'Wanted',
+  ];
+final List<String> otherOptions = [
+  "Keyless Entry",
+  "Remote Start",
+  "Heated Seats",
+  "Cooled Seats",
+  "Wireless Charging",
+  "Head-Up Display",
+  "Adaptive Headlights",
+  "Ambient Lighting",
+  "Digital Instrument Cluster",
+  "Paddle Shifters",
+  "Adjustable Suspension",
+  "Self-Parking Assist",
+  "Electric Tailgate",
+  "Voice Command System",
+  "Auto Dimming Mirrors",
+  "360-degree Camera System",
+  "Blind Spot Monitoring",
+  "Apple CarPlay / Android Auto",
+  "Wi-Fi Hotspot",
+  "Custom Wrap / Paint",
+];
+
 // dummy_kilometer_ranges.dart
 const List<String> kilometerRanges = [
   "0 - 10,000 km",
@@ -522,25 +650,25 @@ const List<String> kilometerRanges = [
   "200,001+ km",
 ];
 
-final List<String> insurance= [
+final List<String> insurance = [
   "Comprehensive Insurance",
   "Compulsory Insurance",
   "Not Insured",
 ];
-final List<String> condition= [
+final List<String> condition = [
   "Excellent with no defect",
   "Fair(body needs works)",
   "Good(body only has minor blemishes)",
   "Poor(severe body damage)",
-  "other"
+  "other",
 ];
-final List<String> repainted= [
+final List<String> repainted = [
   "Original Paint",
   "Partially repainted",
   "totally repainted",
   "other",
 ];
-final List<String> fuel= [
+final List<String> fuel = [
   "Diesel",
   "Electric",
   "Gasoline",
@@ -830,7 +958,20 @@ final List<Map<String, String>> categories = [
   {"title": "Auto \nShops", "image": "assets/images/listing_form/shops.png"},
   // {"title": "Porsche", "image": "assets/images/listing_form/wanted.png"},
 ];
-
+final List<Map<String, String>> autoclassifiedoptions = [
+  {"title": "Auto \nSales", "image": "assets/images/listing_form/wanted.png"},
+  {
+    "title": "Auto Shop \nService",
+    "image": "assets/images/listing_form/auto.png",
+  },
+  {"title": "Auto \nRental", "image": "assets/images/listing_form/service.png"},
+  {
+    "title": "Auto \nWanted",
+    "image": "assets/images/listing_form/services.png",
+  },
+  {"title": "Auto \nJobs", "image": "assets/images/listing_form/technicain.png"},
+  // {"title": "Porsche", "image": "assets/images/listing_form/wanted.png"},
+];
 final List<Map<String, String>> autosalecategories = [
   {"title": "Vehicles", "image": "assets/images/listing_form/wanted.png"},
   {"title": "Auto \nParts", "image": "assets/images/listing_form/auto.png"},
@@ -841,6 +982,20 @@ final List<Map<String, String>> autosalecategories = [
   },
   // {"title": "Auto \nShops", "image": "assets/images/listing_form/shops.png"},
   // {"title": "Porsche", "image": "assets/images/listing_form/wanted.png"},
+];
+final List<Map<String, String>> autojobcategories = [
+  {"title": "Auto \n Mechanic", "image": "assets/images/listing_form/wanted.png"},
+  {"title": "Mechanical \n Engineer", "image": "assets/images/listing_form/part.png"},
+  {"title": "Body Shop \n Technician", "image": "assets/images/listing_form/auto_wanted.png"},
+  {"title": "EV \n Technician", "image": "assets/images/listing_form/service.png"},
+  {"title": "Rental \n Agent", "image": "assets/images/listing_form/auto.png"},
+  {"title": "Tire \n Technician", "image": "assets/images/listing_form/shops.png"},
+  {"title": "Quality \nControl \n Inspector", "image": "assets/images/listing_form/technicain.png"},
+];
+final List<Map<String, String>> autojob = [
+  {"title": "I Want to Hire", "image": "assets/images/auto_job/hire.png"},
+  {"title": "I am Looking For a Job", "image": "assets/images/auto_job/job.jpeg"},
+  {"title": "Education and Training", "image": "assets/images/auto_job/education.png"},
 ];
 List<PromoCardModel> promoCards = [
   PromoCardModel("assets/images/home/carousel.png", "5-10% OFF", "1"),
@@ -1098,5 +1253,70 @@ final List<Car> carList = [
     brand: 'Ferrari',
     year: 2024,
     model: 'F8 Tributo',
+  ),
+];
+
+// import 'package:autobazzaar/models/car_ad.dart';
+
+final List<Car> premiumCars = [
+  Car(
+    name: 'Tesla Model Ss',
+    image: 'assets/images/home/audi_r8.png',
+    timeAgo: '2 hours ago',
+    description: 'Electric luxury sedan with autopilot.',
+    fullPrice: 45000,
+    discountPrice: 42000,
+    offPercentage: 6.7,
+    stars: 4.8,
+    totalVotes: 134,
+    date: '2025-04-12',
+    brand: 'Tesla',
+    year: 2023,
+    model: 'Model S',
+  ),
+  Car(
+    name: 'BMW X5',
+    image: 'assets/images/home/ford_mustang.png',
+    timeAgo: '5 hours ago',
+    description: 'Luxury SUV with a powerful engine.',
+    fullPrice: 55000,
+    discountPrice: 50000,
+    offPercentage: 9.1,
+    stars: 4.6,
+    totalVotes: 98,
+    date: '2025-04-10',
+    brand: 'BMW',
+    year: 2022,
+    model: 'X5',
+  ),
+  Car(
+    name: 'Mercedes-Benz C-Class',
+    image: 'assets/images/home/super.png',
+    timeAgo: '1 day ago',
+    description: 'Elegant and comfortable ride.',
+    fullPrice: 40000,
+    discountPrice: 37500,
+    offPercentage: 6.25,
+    stars: 4.7,
+    totalVotes: 112,
+    date: '2025-04-11',
+    brand: 'Mercedes',
+    year: 2023,
+    model: 'C-Class',
+  ),
+  Car(
+    name: 'Audi Q7',
+    image: 'assets/images/home/mercedes_g_wagen.png',
+    timeAgo: '3 days ago',
+    description: 'Luxury 7-seater SUV with tech features.',
+    fullPrice: 60000,
+    discountPrice: 56500,
+    offPercentage: 5.83,
+    stars: 4.9,
+    totalVotes: 145,
+    date: '2025-04-09',
+    brand: 'Audi',
+    year: 2023,
+    model: 'Q7',
   ),
 ];

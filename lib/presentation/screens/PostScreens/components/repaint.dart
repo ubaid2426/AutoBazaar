@@ -1,7 +1,8 @@
 // car_year_screen.dart
+import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/data/models/dummy_data.dart';
-import 'package:autobazzaar/presentation/screens/PostScreens/components/bodycondition.dart';
-import 'package:autobazzaar/presentation/screens/PostScreens/components/excolor.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/Choose_plan/bodycondition.dart';
+// import 'package:autobazzaar/presentation/screens/PostScreens/components/excolor.dart';
 import 'package:flutter/material.dart';
 // import 'dummy_years.dart'; // Import the dummy data
 
@@ -9,12 +10,13 @@ class RepaintScreen extends StatefulWidget {
   const RepaintScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _RepaintScreenState createState() => _RepaintScreenState();
 }
 
 class _RepaintScreenState extends State<RepaintScreen> {
   List<String> filteredtransmission = repainted;
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
@@ -55,7 +57,7 @@ class _RepaintScreenState extends State<RepaintScreen> {
             children: [
               Row(
                 children: [
-                  Icon(Icons.check_circle, color: Colors.green),
+                  Icon(Icons.check_circle, color: red),
                   SizedBox(width: 8),
                   Text("Choose the paint condition of the car you want to sell"),
                 ],

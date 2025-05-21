@@ -84,7 +84,7 @@ class _YearScreenState extends State<YearScreen> {
                       onTap: () {
                           Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => RegionScreen()),
+                        MaterialPageRoute(builder: (context) => RegionScreen(category: 'Auto Sales',)),
                       );
                         // Handle year selection
                         print("Selected year: $year");

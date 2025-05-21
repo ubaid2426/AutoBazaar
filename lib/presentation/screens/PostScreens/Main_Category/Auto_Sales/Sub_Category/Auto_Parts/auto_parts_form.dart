@@ -8,7 +8,7 @@ import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/models/brand_item.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
 // import '../data/dummy_data.dart';
 // import '../widgets/dropdown_component.dart';
 
@@ -33,8 +33,8 @@ class _AutoPartsFormState extends State<AutoPartsForm> {
   int? origin;
   int? selectedPayment;
   bool isSignupSelected = true;
-  LatLng? selectedLocation;
-  late GoogleMapController mapController;
+  // LatLng? selectedLocation;
+  // late GoogleMapController mapController;
   String? selectedMainCategory;
   List<String> selectedSubCategories = [];
   // void _onMapCreated(GoogleMapController controller) {

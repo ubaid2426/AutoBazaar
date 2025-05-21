@@ -1,4 +1,5 @@
 import 'package:autobazzaar/core/theme/colors.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/Choose_plan/payment_successful.dart';
 import 'package:autobazzaar/src/credit_card_form.dart';
 import 'package:autobazzaar/src/credit_card_widget.dart';
 import 'package:autobazzaar/src/models/credit_card_brand.dart';
@@ -223,6 +224,11 @@ class PaymentMethodState extends State<PaymentMethod> {
     } else {
       print('invalid!');
     }
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => PaymentSuccessScreen()),
+    );
+    // PaymentSuccessScreen()
   }
 
   Glassmorphism? _getGlassmorphismConfig() {

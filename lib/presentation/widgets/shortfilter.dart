@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:autobazzaar/data/models/dummy_data.dart'; // this should contain brands, years, and categoryTypes as List<DropdownItem>
+import 'package:autobazzaar/data/models/dummy_data.dart'; // this should contain brands, years, bodyTypes1 as List<DropdownItem>
 
 class ShortFilter extends StatefulWidget {
   const ShortFilter({super.key});
@@ -11,7 +11,7 @@ class ShortFilter extends StatefulWidget {
 }
 
 class _ShortFilterState extends State<ShortFilter> {
-  String selectedFilter = 'Brand';
+  String? selectedFilter; // null initially — filter options hidden
   String searchQuery = '';
   dynamic selectedBrand;
   dynamic selectedYear;
@@ -19,33 +19,26 @@ class _ShortFilterState extends State<ShortFilter> {
 
   final ScrollController _scrollController = ScrollController();
 
+  List<dynamic> get displayedItems {
+    if (selectedFilter == 'Brand') {
+      return brands
+          .where((b) => b.name.toLowerCase().contains(searchQuery.toLowerCase()))
+          .toList();
+    } else if (selectedFilter == 'Year') {
+      return years
+          .where((y) => y.name.toLowerCase().contains(searchQuery.toLowerCase()))
+          .toList();
+    } else if (selectedFilter == 'Type') {
+      return bodyTypes1
+          .where((t) => t.name.toLowerCase().contains(searchQuery.toLowerCase()))
+          .toList();
+    } else {
+      return [];
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    List<dynamic> displayedItems;
-
-    if (selectedFilter == 'Brand') {
-      displayedItems =
-          brands
-              .where(
-                (b) => b.name.toLowerCase().contains(searchQuery.toLowerCase()),
-              )
-              .toList();
-    } else if (selectedFilter == 'Year') {
-      displayedItems =
-          years
-              .where(
-                (y) => y.name.toLowerCase().contains(searchQuery.toLowerCase()),
-              )
-              .toList();
-    } else {
-      displayedItems =
-          bodyTypes1
-              .where(
-                (t) => t.name.toLowerCase().contains(searchQuery.toLowerCase()),
-              )
-              .toList();
-    }
-
     return Container(
       padding: const EdgeInsets.all(12),
       margin: const EdgeInsets.only(bottom: 16),
@@ -61,64 +54,69 @@ class _ShortFilterState extends State<ShortFilter> {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              children:
-                  ['Brand', 'Year', 'Type']
-                      .map(
-                        (filter) => Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child: _buildFilterButton(filter),
-                        ),
-                      )
-                      .toList(),
+              children: ['Brand', 'Year', 'Type']
+                  .map(
+                    (filter) => Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: _buildFilterButton(filter),
+                    ),
+                  )
+                  .toList(),
             ),
           ),
           const SizedBox(height: 12),
 
-          // Search Bar
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Search by ${selectedFilter.toLowerCase()}..',
-              prefixIcon: const Icon(Icons.search),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
+          // Show Search + Grid ONLY if a filter is selected
+          if (selectedFilter != null) ...[
+            // Search Bar
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Search by ${selectedFilter!.toLowerCase()}..',
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
+              onChanged: (val) => setState(() => searchQuery = val),
             ),
-            onChanged: (val) => setState(() => searchQuery = val),
-          ),
-          const SizedBox(height: 12),
+            const SizedBox(height: 12),
 
-          // Grid (3 rows max, scrollable)
-          SizedBox(
-            height: 240, // approx 3 rows * 80 height
-            child: GridView.builder(
-              controller: _scrollController,
-              itemCount: displayedItems.length,
-              scrollDirection: Axis.horizontal,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                childAspectRatio: 1 / 2,
+            // GridView
+            SizedBox(
+              height: 240,
+              child: GridView.builder(
+                controller: _scrollController,
+                itemCount: displayedItems.length,
+                scrollDirection: Axis.horizontal,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  childAspectRatio: 1 / 2,
+                ),
+                itemBuilder: (context, index) {
+                  final item = displayedItems[index];
+                  return _buildGridItem(item);
+                },
               ),
-              itemBuilder: (context, index) {
-                final item = displayedItems[index];
-                return _buildGridItem(item);
-              },
             ),
-          ),
+          ],
         ],
       ),
     );
   }
 
   Widget _buildFilterButton(String title) {
-    final isSelected = selectedFilter == title;
+    final bool isSelected = selectedFilter == title;
+
     return GestureDetector(
-      onTap:
-          () => setState(() {
-            selectedFilter = title;
-            searchQuery = '';
-          }),
+      onTap: () {
+        setState(() {
+          // toggle logic: deselect if already selected
+          selectedFilter = isSelected ? null : title;
+          searchQuery = '';
+        });
+      },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
@@ -169,25 +167,23 @@ class _ShortFilterState extends State<ShortFilter> {
           ),
           borderRadius: BorderRadius.circular(12),
         ),
-        child:
-            selectedFilter == 'Brand'
-                ? Image.asset(item.imagePath, fit: BoxFit.contain)
-                : Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    if (selectedFilter == 'Type')
-                      Image.asset(item.imagePath, width: 40, height: 30),
-                    // const SizedBox(height: 6),
-                    AutoSizeText(
-                      item.name,
-                      minFontSize: 10,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        color: isSelected ? Colors.red : Colors.black,
-                      ),
+        child: selectedFilter == 'Brand'
+            ? Image.asset(item.imagePath, fit: BoxFit.contain)
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (selectedFilter == 'Type')
+                    Image.asset(item.imagePath, width: 40, height: 30),
+                  AutoSizeText(
+                    item.name,
+                    minFontSize: 10,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: isSelected ? Colors.red : Colors.black,
                     ),
-                  ],
-                ),
+                  ),
+                ],
+              ),
       ),
     );
   }

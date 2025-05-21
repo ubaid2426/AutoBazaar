@@ -6,8 +6,8 @@ import 'package:flutter/services.dart';
 
 class BrandScreen extends StatefulWidget {
   final String type;
-  const BrandScreen({super.key, required this.type});
-
+  final bool? filteruse;
+  const BrandScreen({super.key, required this.type, required this.filteruse});
   @override
   State<BrandScreen> createState() => _BrandScreenState();
 }
@@ -65,9 +65,10 @@ class _BrandScreenState extends State<BrandScreen> {
   void filterBrands(String query) {
     final lowercaseQuery = query.toLowerCase();
     setState(() {
-      filteredBrands = brands
-          .where((brand) => brand.toLowerCase().startsWith(lowercaseQuery))
-          .toList();
+      filteredBrands =
+          brands
+              .where((brand) => brand.toLowerCase().startsWith(lowercaseQuery))
+              .toList();
     });
   }
 
@@ -106,90 +107,93 @@ class _BrandScreenState extends State<BrandScreen> {
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      body: carData.isEmpty
-          ? const Center(child: CircularProgressIndicator())
-          : Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: TextField(
-                    controller: searchController,
-                    onChanged: filterBrands,
-                    decoration: InputDecoration(
-                      hintText: 'Search brand...',
-                      prefixIcon: const Icon(Icons.search),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+      body:
+          carData.isEmpty
+              ? const Center(child: CircularProgressIndicator())
+              : Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: TextField(
+                      controller: searchController,
+                      onChanged: filterBrands,
+                      decoration: InputDecoration(
+                        hintText: 'Search brand...',
+                        prefixIcon: const Icon(Icons.search),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: filteredBrands.length,
-                    itemBuilder: (context, index) {
-                      final brand = filteredBrands[index];
-                      return Card(
-                        elevation: 4,
-                        margin: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 8,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ModelScreen(
-                                  brand: brand,
-                                  models: carData[brand]!,
-                                  icon: getIconForType(widget.type),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: filteredBrands.length,
+                      itemBuilder: (context, index) {
+                        final brand = filteredBrands[index];
+                        return Card(
+                          elevation: 4,
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder:
+                                      (context) => ModelScreen(
+                                        brand: brand,
+                                        models: carData[brand]!,
+                                        icon: getIconForType(widget.type),
+                                        filteruse: widget.filteruse!,
+                                      ),
                                 ),
-                              ),
-                            );
-                          },
-                          borderRadius: BorderRadius.circular(16),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(
-                                  getIconForType(widget.type),
-                                  size: 28,
-                                  color: red,
-                                ),
-                                const SizedBox(width: 16),
-                                Expanded(
-                                  child: Text(
-                                    brand,
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black87,
-                                    ),
-                                    textAlign: TextAlign.start,
+                              );
+                            },
+                            borderRadius: BorderRadius.circular(16),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Icon(
+                                    getIconForType(widget.type),
+                                    size: 28,
+                                    color: red,
                                   ),
-                                ),
-                                Icon(
-                                  Icons.arrow_forward_ios,
-                                  size: 28,
-                                  color: red,
-                                ),
-                              ],
+                                  const SizedBox(width: 16),
+                                  Expanded(
+                                    child: Text(
+                                      brand,
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.black87,
+                                      ),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  ),
+                                  Icon(
+                                    Icons.arrow_forward_ios,
+                                    size: 28,
+                                    color: red,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
     );
   }
 }

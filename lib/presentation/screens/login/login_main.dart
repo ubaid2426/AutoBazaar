@@ -1,6 +1,6 @@
 import 'package:autobazzaar/components/navigation.dart';
 import 'package:autobazzaar/core/theme/colors.dart';
-import 'package:autobazzaar/presentation/screens/Home/home_main.dart';
+// import 'package:autobazzaar/presentation/screens/Home/home_main.dart';
 import 'package:autobazzaar/presentation/screens/login/singup_main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

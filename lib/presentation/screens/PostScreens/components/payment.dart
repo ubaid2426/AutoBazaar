@@ -1,8 +1,9 @@
 import 'package:autobazzaar/core/theme/colors.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/state_area.dart';
 import 'package:flutter/material.dart';
 import 'package:autobazzaar/data/models/dummy_data.dart';
-import 'package:autobazzaar/presentation/screens/PostScreens/components/fuel.dart';
-import 'package:autobazzaar/presentation/screens/PostScreens/components/Insuranced.dart';
+// import 'package:autobazzaar/presentation/screens/PostScreens/components/fuel.dart';
+// import 'package:autobazzaar/presentation/screens/PostScreens/components/Insuranced.dart';
 
 class PaymentMethod extends StatefulWidget {
   const PaymentMethod({super.key});
@@ -115,7 +116,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
     print("Payment Method Selected: $selectedPayment");
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => FuelScreen()),
+      MaterialPageRoute(builder: (context) => StateArea()),
     );
   }
 

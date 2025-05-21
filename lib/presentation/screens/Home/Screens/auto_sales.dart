@@ -1,4 +1,4 @@
-import 'package:autobazzaar/components/ads_header.dart';
+// import 'package:autobazzaar/components/ads_header.dart';
 import 'package:autobazzaar/components/data_carousel.dart';
 import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/models/car_ad.dart';
@@ -54,7 +54,7 @@ class AutoSales extends StatelessWidget {
         //   },
         //   title: title,
         // ),
-        DataCarousel(carList: carList, show: false,),
+        DataCarousel(carList: carList, show: false, shouldShowTilde: false, rateshow: false, timeshow: false,),
       ],
     );
   }

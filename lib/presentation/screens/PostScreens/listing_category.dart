@@ -2,7 +2,8 @@ import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/components/listing_component.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Auto_Parts/auto_parts_form.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Vehicle_Listing/vehicle_main.dart';
-import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Shop_Service/shop_service.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Wanted/auto_wanted.dart';
+// import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Shop_Service/shop_service.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/listing_sub_category.dart';
 import 'package:flutter/material.dart';
 
@@ -34,9 +35,9 @@ class ListingCategory extends StatelessWidget {
         title: 'Auto Part Form',
       ); // Replace with actual screen
     } else if (name == "Auto \n Wanted") {
-      // screen = AutoWantedScreen(); // Replace with actual screen
+      screen = AutoWanted(); // Replace with actual screen
     } else {
-      screen = ShopService(title: "Shop & Service"); // Default screen
+      // screen = ShopService(title: "Shop & Service"); // Default screen
     }
     Navigator.push(context, MaterialPageRoute(builder: (context) => screen!));
   }
