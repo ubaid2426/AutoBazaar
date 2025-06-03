@@ -1,6 +1,7 @@
 import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/components/listing_component.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Auto_Parts/auto_parts_form.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Auto_Parts/autopartmain.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Vehicle_Listing/vehicle_main.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Wanted/auto_wanted.dart';
 // import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Shop_Service/shop_service.dart';
@@ -31,8 +32,8 @@ class ListingCategory extends StatelessWidget {
     } else if (name == "Shop &\n Services") {
       screen = VehicleSelectionScreen(namesub: "", name: name);
     } else if (name == "Auto\n Rental") {
-      screen = AutoPartsForm(
-        title: 'Auto Part Form',
+      screen = AutopartForm(selectedVehicleType: 'Car',
+        // title: 'Auto Part Form',
       ); // Replace with actual screen
     } else if (name == "Auto \n Wanted") {
       screen = AutoWanted(); // Replace with actual screen

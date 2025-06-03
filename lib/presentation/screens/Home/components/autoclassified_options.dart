@@ -12,6 +12,7 @@ import 'package:autobazzaar/presentation/screens/AutoWanted/auto_wanted_main.dar
 // import 'package:autobazzaar/presentation/screens/Auto_Jobs/auto_job_main.dart';
 import 'package:autobazzaar/presentation/screens/Auto_Jobs/autojob_main.dart';
 import 'package:autobazzaar/presentation/screens/Auto_Jobs/components/auto_job_detail.dart';
+import 'package:autobazzaar/presentation/screens/Auto_Rental/auto_rental_main.dart';
 import 'package:autobazzaar/presentation/screens/Home/components/top_category.dart';
 // import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Wanted/auto_wanted.dart';
 // import 'package:autobazzaar/presentation/screens/Home/components/top_category.dart';
@@ -85,6 +86,9 @@ class AutoClassifiedOptions extends StatelessWidget {
                                     break;
                                   case "Auto \nWanted":
                                     screen = const AutoWantedMain();
+                                    break;
+                                  case "Auto \nRental":
+                                    screen = const AutoRentalMain();
                                     break;
                                   case "Auto \nJobs":
                                     screen = const AutojobMain();

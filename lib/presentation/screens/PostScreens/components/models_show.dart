@@ -7,12 +7,13 @@ class ModelScreen extends StatelessWidget {
   final List<String> models;
   final IconData icon;
   final bool? filteruse;
+  final String category;
   const ModelScreen({
     super.key,
     required this.brand,
     required this.models,
     required this.icon,
-   required this.filteruse,
+    required this.filteruse, required this.category,
   });
 
   @override
@@ -40,12 +41,11 @@ class ModelScreen extends StatelessWidget {
           return GestureDetector(
             onTap: () {
               if (filteruse == true) {
-                         Navigator.pop(context);
-              }
-              else{
-                  Navigator.push(
+                Navigator.pop(context);
+              } else {
+                Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => YearScreen()),
+                  MaterialPageRoute(builder: (context) => YearScreen(category: category,)),
                 );
               }
             },

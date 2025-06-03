@@ -1,5 +1,7 @@
 // import 'package:autobazzaar/components/buildTextField.dart';
+import 'package:autobazzaar/presentation/screens/Home/Screens/auto_parts.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Accident_Autos/accident_auto_form.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Auto_Parts/autopartmain.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Scraps_Autos/scraps_auto_form.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/3wheeler.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/brand_show.dart';
@@ -59,14 +61,14 @@ class _CarPostAdScreenState extends State<CarPostAdScreen> {
           type == "Taxi" ||
           type == "Motor bike" ||
           type == "Water Crafts") {
-        screen = BrandScreen(type: type, filteruse: false,);
+        screen = BrandScreen(type: type, filteruse: false, category: namesub,);
       } else if (type == "Quad/Buggy" || type == "3-Wheeler") {
         screen = ThreeWheelerScreen(type: type);
       } else if (type == "Van" ||
           type == "Lorry" ||
           type == "Bus" ||
           type == "RV/Camper van") {
-        screen = YearScreen();
+        screen = YearScreen(category: '',);
       }
       // screen = VehicleAuotsForm(
       //   title: 'Vehicle Form',
@@ -77,9 +79,7 @@ class _CarPostAdScreenState extends State<CarPostAdScreen> {
         // title: 'Shop & Service',
       ); // Replace with actual screen
     } else if (namesub == "Auto\n Parts") {
-      screen = AutoPartsForm(
-        title: 'Auto Part Form',
-      ); // Replace with actual screen
+      screen = AutopartForm(selectedVehicleType: type,); // Replace with actual screen
     } else if (namesub == "Accidental & Autos") {
       screen = AccidentAutoForm(); // Replace with actual screen
     } else if (namesub == "Scraps & Autos") {

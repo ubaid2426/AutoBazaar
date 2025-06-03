@@ -151,6 +151,7 @@ class AutoServiceSubCategory extends StatelessWidget {
                                             color: Color(0xFF1A1A1A),
                                           ),
                                         ),
+                                        // TextAlign.center
                                       ],
                                     ),
                                   );

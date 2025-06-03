@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 // import 'package:auto_size_text/auto_size_text.dart';
+import 'package:autobazzaar/components/listing_card_design_grid.dart';
 import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/models/car_ad.dart';
@@ -75,13 +76,14 @@ class _AutoPartsListingState extends State<AutoPartsListing> {
             ),
             textAlign: TextAlign.right,
           ),
+          Expanded(child: ListingCardDesignGrid(rateshow: true, timeshow: true, partcondition: true, experience: false))
           // SizedBox(height: 10 ,),
-          Expanded(
-            child:
-                isGrid
-                    ? _buildGridView(premiumCars, carList)
-                    : _buildListView(premiumCars, carList),
-          ),
+          // Expanded(
+          //   child:
+          //       isGrid
+          //           ? _buildGridView(premiumCars, carList)
+          //           : _buildListView(premiumCars, carList),
+          // ),
         ],
       ),
     );

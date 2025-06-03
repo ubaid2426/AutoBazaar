@@ -1,11 +1,13 @@
 // car_year_screen.dart
 import 'package:autobazzaar/data/models/dummy_data.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/payment.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/region.dart';
 import 'package:flutter/material.dart';
 // import 'dummy_years.dart'; // Import the dummy data
 
 class YearScreen extends StatefulWidget {
-  const YearScreen({super.key});
+  final String category;
+  const YearScreen({super.key, required this.category});
 
   @override
   _YearScreenState createState() => _YearScreenState();
@@ -82,10 +84,28 @@ class _YearScreenState extends State<YearScreen> {
                       ),
                       trailing: Icon(Icons.chevron_right),
                       onTap: () {
+                        if (widget.category == 'Auto Parts') {
                           Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => RegionScreen(category: 'Auto Sales',)),
-                      );
+                            context,
+                            MaterialPageRoute(
+                              builder:
+                                  (context) => PaymentMethod(
+                                    // category: 'Auto Sales',
+                                    // year: year,
+                                  ),
+                            ),
+                          );
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder:
+                                  (context) =>
+                                      RegionScreen(category: 'Auto Sales'),
+                            ),
+                          );
+                        }
+
                         // Handle year selection
                         print("Selected year: $year");
                       },

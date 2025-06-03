@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:autobazzaar/components/listing_card_design.dart';
+import 'package:autobazzaar/components/listing_card_design_grid.dart';
 import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/models/car_ad.dart';
@@ -58,28 +59,58 @@ class _VehicleDetailState extends State<VehicleDetail> {
           HorizontalFilter(type: widget.type), // your filter widget
           SizedBox(height: 10),
           ShortFilter(),
-              ListingCardDesign(imageUrls:["assets/images/home/audi_r8.png", "assets/images/home/audi_r8.png"] , title: "Audi", description: "It is very Awesome Audi Car", price: "45000", time: "2 hours ago", isPinned: true,),
+          // Row(
+          //   children: [
+          ListingCardDesignList(
+            imageUrls: [
+              "assets/images/home/audi_r8.png",
+              "assets/images/home/audi_r8.png",
+            ],
+            title: "Audi",
+            description: "It is very Awesome Audi Car",
+            price: "45000",
+            time: "2 hours ago",
+            isPinned: true,
+          ),
+          //     ListingCardDesign(imageUrls:["assets/images/home/audi_r8.png", "assets/images/home/audi_r8.png"] , title: "Audi", description: "It is very Awesome Audi Car", price: "45000", time: "2 hours ago", isPinned: true,),
+          //   ],
+          // ),
+          Expanded(
+            child: ListingCardDesignGrid(
+              rateshow: false,
+              timeshow: true, partcondition: false, experience: false,
+              // imageUrls: [
+              //   "assets/images/home/audi_r8.png",
+              //   "assets/images/home/audi_r8.png",
+              // ],
+              // title: "Audi",
+              // description: "It is very Awesome Audi Car",
+              // price: "45000",
+              // time: "2 hours ago",
+              // isPinned: true,
+            ),
+          ),
           // Row(
           //   children: [
           //     ListingCardDesign(imageUrls:["assets/images/home/audi_r8.png", "assets/images/home/audi_r8.png"] , title: "Audi", description: "It is very Awesome Audi Car", price: "45000", time: "2 hours ago", isPinned: true,),
           //   ],
           // ),
-          Text(
-            "Top Featured",
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: black,
-            ),
-            textAlign: TextAlign.right,
-          ),
+          // Text(
+          //   "Top Featured",
+          //   style: const TextStyle(
+          //     fontSize: 16,
+          //     fontWeight: FontWeight.bold,
+          //     color: black,
+          //   ),
+          //   textAlign: TextAlign.right,
+          // ),
           // SizedBox(height: 10 ,),
-          Expanded(
-            child:
-                isGrid
-                    ? _buildGridView(premiumCars, carList)
-                    : _buildListView(premiumCars, carList),
-          ),
+          // Expanded(
+          //   child:
+          //       isGrid
+          //           ? _buildGridView(premiumCars, carList)
+          //           : _buildListView(premiumCars, carList),
+          // ),
         ],
       ),
     );

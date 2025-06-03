@@ -95,7 +95,7 @@ class _HorizontalFilterState extends State<HorizontalFilter> {
                     items: [],
                     options: [],
                     multiseslect: false,
-                    navigate: BrandScreen(type: widget.type, filteruse: true,),
+                    navigate: BrandScreen(type: widget.type, filteruse: true, category: 'extra',),
                   ),
                   // FilterButton(
                   //   title: 'Models',

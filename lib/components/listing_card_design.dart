@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ListingCardDesign extends StatelessWidget {
+class ListingCardDesignList extends StatelessWidget {
   final List<String> imageUrls;
   final bool isPremium;
   final bool isPinned;
@@ -10,7 +10,7 @@ class ListingCardDesign extends StatelessWidget {
   final String price;
   final String time;
 
-  const ListingCardDesign({
+  const ListingCardDesignList({
     super.key,
     required this.imageUrls,
     this.isPremium = false,

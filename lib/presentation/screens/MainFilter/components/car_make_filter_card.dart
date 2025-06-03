@@ -11,7 +11,7 @@ class CarMakeFilter extends StatelessWidget {
       onTap: () async {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => BrandScreen(type: type, filteruse: true,)),
+          MaterialPageRoute(builder: (context) => BrandScreen(type: type, filteruse: true, category: 'extra',)),
         );
       },
       child: Container(

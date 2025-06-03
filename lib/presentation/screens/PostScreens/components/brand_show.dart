@@ -7,7 +7,8 @@ import 'package:flutter/services.dart';
 class BrandScreen extends StatefulWidget {
   final String type;
   final bool? filteruse;
-  const BrandScreen({super.key, required this.type, required this.filteruse});
+  final String category;
+  const BrandScreen({super.key, required this.type, required this.filteruse, required this.category});
   @override
   State<BrandScreen> createState() => _BrandScreenState();
 }
@@ -150,7 +151,7 @@ class _BrandScreenState extends State<BrandScreen> {
                                         brand: brand,
                                         models: carData[brand]!,
                                         icon: getIconForType(widget.type),
-                                        filteruse: widget.filteruse!,
+                                        filteruse: widget.filteruse!, category: widget.category,
                                       ),
                                 ),
                               );
