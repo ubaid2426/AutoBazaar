@@ -7,8 +7,13 @@ import 'package:flutter/material.dart';
 
 class HorizontalFilterService extends StatelessWidget {
   final List<String> items;
+  // final Map<String, dynamic>? items1;
   final String mainCategory;
-  const HorizontalFilterService({super.key, required this.items, required this.mainCategory});
+  const HorizontalFilterService({
+    super.key,
+   required this.items,
+    required this.mainCategory,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +29,7 @@ class HorizontalFilterService extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>MainFilterService(items: items),
+                    builder: (context) => MainFilterService(items: items),
                   ),
                 );
               },
@@ -64,31 +69,36 @@ class HorizontalFilterService extends StatelessWidget {
                     title: mainCategory,
                     filter: true,
                     items: items,
-                    options: items, multiseslect: true,
+                    options: items,
+                    multiseslect: true,
                   ),
                   FilterButton(
                     title: 'Car Origin',
                     filter: true,
                     items: items,
-                    options: originOptions, multiseslect: true,
+                    options: originOptions,
+                    multiseslect: true,
                   ),
                   FilterButton(
                     title: 'Body Type',
                     filter: true,
                     items: items,
-                    options: [], multiseslect: false,
+                    options: [],
+                    multiseslect: false,
                     navigate: BodyTypeScreen(category: "Auto Services"),
                   ),
                   FilterButton(
                     title: 'Regional Specs',
                     filter: true,
-                    options: regionalSpecifications, multiseslect: true,
+                    options: regionalSpecifications,
+                    multiseslect: true,
                     items: items,
                   ),
                   FilterButton(
                     title: 'Listing Type',
                     filter: true,
-                    items: items,multiseslect: true,
+                    items: items,
+                    multiseslect: true,
                     options: listingOptions,
                   ),
                 ],

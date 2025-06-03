@@ -18,8 +18,9 @@ import 'package:flutter/material.dart';
 // import all other cards...
 
 class MainFilterService extends StatefulWidget {
-  final List<String> items;
-  const MainFilterService({super.key, required this.items});
+  final List<String>? items;
+    // final Map<String, dynamic>? items1;
+  const MainFilterService({super.key, this.items});
 
   @override
   State<MainFilterService> createState() => _MainFilterServiceState();
@@ -130,16 +131,13 @@ class _MainFilterServiceState extends State<MainFilterService> {
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
-          // padding: const EdgeInsets.all(16),
-          // mainAxisAlignment: MainAxisAlignment.start,
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("Services Options", style: TextStyle(color: black, fontWeight: FontWeight.bold, fontSize: 18)),
             Wrap(
               spacing: 8.0,
               runSpacing: 8.0,
               children:
-                  widget.items.map((feature) {
+                  widget.items!.map((feature) {
                     final isSelected = _selectedFeatures.contains(feature);
             
                     return FilterChip(

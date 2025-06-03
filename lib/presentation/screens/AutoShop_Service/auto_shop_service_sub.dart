@@ -1,26 +1,30 @@
 import 'dart:convert';
-import 'package:autobazzaar/components/app_bar.dart';
-import 'package:autobazzaar/core/theme/colors.dart';
-import 'package:autobazzaar/presentation/screens/AutoShop_Service/auto_shop_service_sub.dart';
-import 'package:autobazzaar/presentation/screens/AutoShop_Service/auto_shop_service_sub_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:autobazzaar/components/app_bar.dart';
 import 'package:autobazzaar/components/home_carousel.dart';
+import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/data/models/dummy_data.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:autobazzaar/presentation/screens/AutoShop_Service/auto_shop_service_sub_options.dart';
 
-class AutoServiceSubCategory extends StatelessWidget {
+class AutoServiceSubCategoryView extends StatelessWidget {
   final String autotype;
+  final String selectedCategory;
 
-  const AutoServiceSubCategory({super.key, required this.autotype});
+  const AutoServiceSubCategoryView({
+    super.key,
+    required this.autotype,
+    required this.selectedCategory,
+  });
 
-  Future<Map<String, dynamic>> loadCategoryData(String type) async {
+  Future<Map<String, dynamic>> loadSubCategoryData() async {
     final assetPath = 'assets/json/auto_services/auto_service_car.json';
-    // 'assets/json/auto_services/${type.toLowerCase()}_services.json';
     final String jsonString = await rootBundle.loadString(assetPath);
     final decoded = json.decode(jsonString);
-    print(decoded);
-    return decoded[type] ?? {}; // Return only the selected type section
+    final selectedData = decoded[autotype] ?? {};
+    return selectedData[selectedCategory] ?? {}; // Subcategories of selected main category
   }
 
   @override
@@ -32,13 +36,14 @@ class AutoServiceSubCategory extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate([
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   PromoCarousel(promoList: promoCards),
                   const SizedBox(height: 20),
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text(
-                      "Browse By Categories",
+                      "Browse By Sub Categories",
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -48,51 +53,42 @@ class AutoServiceSubCategory extends StatelessWidget {
                     ),
                   ),
                   FutureBuilder<Map<String, dynamic>>(
-                    future: loadCategoryData(autotype),
+                    future: loadSubCategoryData(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(child: CircularProgressIndicator());
-                      } else if (snapshot.hasError || snapshot.data == null) {
-                        return const Center(
-                          child: Text("Failed to load categories"),
-                        );
+                      } else if (snapshot.hasError || snapshot.data == null || snapshot.data!.isEmpty) {
+                        return const Center(child: Text("No subcategories found."));
                       }
 
-                      final categories = snapshot.data!;
-                      final categoryNames = categories.keys.toList();
+                      final subCategories = snapshot.data!;
+                      final subCategoryNames = subCategories.keys.toList();
 
                       return Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 20,
-                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                         child: GridView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
-                          itemCount: categoryNames.length,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
-                                crossAxisSpacing: 5,
-                                mainAxisSpacing: 5,
-                                childAspectRatio: 0.7,
-                              ),
+                          itemCount: subCategoryNames.length,
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            crossAxisSpacing: 5,
+                            mainAxisSpacing: 5,
+                            childAspectRatio: 0.7,
+                          ),
                           itemBuilder: (context, index) {
-                            final categoryName = categoryNames[index];
-                            final subCategories = categories[categoryName];
+                            final subCategoryName = subCategoryNames[index];
+                            final subItems = subCategories[subCategoryName];
 
                             return GestureDetector(
                               onTap: () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder:
-                                        (_) => AutoServiceSubCategoryView(
-                                          autotype: autotype,
-                                          selectedCategory: categoryName, // the clicked main category
-                                          // title: categoryName,
-                                          // items: subCategories,
-                                        ),
+                                    builder: (_) => AutoShopServiceSubOptions(
+                                      title: subCategoryName,
+                                      items: subItems,
+                                    ),
                                   ),
                                 );
                               },
@@ -112,7 +108,7 @@ class AutoServiceSubCategory extends StatelessWidget {
                                     ),
                                     padding: const EdgeInsets.all(15),
                                     child: SvgPicture.asset(
-                                      'assets/images/Icons/${categoryName.replaceAll(" ", "_").toLowerCase()}.svg',
+                                      'assets/icons/${subCategoryName.replaceAll(" ", "_").toLowerCase()}.svg',
                                       height: 60,
                                       width: 60,
                                       fit: BoxFit.cover,
@@ -120,7 +116,7 @@ class AutoServiceSubCategory extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
-                                    categoryName,
+                                    subCategoryName,
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
                                       fontSize: 14,

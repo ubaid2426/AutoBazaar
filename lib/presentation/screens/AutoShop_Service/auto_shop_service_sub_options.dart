@@ -15,7 +15,7 @@ import 'package:flutter/material.dart';
 
 class AutoShopServiceSubOptions extends StatefulWidget {
   final String title;
-  final List<String> items;
+  final Map<String, dynamic> items;
   const AutoShopServiceSubOptions({
     super.key,
     required this.title,
@@ -47,16 +47,18 @@ class _AutoShopServiceSubOptionsState extends State<AutoShopServiceSubOptions> {
               });
             },
           ),
-            IconButton(
+          IconButton(
             icon: Icon(Icons.filter_list),
             onPressed: () {
-                Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => MainFilterService(items: widget.items),
-              // builder: (context) => const QiblaApp(),
-            ),
-          );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder:
+                      (context) =>
+                          MainFilterService(items: widget.items.keys.toList()),
+                  // builder: (context) => const QiblaApp(),
+                ),
+              );
             },
           ),
         ],
@@ -64,7 +66,10 @@ class _AutoShopServiceSubOptionsState extends State<AutoShopServiceSubOptions> {
       body: Column(
         children: [
           SizedBox(height: 10),
-          HorizontalFilterService(items: widget.items, mainCategory: 'Service Options',), // your filter widget
+          HorizontalFilterService(
+            items: widget.items.keys.toList(),
+            mainCategory: 'Service Options',
+          ), // your filter widget
           SizedBox(height: 10),
           // ShortFilter(),
           Text(
@@ -76,7 +81,14 @@ class _AutoShopServiceSubOptionsState extends State<AutoShopServiceSubOptions> {
             ),
             textAlign: TextAlign.right,
           ),
-          Expanded(child: ListingCardDesignGrid(rateshow: true, timeshow: true, partcondition: false, experience: true,))
+          Expanded(
+            child: ListingCardDesignGrid(
+              rateshow: true,
+              timeshow: true,
+              partcondition: false,
+              experience: true,
+            ),
+          ),
           // SizedBox(height: 10 ,),
           // Expanded(
           //   child:
@@ -106,7 +118,12 @@ class _AutoShopServiceSubOptionsState extends State<AutoShopServiceSubOptions> {
             index < premiumCars.length
                 ? premiumCars[index]
                 : queuedCars[index - premiumCars.length];
-        return GridCard(car, isPremium: isPremium, rateshow: true, timeshow: false,);
+        return GridCard(
+          car,
+          isPremium: isPremium,
+          rateshow: true,
+          timeshow: false,
+        );
       },
     );
   }
@@ -122,7 +139,12 @@ class _AutoShopServiceSubOptionsState extends State<AutoShopServiceSubOptions> {
             index < premiumCars.length
                 ? premiumCars[index]
                 : queuedCars[index - premiumCars.length];
-        return ListCard(car, isPremium: isPremium, rateshow: true, timeshow: false,);
+        return ListCard(
+          car,
+          isPremium: isPremium,
+          rateshow: true,
+          timeshow: false,
+        );
       },
     );
   }
