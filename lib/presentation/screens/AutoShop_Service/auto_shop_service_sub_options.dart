@@ -29,9 +29,9 @@ class AutoShopServiceSubOptions extends StatefulWidget {
 
 class _AutoShopServiceSubOptionsState extends State<AutoShopServiceSubOptions> {
   bool isGrid = true;
-
   @override
   Widget build(BuildContext context) {
+  print(widget.items);
     // final List<Car> allCars = [...premiumCars, ...carList];
 
     return Scaffold(
@@ -55,7 +55,7 @@ class _AutoShopServiceSubOptionsState extends State<AutoShopServiceSubOptions> {
                 MaterialPageRoute(
                   builder:
                       (context) =>
-                          MainFilterService(items: widget.items.keys.toList()),
+                          MainFilterService(items: widget.items),
                   // builder: (context) => const QiblaApp(),
                 ),
               );
@@ -69,6 +69,7 @@ class _AutoShopServiceSubOptionsState extends State<AutoShopServiceSubOptions> {
           HorizontalFilterService(
             items: widget.items.keys.toList(),
             mainCategory: 'Service Options',
+            items1: widget.items,
           ), // your filter widget
           SizedBox(height: 10),
           // ShortFilter(),

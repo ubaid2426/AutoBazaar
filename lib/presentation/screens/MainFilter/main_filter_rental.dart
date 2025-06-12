@@ -1,16 +1,16 @@
 // import 'package:autobazzaar/components/main_filter.dart';
 import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/data/models/dummy_data.dart';
-import 'package:autobazzaar/presentation/screens/MainFilter/components/OtherOptionsWidget.dart';
+// import 'package:autobazzaar/presentation/screens/MainFilter/components/OtherOptionsWidget.dart';
 import 'package:autobazzaar/presentation/screens/MainFilter/components/body_type.dart';
 import 'package:autobazzaar/presentation/screens/MainFilter/components/car_make_filter_card.dart';
-import 'package:autobazzaar/presentation/screens/MainFilter/components/color_filter.dart';
-import 'package:autobazzaar/presentation/screens/MainFilter/components/condition_filter_card.dart';
+// import 'package:autobazzaar/presentation/screens/MainFilter/components/color_filter.dart';
+// import 'package:autobazzaar/presentation/screens/MainFilter/components/condition_filter_card.dart';
 import 'package:autobazzaar/presentation/screens/MainFilter/components/fuel_filter_card.dart';
 import 'package:autobazzaar/presentation/screens/MainFilter/components/seats_filter_card.dart';
 import 'package:autobazzaar/presentation/screens/MainFilter/components/transmission_filter_card.dart';
-import 'package:autobazzaar/presentation/screens/MainFilter/components/year_filter_card.dart';
-import 'package:autobazzaar/presentation/screens/MainFilter/components/kilometer_filter.dart';
+// import 'package:autobazzaar/presentation/screens/MainFilter/components/year_filter_card.dart';
+// import 'package:autobazzaar/presentation/screens/MainFilter/components/kilometer_filter.dart';
 import 'package:autobazzaar/presentation/screens/MainFilter/components/price_filter.dart';
 import 'package:flutter/material.dart';
 

@@ -1,4 +1,5 @@
 import 'package:autobazzaar/core/theme/colors.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/bodytype.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/car_post_ad.dart';
 import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/presentation/widgets/cetagory_design.dart';
@@ -9,7 +10,11 @@ import 'package:flutter/material.dart';
 class VehicleSelectionScreen extends StatelessWidget {
   final String name;
   final String namesub;
-  const VehicleSelectionScreen({super.key, required this.namesub, required this.name});
+  const VehicleSelectionScreen({
+    super.key,
+    required this.namesub,
+    required this.name,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -37,16 +42,32 @@ class VehicleSelectionScreen extends StatelessWidget {
               category: selectedCategory,
               onTap: () {
                 // Handle category selection
-                Navigator.push(
+                // print(name);
+                if (name == "Shop &\n Services") {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (context) => BodyTypeScreen(category: 'Shop Services'),
+                    ),
+                  );
+                }
+                else{
+                      Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder:
                         (context) => CarPostAdScreen(
                           title: selectedCategory.name,
-                           namesub: namesub, name: name, type: selectedCategory.name,
+                          namesub: namesub,
+                          name: name,
+                          type: selectedCategory.name,
                         ),
                   ),
                 );
+                }
+
+                
               },
             );
           },

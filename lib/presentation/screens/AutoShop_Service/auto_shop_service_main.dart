@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:autobazzaar/components/app_bar.dart';
 import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/presentation/screens/AutoShop_Service/auto_shop_service_sub.dart';
-import 'package:autobazzaar/presentation/screens/AutoShop_Service/auto_shop_service_sub_options.dart';
+// import 'package:autobazzaar/presentation/screens/AutoShop_Service/auto_shop_service_sub_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:autobazzaar/components/home_carousel.dart';
@@ -43,6 +43,7 @@ class AutoServiceSubCategory extends StatelessWidget {
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                         letterSpacing: 1.1,
+                        // color: owhite,
                         color: Colors.black87,
                       ),
                     ),
@@ -64,7 +65,7 @@ class AutoServiceSubCategory extends StatelessWidget {
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 16,
-                          vertical: 20,
+                          vertical: 0,
                         ),
                         child: GridView.builder(
                           physics: const NeverScrollableScrollPhysics(),
@@ -75,7 +76,7 @@ class AutoServiceSubCategory extends StatelessWidget {
                                 crossAxisCount: 3,
                                 crossAxisSpacing: 5,
                                 mainAxisSpacing: 5,
-                                childAspectRatio: 0.7,
+                                childAspectRatio: 1,
                               ),
                           itemBuilder: (context, index) {
                             final categoryName = categoryNames[index];
@@ -89,7 +90,8 @@ class AutoServiceSubCategory extends StatelessWidget {
                                     builder:
                                         (_) => AutoServiceSubCategoryView(
                                           autotype: autotype,
-                                          selectedCategory: categoryName, // the clicked main category
+                                          selectedCategory:
+                                              categoryName, ispost: false, // the clicked main category
                                           // title: categoryName,
                                           // items: subCategories,
                                         ),
@@ -110,13 +112,19 @@ class AutoServiceSubCategory extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    padding: const EdgeInsets.all(15),
+                                    // padding: const EdgeInsets.all(15),
                                     child: SvgPicture.asset(
-                                      'assets/images/Icons/${categoryName.replaceAll(" ", "_").toLowerCase()}.svg',
-                                      height: 60,
+                                      "assets/images/icon/${categoryName.replaceAll(" ", "_").toLowerCase()}.svg", //   height: 60,
                                       width: 60,
-                                      fit: BoxFit.cover,
+                                      fit: BoxFit.contain,
                                     ),
+                                    // child: SvgPicture.asset(
+                                    //   'assets/images/icon/accessories.svg',
+                                    //   // 'assets/images/Icons/${categoryName.replaceAll(" ", "_").toLowerCase()}.svg',
+                                    //   height: 60,
+                                    //   width: 60,
+                                    //   fit: BoxFit.cover,
+                                    // ),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(

@@ -1,64 +1,276 @@
 {
   "Car": {
     "Mechanical & Electrical Repairing": {
-      "Engine Repair": [
-"Engine overhaul / rebuild, Engine diagnostics and fault code scanning, Engine oil & oil filter change, Air filter replacement, Fuel filter replacement, Spark plug replacement, Engine tune-up, Cylinder head repair, Timing belt / chain replacement, Valve adjustment, Full engine cleaning, Engine mount replacement, Emission system service and failure repair (O2 sensor, catalytic converter), Exhaust manifold repair, Oil pump replacement, Fuel pump replacement, Turbocharger service / repair, Radiator & condenser repair / replacement, Water pump replacement, Cooling system service (radiator flush, coolant refill, thermostat replacement), Crankshaft and camshaft repair / replacement, Piston ring replacement, Head gasket replacement, Engine block repair / replacement, Glow plug replacement (for diesel engines), Timing cover gasket replacement, PCV (Positive Crankcase Ventilation) valve replacement, EGR (Exhaust Gas Recirculation) valve cleaning / replacement, Idle control valve replacement, Throttle body cleaning / replacement, Intake manifold gasket replacement, Camshaft position sensor replacement, Crankshaft position sensor replacement, VVT (Variable Valve Timing) solenoid replacement, Oil cooler replacement, Engine compression testing"
+     "Engine Repair": [
+        "Engine overhaul / rebuild",
+        "Engine diagnostics and fault code scanning",
+        "Engine oil & oil filter change",
+        "Air filter replacement",
+        "Fuel filter replacement",
+        "Spark plug replacement",
+        "Engine tune-up",
+        "Cylinder head repair",
+        "Timing belt / chain replacement",
+        "Valve adjustment",
+        "Full engine cleaning",
+        "Engine mount replacement",
+        "Emission system service and failure repair (O2 sensor",
+        "catalytic converter)",
+        "Exhaust manifold repair",
+        "Oil pump replacement",
+        "Fuel pump replacement",
+        "Turbocharger service / repair",
+        "Radiator & condenser repair / replacement",
+        "Water pump replacement",
+        "Cooling system service (radiator flush",
+        "coolant refill",
+        "thermostat replacement)",
+        "Crankshaft and camshaft repair / replacement",
+        "Piston ring replacement",
+        "Head gasket replacement",
+        "Engine block repair / replacement",
+        "Glow plug replacement (for diesel engines)",
+        "Timing cover gasket replacement",
+        "PCV (Positive Crankcase Ventilation) valve replacement",
+        "EGR (Exhaust Gas Recirculation) valve cleaning / replacement",
+        "Idle control valve replacement",
+        "Throttle body cleaning / replacement",
+        "Intake manifold gasket replacement",
+        "Camshaft position sensor replacement",
+        "Crankshaft position sensor replacement",
+        "VVT (Variable Valve Timing) solenoid replacement",
+        "Oil cooler replacement",
+        "Engine compression testing"
       ],
       "Transmission & Gearbox Services": [
-"Manual transmission repair/replacement, Automatic transmission repair/replacement, CVT service and repair, Gearbox oil change, Clutch replacement and adjustment, Gear shifting mechanism repair, Double gear (4x4) system repair, Transmission diagnostics and fluid flush, Torque converter replacement, Transmission control module (TCM) replacement/programming, Flywheel replacement/resurfacing, Synchromesh gear repair/replacement, Shift cable/linkage adjustment or replacement, Valve body repair/replacement, Transmission mount replacement, Differential repair/service"
-      ],
-      "Differential & Drivetrain": [
-        "Differential oil change, Differential repair and rebuild, Axle shaft replacement, CV joint and boot repair/replacement, Driveshaft repair, Transfer case servicing, 4x4 drivetrain diagnostics and repair, Universal joint replacement"
-      ],
-      "Suspension & Steering": [
-        "Shock absorber replacement, Strut replacement, Spring replacement, Strut mount replacement, Suspension arm repair, Suspension arm replacement, Control arm bushing replacement, Sway bar (stabilizer bar) link replacement, Sway bar bushing replacement, Ball joint replacement, Tie rod end replacement (inner and outer), Steering rack repair, Steering rack replacement, Steering pump repair, Steering pump replacement, Steering column repair, Power steering repair (hydraulic and electric), Power steering fluid flush, Power steering hose replacement, Hydraulic system repairs (brakes, steering), Electronic power steering (EPS) system diagnostics and repair, Steering angle sensor replacement, Wheel alignment, Wheel balancing, Steering knuckle repair/replacement, Suspension bushing replacement, Subframe replacement (if damaged), Rack boot replacement (steering rack boot), Cross member repair/replacement, Center link and idler arm replacement (for some older or heavy vehicles)"
-      ],
-      "Brakes": [
-        "Brake pad replacement, Brake disc/rotor resurfacing or replacement, Brake caliper repair/replacement, Brake fluid flush, ABS Replacement, ABS diagnostics and repair, Handbrake adjustment and repair, Brake line replacement, Brake drum replacement, Brake shoe replacement, Master cylinder replacement, Brake booster replacement, Brake sensor diagnostics/replacement, Emergency brake system diagnostics, Brake system bleeding, Brake hardware kit installation"
-      ],
-      "Air Conditioning & Cooling Systems": [
-        "AC diagnostics and performance check, AC compressor repair/replacement, Refrigerant recharge, Condenser repair/replacement, Evaporator coil cleaning, Evaporator coil  repair/replacement , AC filter replacement, Cooling fan repair/replacement, Heater core replacement, Climate control system repair, Heating/cooling seat element repair, AC hose and line inspection/replacement, AC pressure switch replacement, AC relay and fuse replacement, Blend door actuator replacement, Thermostat replacement, Radiator replacement, Water pump inspection/replacement, Cabin air sensor replacement"
-      ],
-      "Electrical & Electronic Systems": [
-"Battery testing and replacement, Alternator repair/replacement, Starter motor repair/replacement, Wiring harness repair, Fuse and relay diagnostics and replacement, Headlight/taillight repair and upgrades, Dashboard LCD/cluster repair, Sensor diagnostics and replacement, ECU diagnostics, programming, and replacement, Key programming and immobilizer repair, Central locking system repair, Power window motor and regulator repair, Sunroof motor and mechanism repair, Convertible roof electrical/hydraulic repair, Parking sensors installation and repair, Reverse camera installation and repair, TPMS diagnostics and repair"
-      ],
-      "Exhaust System": [
-        "Muffler replacement, Catalytic converter repair/replacement, Exhaust pipe repair/replacement, Exhaust leak detection and sealing"
-      ],
-      "Diagnostics & Maintenance": [
-        "Full vehicle diagnostic check, Preventive maintenance check, Fluid level check and top-up, Vehicle health report and service recommendations"
-      ],
+    "Manual transmission repair/replacement",
+    "Automatic transmission repair/replacement",
+    "CVT service and repair",
+    "Gearbox oil change",
+    "Clutch replacement and adjustment",
+    "Gear shifting mechanism repair",
+    "Double gear (4x4) system repair",
+    "Transmission diagnostics and fluid flush",
+    "Torque converter replacement",
+    "Transmission control module (TCM) replacement/programming",
+    "Flywheel replacement/resurfacing",
+    "Synchromesh gear repair/replacement",
+    "Shift cable/linkage adjustment or replacement",
+    "Valve body repair/replacement",
+    "Transmission mount replacement",
+    "Differential repair/service"
+  ],
+  "Differential & Drivetrain": [
+    "Differential oil change",
+    "Differential repair and rebuild",
+    "Axle shaft replacement",
+    "CV joint and boot repair/replacement",
+    "Driveshaft repair",
+    "Transfer case servicing",
+    "4x4 drivetrain diagnostics and repair",
+    "Universal joint replacement"
+  ],
+  "Suspension & Steering": [
+    "Shock absorber replacement",
+    "Strut replacement",
+    "Spring replacement",
+    "Strut mount replacement",
+    "Suspension arm repair",
+    "Suspension arm replacement",
+    "Control arm bushing replacement",
+    "Sway bar (stabilizer bar) link replacement",
+    "Sway bar bushing replacement",
+    "Ball joint replacement",
+    "Tie rod end replacement (inner and outer)",
+    "Steering rack repair",
+    "Steering rack replacement",
+    "Steering pump repair",
+    "Steering pump replacement",
+    "Steering column repair",
+    "Power steering repair (hydraulic and electric)",
+    "Power steering fluid flush",
+    "Power steering hose replacement",
+    "Hydraulic system repairs (brakes, steering)",
+    "Electronic power steering (EPS) system diagnostics and repair",
+    "Steering angle sensor replacement",
+    "Wheel alignment",
+    "Wheel balancing",
+    "Steering knuckle repair/replacement",
+    "Suspension bushing replacement",
+    "Subframe replacement (if damaged)",
+    "Rack boot replacement (steering rack boot)",
+    "Cross member repair/replacement",
+    "Center link and idler arm replacement (for some older or heavy vehicles)"
+  ],
+  "Brakes": [
+    "Brake pad replacement",
+    "Brake disc/rotor resurfacing or replacement",
+    "Brake caliper repair/replacement",
+    "Brake fluid flush",
+    "ABS Replacement",
+    "ABS diagnostics and repair",
+    "Handbrake adjustment and repair",
+    "Brake line replacement",
+    "Brake drum replacement",
+    "Brake shoe replacement",
+    "Master cylinder replacement",
+    "Brake booster replacement",
+    "Brake sensor diagnostics/replacement",
+    "Emergency brake system diagnostics",
+    "Brake system bleeding",
+    "Brake hardware kit installation"
+  ],
+   "Air Conditioning & Cooling Systems": [
+    "AC diagnostics and performance check",
+    "AC compressor repair/replacement",
+    "Refrigerant recharge",
+    "Condenser repair/replacement",
+    "Evaporator coil cleaning",
+    "Evaporator coil repair/replacement",
+    "AC filter replacement",
+    "Cooling fan repair/replacement",
+    "Heater core replacement",
+    "Climate control system repair",
+    "Heating/cooling seat element repair",
+    "AC hose and line inspection/replacement",
+    "AC pressure switch replacement",
+    "AC relay and fuse replacement",
+    "Blend door actuator replacement",
+    "Thermostat replacement",
+    "Radiator replacement",
+    "Water pump inspection/replacement",
+    "Cabin air sensor replacement"
+  ],
+  "Electrical & Electronic Systems": [
+    "Battery testing and replacement",
+    "Alternator repair/replacement",
+    "Starter motor repair/replacement",
+    "Wiring harness repair",
+    "Fuse and relay diagnostics and replacement",
+    "Headlight/taillight repair and upgrades",
+    "Dashboard LCD/cluster repair",
+    "Sensor diagnostics and replacement",
+    "ECU diagnostics, programming, and replacement",
+    "Key programming and immobilizer repair",
+    "Central locking system repair",
+    "Power window motor and regulator repair",
+    "Sunroof motor and mechanism repair",
+    "Convertible roof electrical/hydraulic repair",
+    "Parking sensors installation and repair",
+    "Reverse camera installation and repair",
+    "TPMS diagnostics and repair"
+  ],
+  "Exhaust System": [
+    "Muffler replacement",
+    "Catalytic converter repair/replacement",
+    "Exhaust pipe repair/replacement",
+    "Exhaust leak detection and sealing"
+  ],
+  "Diagnostics & Maintenance": [
+    "Full vehicle diagnostic check",
+    "Preventive maintenance check",
+    "Fluid level check and top-up",
+    "Vehicle health report and service recommendations"
+  ],
       "Others": [
       ]
     },
     "General Service": {
-      "Mechanical Services": [
-"Engine oil & filter change, Gear oil & filter change, Air filter replacement, Cabin (AC) filter replacement, Serpentine belt replacement, Drive belt / fan belt replacement, Radiator hose replacement, Coolant top-up or flush, Thermostat replacement, Minor coolant leak fix, Fuel injector cleaning, Engine mount replacement, Fuel filter replacement, Brake fluid replacement"
-      ],
-      "Electrical & Battery": [
-"Battery check and replacement, Battery terminal cleaning, Alternator belt check, Headlight bulb replacement, Tail light/brake light fix, Indicator bulb change, Fuse replacement, Horn repair, Power window motor switch fix, Central locking repair, Door actuator fix, Interior light fix, Wiper motor/electrical work"
-      ],
-      "Exterior/Basic Accessories": [
-"Windshield washer motor repair, Wiper blade replacement, Side mirror adjustment/fix, Number plate light replacement, Headlight adjustment, Tyre air pressure check"
-      ],
-      "Tyre & Wheel": [
-"Tyre puncture repair, Tyre change/replacement, Wheel balancing, Air valve replacement, Spare wheel installation"
-      ],
-      "Minor Interior Work": [
-"Floor mat replacement, Seat belt check/fix, Interior panel reattachment, Glove box lock fix"
-      ],
-      "AC & Cooling – General Tasks": [
-"AC gas recharge, AC filter replacement, AC vent cleaning, AC compressor relay replacement"
-      ],
-      "Fluids & Top-Ups": [
-"Engine oil, Coolant, Brake fluid, Power steering fluid, Transmission oil (non-specialized), Windshield washer fluid"
-      ],
-      "Brake Service": [
-"Brake pads replacement (front/rear), Brake disc/rotor skimming (cutting on metal blade), Brake disc/rotor replacement, Brake caliper inspection and cleaning, Brake caliper pin greasing, Brake shoe replacement (for drum brakes), Brake drum resurfacing, Handbrake adjustment, Brake line inspection and minor leak fix, ABS sensor check and replacement, Brake master cylinder inspection/replacement, Brake fluid level check & top-up"
-      ],
-      "Others": [
-"Battery check and replacement, Battery terminal cleaning, Alternator belt check, Headlight bulb replacement, Tail light/brake light fix, Indicator bulb change, Fuse replacement, Horn repair, Power window motor switch fix, Central locking repair, Door actuator fix, Interior light fix, Wiper motor/electrical work"
-      ]
+    "Mechanical Services": [
+    "Engine oil & filter change",
+    "Gear oil & filter change",
+    "Air filter replacement",
+    "Cabin (AC) filter replacement",
+    "Serpentine belt replacement",
+    "Drive belt / fan belt replacement",
+    "Radiator hose replacement",
+    "Coolant top-up or flush",
+    "Thermostat replacement",
+    "Minor coolant leak fix",
+    "Fuel injector cleaning",
+    "Engine mount replacement",
+    "Fuel filter replacement",
+    "Brake fluid replacement"
+  ],
+  "Electrical & Battery": [
+    "Battery check and replacement",
+    "Battery terminal cleaning",
+    "Alternator belt check",
+    "Headlight bulb replacement",
+    "Tail light/brake light fix",
+    "Indicator bulb change",
+    "Fuse replacement",
+    "Horn repair",
+    "Power window motor switch fix",
+    "Central locking repair",
+    "Door actuator fix",
+    "Interior light fix",
+    "Wiper motor/electrical work"
+  ],
+  "Exterior/Basic Accessories": [
+    "Windshield washer motor repair",
+    "Wiper blade replacement",
+    "Side mirror adjustment/fix",
+    "Number plate light replacement",
+    "Headlight adjustment",
+    "Tyre air pressure check"
+  ],
+  "Tyre & Wheel": [
+    "Tyre puncture repair",
+    "Tyre change/replacement",
+    "Wheel balancing",
+    "Air valve replacement",
+    "Spare wheel installation"
+  ],
+    "Minor Interior Work": [
+    "Floor mat replacement",
+    "Seat belt check/fix",
+    "Interior panel reattachment",
+    "Glove box lock fix"
+  ],
+  "AC & Cooling – General Tasks": [
+    "AC gas recharge",
+    "AC filter replacement",
+    "AC vent cleaning",
+    "AC compressor relay replacement"
+  ],
+  "Fluids & Top-Ups": [
+    "Engine oil",
+    "Coolant",
+    "Brake fluid",
+    "Power steering fluid",
+    "Transmission oil (non-specialized)",
+    "Windshield washer fluid"
+  ],
+  "Brake Service": [
+    "Brake pads replacement (front/rear)",
+    "Brake disc/rotor skimming (cutting on metal blade)",
+    "Brake disc/rotor replacement",
+    "Brake caliper inspection and cleaning",
+    "Brake caliper pin greasing",
+    "Brake shoe replacement (for drum brakes)",
+    "Brake drum resurfacing",
+    "Handbrake adjustment",
+    "Brake line inspection and minor leak fix",
+    "ABS sensor check and replacement",
+    "Brake master cylinder inspection/replacement",
+    "Brake fluid level check & top-up"
+  ],
+  "Others": [
+    "Battery check and replacement",
+    "Battery terminal cleaning",
+    "Alternator belt check",
+    "Headlight bulb replacement",
+    "Tail light/brake light fix",
+    "Indicator bulb change",
+    "Fuse replacement",
+    "Horn repair",
+    "Power window motor switch fix",
+    "Central locking repair",
+    "Door actuator fix",
+    "Interior light fix",
+    "Wiper motor/electrical work"
+  ]
     },
     "Body Repairing": {
       "Body Repairing": [
@@ -81,9 +293,33 @@
       ]
     },
     "Care": {
-      "Care": [
-      "Paint protection film (PPF), Detailing, Polishing, Sticker service, Nano ceramic coating, Dent removal (without painting), Tinting, Rims repairing and painting, Foam wash / Pressure wash, Clay bar treatment, Rubbing compound treatment, Teflon coating, Windshield water spot removal, Headlight/Taillight restoration, Rain repellent coating for glass, Interior deep cleaning (seats, dashboard, roof, etc.), Leather conditioning & cleaning, Fabric protection coating, Odor removal / Ozone treatment, Alloy wheel custom paint, Caliper painting, Roof wrap / Bonnet wrap, Interior ambient lighting installation, Chrome delete / Blackout packages, Carbon color coating"
-      ]
+       "Care": [
+    "Paint protection film (PPF)",
+    "Detailing",
+    "Polishing",
+    "Sticker service",
+    "Nano ceramic coating",
+    "Dent removal (without painting)",
+    "Tinting",
+    "Rims repairing and painting",
+    "Foam wash / Pressure wash",
+    "Clay bar treatment",
+    "Rubbing compound treatment",
+    "Teflon coating",
+    "Windshield water spot removal",
+    "Headlight/Taillight restoration",
+    "Rain repellent coating for glass",
+    "Interior deep cleaning (seats, dashboard, roof, etc.)",
+    "Leather conditioning & cleaning",
+    "Fabric protection coating",
+    "Odor removal / Ozone treatment",
+    "Alloy wheel custom paint",
+    "Caliper painting",
+    "Roof wrap / Bonnet wrap",
+    "Interior ambient lighting installation",
+    "Chrome delete / Blackout packages",
+    "Carbon color coating"
+  ]
     },
     "Interior Work": {
       "Interior Work": [
@@ -159,12 +395,55 @@
       ]
     },
     "Tyre Shops": {
-      "Tyre Services": [
-     " New tyre replacement, New tyre availability, Tyre fitting, Tyre balancing, Wheel alignment, Tyre rotation, Puncture repair, Tyre repair/retreading, Tyre pressure check/inflation, Roadside tyre assistance, Tyre inspection, Tyre disposal and recycling, Seasonal tyre exchange, Custom tyre recommendations, Tyre patching"
-      ],
-      "Brand Selection": [
-     "Michelin, Bridgestone, Goodyear, Continental, Pirelli, Dunlop, Yokohama, Hankook, BFGoodrich, Cooper Tires, Falken, Kumho, Toyo Tires, Nexen, General Tire, Firestone, Uniroyal, Giti, Vredestein, GT Radial, Linglong, MRF, Apollo, Ceat, Triangle, Roadstone, Maxxis, Nankang, Westlake, Goodride"
-      ]
+   "Tyre Services": [
+    "New tyre replacement",
+    "New tyre availability",
+    "Tyre fitting",
+    "Tyre balancing",
+    "Wheel alignment",
+    "Tyre rotation",
+    "Puncture repair",
+    "Tyre repair/retreading",
+    "Tyre pressure check/inflation",
+    "Roadside tyre assistance",
+    "Tyre inspection",
+    "Tyre disposal and recycling",
+    "Seasonal tyre exchange",
+    "Custom tyre recommendations",
+    "Tyre patching"
+  ],
+  "Brand Selection": [
+    "Michelin",
+    "Bridgestone",
+    "Goodyear",
+    "Continental",
+    "Pirelli",
+    "Dunlop",
+    "Yokohama",
+    "Hankook",
+    "BFGoodrich",
+    "Cooper Tires",
+    "Falken",
+    "Kumho",
+    "Toyo Tires",
+    "Nexen",
+    "General Tire",
+    "Firestone",
+    "Uniroyal",
+    "Giti",
+    "Vredestein",
+    "GT Radial",
+    "Linglong",
+    "MRF",
+    "Apollo",
+    "Ceat",
+    "Triangle",
+    "Roadstone",
+    "Maxxis",
+    "Nankang",
+    "Westlake",
+    "Goodride"
+  ]
     },
     "Parts Shop": {
       "Condition": [

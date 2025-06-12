@@ -39,7 +39,7 @@ class AutoPartsMain extends StatelessWidget {
                           child: Text(
                             "$title Categories",
                             style: TextStyle(
-                              fontSize: 22,
+                              fontSize: 18,
                               fontWeight: FontWeight.bold,
                               letterSpacing: 1.1,
                               color: Colors.black87,

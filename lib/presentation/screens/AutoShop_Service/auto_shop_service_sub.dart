@@ -1,142 +1,154 @@
 import 'dart:convert';
+import 'package:autobazzaar/presentation/screens/Horizontal_Filter/components/multi_select_option1.dart';
+import 'package:autobazzaar/presentation/widgets/horizontal_filter_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
-import 'package:autobazzaar/components/app_bar.dart';
-import 'package:autobazzaar/components/home_carousel.dart';
-import 'package:autobazzaar/core/theme/colors.dart';
-import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/presentation/screens/AutoShop_Service/auto_shop_service_sub_options.dart';
 
-class AutoServiceSubCategoryView extends StatelessWidget {
+class AutoServiceSubCategoryView extends StatefulWidget {
   final String autotype;
   final String selectedCategory;
-
+  final bool ispost;
   const AutoServiceSubCategoryView({
     super.key,
     required this.autotype,
     required this.selectedCategory,
+    required this.ispost,
   });
 
-  Future<Map<String, dynamic>> loadSubCategoryData() async {
+  @override
+  State<AutoServiceSubCategoryView> createState() =>
+      _AutoServiceSubCategoryViewState();
+}
+
+class _AutoServiceSubCategoryViewState
+    extends State<AutoServiceSubCategoryView> {
+  late Future<Map<String, List<String>>> futureGroupedMap;
+  final Set<String> selectedSubcategories = {};
+  final Map<String, List<String>> fullGroupedMap = {};
+
+  Future<Map<String, List<String>>> loadGroupedMap() async {
     final assetPath = 'assets/json/auto_services/auto_service_car.json';
-    final String jsonString = await rootBundle.loadString(assetPath);
+    final jsonString = await rootBundle.loadString(assetPath);
     final decoded = json.decode(jsonString);
-    final selectedData = decoded[autotype] ?? {};
-    return selectedData[selectedCategory] ?? {}; // Subcategories of selected main category
+
+    final categoryData =
+        decoded[widget.autotype]?[widget.selectedCategory] ?? {};
+    final Map<String, List<String>> groupedMap = {};
+
+    for (var entry in categoryData.entries) {
+      final subcategory = entry.key;
+      final services = entry.value;
+
+      if (services is List) {
+        final serviceList =
+            services.whereType<String>().map((e) => e.trim()).toList();
+        groupedMap[subcategory] = serviceList;
+      }
+    }
+
+    fullGroupedMap.addAll(groupedMap);
+    return groupedMap;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    futureGroupedMap = loadGroupedMap();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          const CustomSliverAppBar(location: "Kuwait", backarrow: true),
-          SliverList(
-            delegate: SliverChildListDelegate([
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  PromoCarousel(promoList: promoCards),
-                  const SizedBox(height: 20),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text(
-                      "Browse By Sub Categories",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 1.1,
-                        color: Colors.black87,
+      appBar: AppBar(title: const Text("Select Service Groups")),
+      body: FutureBuilder<Map<String, List<String>>>(
+        future: futureGroupedMap,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return const Center(child: Text("No service groups available."));
+          }
+
+          final groupedMap = snapshot.data!;
+
+          return Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: groupedMap.length,
+                  itemBuilder: (context, index) {
+                    final subcategory = groupedMap.keys.elementAt(index);
+                    final isSelected = selectedSubcategories.contains(
+                      subcategory,
+                    );
+
+                    return Card(
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
                       ),
-                    ),
-                  ),
-                  FutureBuilder<Map<String, dynamic>>(
-                    future: loadSubCategoryData(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(child: CircularProgressIndicator());
-                      } else if (snapshot.hasError || snapshot.data == null || snapshot.data!.isEmpty) {
-                        return const Center(child: Text("No subcategories found."));
-                      }
+                      child: CheckboxListTile(
+                        title: Text(
+                          subcategory,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        value: isSelected,
+                        onChanged: (val) {
+                          setState(() {
+                            if (val == true) {
+                              selectedSubcategories.add(subcategory);
+                            } else {
+                              selectedSubcategories.remove(subcategory);
+                            }
+                          });
+                        },
+                      ),
+                    );
+                  },
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  if (selectedSubcategories.isNotEmpty) {
+                    final Map<String, List<String>> selectedServicesMap = {};
 
-                      final subCategories = snapshot.data!;
-                      final subCategoryNames = subCategories.keys.toList();
-
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-                        child: GridView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: subCategoryNames.length,
-                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            crossAxisSpacing: 5,
-                            mainAxisSpacing: 5,
-                            childAspectRatio: 0.7,
-                          ),
-                          itemBuilder: (context, index) {
-                            final subCategoryName = subCategoryNames[index];
-                            final subItems = subCategories[subCategoryName];
-
-                            return GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (_) => AutoShopServiceSubOptions(
-                                      title: subCategoryName,
-                                      items: subItems,
-                                    ),
-                                  ),
-                                );
-                              },
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: lightgrey,
-                                      borderRadius: BorderRadius.circular(20),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black.withOpacity(0.05),
-                                          blurRadius: 8,
-                                          offset: const Offset(0, 4),
-                                        ),
-                                      ],
-                                    ),
-                                    padding: const EdgeInsets.all(15),
-                                    child: SvgPicture.asset(
-                                      'assets/icons/${subCategoryName.replaceAll(" ", "_").toLowerCase()}.svg',
-                                      height: 60,
-                                      width: 60,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Text(
-                                    subCategoryName,
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFF1A1A1A),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
+                    for (var sub in selectedSubcategories) {
+                      selectedServicesMap[sub] = fullGroupedMap[sub] ?? [];
+                    }
+                    if (widget.ispost == true) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder:
+                              (_) => MultiSelectOption1(options: selectedServicesMap, ispost:true)
+                              // HorizontalFilterService(
+                              //   items: selectedServicesMap.keys.toList(),
+                              //   mainCategory: 'Service Options',
+                              //   items1: selectedServicesMap,
+                              // ),
                         ),
                       );
-                    },
-                  ),
-                ],
+                    } else {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder:
+                              (_) => AutoShopServiceSubOptions(
+                                items: selectedServicesMap,
+                                title: "Selected Services",
+                              ),
+                        ),
+                      );
+                    }
+                  }
+                },
+                child: const Text("Continue"),
               ),
-            ]),
-          ),
-        ],
+              const SizedBox(height: 16),
+            ],
+          );
+        },
       ),
     );
   }

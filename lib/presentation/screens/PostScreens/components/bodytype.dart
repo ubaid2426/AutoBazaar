@@ -1,13 +1,12 @@
 import 'package:autobazzaar/data/models/dummy_data.dart';
-// import 'package:autobazzaar/presentation/screens/PostScreens/components/brand_show.dart';
-import 'package:autobazzaar/presentation/screens/PostScreens/components/region.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Shop_Service/shop_service.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/seats.dart';
 import 'package:flutter/material.dart';
 
 class BodyTypeScreen extends StatefulWidget {
   final String category;
-
-  const BodyTypeScreen({super.key, required this.category});
+  final String autotype;
+  const BodyTypeScreen({super.key, required this.category, required this.autotype});
 
   @override
   State<BodyTypeScreen> createState() => _BodyTypeScreenState();
@@ -16,7 +15,7 @@ class BodyTypeScreen extends StatefulWidget {
 class _BodyTypeScreenState extends State<BodyTypeScreen> {
   Map<String, Widget Function()> categoryRoutes = {
     "Auto Sales": () => SeatsScreen(),
-    "Shop Services": () => RegionScreen(category: 'Shop Services',),
+    "Shop Services": () => AutoServicePost(autotype: widget.autotype,),
     // "Trucks": () => TruckDetailsScreen(),
     // Add more mappings
   };

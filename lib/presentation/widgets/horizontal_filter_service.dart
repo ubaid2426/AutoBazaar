@@ -3,16 +3,17 @@ import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/presentation/screens/MainFilter/main_filter_service.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/bodytype.dart';
 import 'package:autobazzaar/presentation/widgets/button.dart';
+import 'package:autobazzaar/presentation/widgets/button1.dart';
 import 'package:flutter/material.dart';
 
 class HorizontalFilterService extends StatelessWidget {
-  final List<String> items;
-  // final Map<String, dynamic>? items1;
+  final List<String>? items;
+  final Map<String, dynamic>? items1;
   final String mainCategory;
   const HorizontalFilterService({
     super.key,
-   required this.items,
-    required this.mainCategory,
+    required this.items,
+    required this.mainCategory, this.items1,
   });
 
   @override
@@ -28,9 +29,7 @@ class HorizontalFilterService extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => MainFilterService(items: items),
-                  ),
+                  MaterialPageRoute(builder: (context) => MainFilterService()),
                 );
               },
               child: SizedBox(
@@ -65,24 +64,24 @@ class HorizontalFilterService extends StatelessWidget {
               child: Row(
                 spacing: 10,
                 children: [
-                  FilterButton(
+                  FilterButton1(
                     title: mainCategory,
                     filter: true,
-                    items: items,
-                    options: items,
+                    items: items1,
+                    options: items1,
                     multiseslect: true,
                   ),
                   FilterButton(
                     title: 'Car Origin',
                     filter: true,
-                    items: items,
+                    items: items!,
                     options: originOptions,
                     multiseslect: true,
                   ),
                   FilterButton(
                     title: 'Body Type',
                     filter: true,
-                    items: items,
+                    items: items!,
                     options: [],
                     multiseslect: false,
                     navigate: BodyTypeScreen(category: "Auto Services"),
@@ -92,12 +91,12 @@ class HorizontalFilterService extends StatelessWidget {
                     filter: true,
                     options: regionalSpecifications,
                     multiseslect: true,
-                    items: items,
+                    items: items!,
                   ),
                   FilterButton(
                     title: 'Listing Type',
                     filter: true,
-                    items: items,
+                    items: items!,
                     multiseslect: true,
                     options: listingOptions,
                   ),
