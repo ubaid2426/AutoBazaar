@@ -1,0 +1,155 @@
+{
+  "Spare Parts": {
+    "Brake System": {
+            "image": "assets/images/auto_parts/car_spare_part/brake.png",
+      "items": [
+        "Brake Pads", "Brake Discs", "Drum Brakes", "Master Cylinder", "Brake Lever",
+        "Brake Pedal", "Brake Caliper", "Brake Lines"
+      ]
+    },
+    "Engine": {
+      "image": "assets/images/auto_parts/car_spare_part/engine.png",
+      "items": [
+        "Engine Block", "Cylinder Head", "Pistons", "Camshaft", "Crankshaft",
+        "Valves", "Timing Chain", "Gaskets"
+      ]
+    },
+    "Transmission": {
+            "image": "assets/images/auto_parts/transmission.webp",
+      "items": [
+        "Gearbox", "Clutch Plates", "Chain Drive", "Sprockets", "Shift Lever",
+        "Clutch Plates", "Pressure Plate", "Clutch Basket", "Gearbox", "Shift Drum"
+      ]
+    },
+    "Filters": {
+        "image": "assets/images/auto_parts/filter.jpg",
+      "items": [
+        "Oil Filter", "Air Filter", "Fuel Filter"
+      ]
+    },
+    "Cooling Systems": {
+           "image": "assets/images/auto_parts/car_cooling.jpg",
+      "items": [
+        "Radiator (if liquid-cooled)", "Water Pump", "Cooling Hoses", "Thermostat"
+      ]
+    },
+    "Electric System": {
+      "image": "assets/images/auto_parts/car_spare_part/light_electric.png",
+      "items": [
+        "Battery", "Starter Motor", "Alternator", "ECU", "Fuses", "Wiring Harness"
+      ]
+    },
+    "Steering": {
+      "image": "steering.jpg",
+      "items": [
+        "Handlebars", "Steering Stem", "Triple Tree", "Bearings"
+      ]
+    },
+    "Suspension": {
+          "image": "assets/images/auto_parts/car_spare_part/suspension.jpg",
+      "items": [
+        "Front Forks", "Rear Shock", "Swingarm", "Linkages"
+      ]
+    },
+    "Fuel System": {
+             "image": "assets/images/auto_parts/fuel_system.jpg",
+      "items": [
+        "Fuel Tank", "Fuel Pump", "Carburetor/Fuel Injector", "Fuel Filter", "Petcock Valve"
+      ]
+    },
+    "Exhaust System": {
+       "image": "assets/images/auto_parts/exhaust_system.jpg",
+      "items": [
+        "Exhaust Pipe", "Muffler", "Header", "Gaskets"
+      ]
+    },
+    "Sensors": {
+                "image": "assets/images/auto_parts/car_spare_part/security.png",
+      "items": [
+        "Oxygen Sensor", "Speed Sensor", "Throttle Position Sensor",
+        "Engine Temp Sensor", "Crankshaft Position Sensor"
+      ]
+    },
+    "Others": {
+      "image": "others.jpg",
+      "items": []
+    }
+  },
+  "body parts": {
+    "Frame & Chassis": {
+      "image": "frame_chassis.jpg",
+      "items": [
+        "Main Frame", "Subframe", "Swingarm", "Engine Cradle", "Engine Guard", "Crash Bars",
+        "Skid Plate", "Side Stand", "Center Stand", "Frame Sliders", "Foot Peg Brackets"
+      ]
+    },
+    "Fairings & Covers": {
+      "image": "fairings_covers.jpg",
+      "items": [
+        "Front Fairing", "Side Panels", "Rear Cowl", "Belly Pan", "Tank Cover", "Underbody Panel",
+        "Chain Guard", "Radiator Shroud", "Tail Cover", "Air Ducts", "Engine Covers", "Crankcase Guard"
+      ]
+    },
+    "Lighting": {
+      "image": "assets/images/auto_parts/car_spare_part/light_electric.png",
+      "items": [
+        "Headlamp", "Tail Lamp", "Turn Signals", "Auxiliary Lights",
+        "License Plate Light", "LED DRLs", "Headlight Guard"
+      ]
+    },
+    "Mirrors & Visibility": {
+      "image": "mirrors_visibility.jpg",
+      "items": [
+        "Rear View Mirror", "Mirror Arm", "Mirror Glass", "Blind Spot Mirrors",
+        "Windscreen", "Windscreen Gasket"
+      ]
+    },
+    "Seats & Handlebars": {
+      "image": "seats_handlebars.jpg",
+      "items": [
+        "Seat Cushion", "Seat Base", "Seat Cover", "Seat Bracket", "Seat Height Adjusters",
+        "Handlebar", "Handlebar Grips", "Handlebar Risers", "Handlebar Clamp", "Throttle Tube"
+      ]
+    },
+    "Body Panels & Trim": {
+      "image": "body_panels_trim.jpg",
+      "items": [
+        "Fuel Tank", "Tank Pad", "Frame Guards", "Side Fairing Trim",
+        "Decorative Covers", "Trim Panels"
+      ]
+    },
+    "Fenders & Mudguards": {
+      "image": "fenders_mudguards.jpg",
+      "items": [
+        "Front Fender", "Rear Fender", "Splash Guard", "Fork Guards"
+      ]
+    },
+    "Foot Controls & Pegs": {
+      "image": "foot_controls_pegs.jpg",
+      "items": [
+        "Foot Pegs", "Footrest Base", "Footrest Brackets", "Brake Pedal",
+        "Gear Shifter Lever", "Kick Start Lever"
+      ]
+    },
+    "Mounts & Holders": {
+      "image": "mounts_holders.jpg",
+      "items": [
+        "License Plate Holder", "Mounting Frame", "Storage Compartment Cover", "Saddle Lock"
+      ]
+    },
+    "Locks & Hinges": {
+      "image": "locks_hinges.jpg",
+      "items": [
+        "Saddle Lock", "Helmet Lock", "Compartment Lock", "Seat Lock Mechanism"
+      ]
+    }
+  },
+  "accessories": {
+    "image": "accessories.jpg",
+    "items": []
+  },
+  "Tools": {
+    "image": "tools.jpg",
+    "items": []
+  }
+}

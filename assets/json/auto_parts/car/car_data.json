@@ -1,0 +1,459 @@
+{
+  "Spare Parts": {
+    "Brake System": {
+       "image": "assets/images/auto_parts/car_spare_part/brake.png",
+      "items": [
+        "Brake Pads",
+        "Brake Discs (Rotors)",
+        "Brake Calipers",
+        "Master Cylinder",
+        "Brake Booster (Vacuum Servo)",
+        "Brake Lines (Metal)",
+        "Brake Hoses (Flexible)",
+        "ABS Control Module",
+        "ABS Sensors",
+        "Brake Fluid Reservoir",
+        "Brake Fluid",
+        "Brake Pedal",
+        "Parking Brake Lever",
+        "Parking Brake Cable",
+        "Brake Light Switch",
+        "Proportioning Valve",
+        "Wheel Cylinder",
+        "Brake Shoes"
+      ]
+    },
+    "Engine": {
+     "image": "assets/images/auto_parts/car_spare_part/engine.png",
+      "items": [
+        "Complete Engine",
+        "Bearings (Main & Rod)",
+        "Camshaft",
+        "Camshaft Seal",
+        "Connecting Rods",
+        "Crankshaft",
+        "Crankshaft Gudgeon Pins",
+        "Head Gasket",
+        "Intake Manifold Gasket",
+        "Oil Pan Gasket",
+        "Pistons",
+        "Piston Rings",
+        "Push Rods",
+        "Rocker Arms",
+        "Sprockets",
+        "Timing Belt",
+        "Timing Belt Tensioner",
+        "Timing Chain",
+        "Timing Chain Guide",
+        "Timing Cover",
+        "Timing Cover Gasket",
+        "Timing Gears",
+        "Valve Cover Gasket",
+        "Valve Guides",
+        "Valve Lifters (Tappets)",
+        "Valve Seats",
+        "Valve Springs"
+      ]
+    },
+    "Transmission": {
+         "image": "assets/images/auto_parts/transmission.webp",
+      "items": [
+        "Complete Transmission",
+        "Transmission Assembly",
+        "Transmission Mounts",
+        "Drive Shafts",
+        "Clutch Fork",
+        "Gear Selector",
+        "Output Shaft",
+        "Speed Sensors",
+        "Transmission Oil Cooler"
+      ]
+    },
+    "Filters": {
+          "image": "assets/images/auto_parts/filter.jpg",
+      "items": [
+        "Oil Filter",
+        "Air Filter",
+        "Fuel Filter",
+        "Cabin Air Filter",
+        "Transmission Filter"
+      ]
+    },
+    "Suspension": {
+      "image": "assets/images/auto_parts/car_spare_part/suspension.jpg",
+      "items": [
+        "Shock Absorbers",
+        "Struts",
+        "Coil Springs",
+        "Control Arms",
+        "Ball Joints",
+        "Stabilizer Bar",
+        "Stabilizer Links",
+        "Suspension Bushings"
+      ]
+    },
+    "Steering": {
+      "image": "assets/images/auto_parts/car_spare_part/interior.png",
+      "items": [
+        "Steering Rack",
+        "Steering Gearbox",
+        "Power Steering Pump",
+        "Steering Column",
+        "Tie Rods",
+        "Steering Knuckle",
+        "Steering Shaft",
+        "Steering Fluid Reservoir"
+      ]
+    },
+    "Wipers & Washers": {
+           "image": "assets/images/auto_parts/wiper.jpg",
+      "items": [
+        "Wiper Blades",
+        "Wiper Arms",
+        "Wiper Motor",
+        "Washer Reservoir",
+        "Washer Pump",
+        "Washer Nozzles",
+        "Wiper Linkage"
+      ]
+    },
+    "Fuel System": {
+           "image": "assets/images/auto_parts/fuel_system.jpg",
+      "items": [
+        "Fuel Tank",
+        "Fuel Pump",
+        "Fuel Injectors",
+        "Fuel Rail",
+        "Fuel Filter",
+        "Fuel Pressure Regulator",
+        "Fuel Lines",
+        "Fuel Cap",
+        "Throttle Body",
+        "Carburetor",
+        "Intake Manifold"
+      ]
+    },
+    "Exhaust System": {
+     "image": "assets/images/auto_parts/exhaust_system.jpg",
+      "items": [
+        "Exhaust Manifold",
+        "Oxygen Sensors",
+        "Catalytic Converter",
+        "Exhaust Pipes",
+        "Muffler",
+        "Resonator",
+        "Exhaust Gaskets",
+        "Heat Shields"
+      ]
+    },
+    "Electric System": {
+    "image": "assets/images/auto_parts/car_spare_part/light_electric.png",
+      "items": [
+        "Battery",
+        "Alternator",
+        "Starter Motor",
+        "Ignition Coil",
+        "Spark Plugs",
+        "Ignition Wires",
+        "Distributor",
+        "Crankshaft Position Sensor",
+        "Camshaft Position Sensor",
+        "Knock Sensor",
+        "ECU",
+        "Fuses",
+        "Relays",
+        "Wiring Harness",
+        "Switches",
+        "MAF Sensor",
+        "MAP Sensor"
+      ]
+    },
+    "Cooling Systems": {
+          "image": "assets/images/auto_parts/car_cooling.jpg",
+      "items": [
+        "Radiator",
+        "Radiator Cap",
+        "Water Pump",
+        "Thermostat",
+        "Thermostat Housing",
+        "Radiator Fan",
+        "Coolant Hoses",
+        "Coolant Expansion Tank",
+        "Coolant Temperature Sensor",
+        "Fan Clutch",
+        "Coolant"
+      ]
+    },
+    "Heating and Ventilation": {
+     "image": "assets/images/auto_parts/heating.webp",
+      "items": [
+        "Heater Core",
+        "Blower Motor",
+        "HVAC Control Panel",
+        "Cabin Air Filter",
+        "Air Ducts",
+        "Blend Door Actuators",
+        "Heater Control Valve"
+      ]
+    },
+    "Transmission and Clutch": {
+         "image": "assets/images/auto_parts/transmission.webp",
+      "items": [
+        "Clutch Plate",
+        "Pressure Plate",
+        "Flywheel",
+        "Clutch Release Bearing",
+        "Clutch Slave Cylinder",
+        "Clutch Master Cylinder",
+        "Clutch Pedal",
+        "Pilot Bearing",
+        "Clutch Cable"
+      ]
+    },
+    "Sensors": {
+            "image": "assets/images/auto_parts/car_spare_part/security.png",
+
+      "items": [
+        "Oxygen Sensor",
+        "Crankshaft Position Sensor",
+        "Camshaft Position Sensor",
+        "Knock Sensor",
+        "MAP Sensor",
+        "Coolant Temperature Sensor",
+        "ABS Sensor",
+        "Speed Sensor",
+        "Throttle Position Sensor",
+        "Intake Air Temperature Sensor",
+        "Fuel Pressure Sensor",
+        "Oil Pressure Sensor",
+        "Brake Light Switch",
+        "Parking Sensor",
+        "Reverse Light Sensor",
+        "TPMS (Tire Pressure Monitoring Sensor)",
+        "Ambient Temperature Sensor"
+      ]
+    },
+    "Lights": {
+    "image": "assets/images/auto_parts/car_spare_part/light_electric.png",
+      "items": [
+        "Bulbs",
+        "Cables",
+        "Fog Lamps",
+        "Headlights",
+        "HID's",
+        "Indicator Lights",
+        "Interior Lights",
+        "LED's",
+        "Lights",
+        "Navigation",
+        "Tail Light",
+        "Others"
+      ]
+    },
+    "Air Condition": {
+            "image": "assets/images/auto_parts/heating.webp",
+      "items": [
+        "A/C Compressor",
+        "A/C Condenser",
+        "A/C Evaporator",
+        "A/C Expansion Valve",
+        "A/C Receiver Drier",
+        "A/C Accumulator",
+        "A/C Hoses and Pipes",
+        "A/C Refrigerant",
+        "A/C Pressure Switch",
+        "A/C Temperature Sensor",
+        "A/C Relay",
+        "A/C Control Module",
+        "A/C Blower Motor",
+        "A/C Blower Motor Resistor",
+        "A/C Switch",
+        "Thermostat",
+        "Cabin Temperature Sensor",
+        "Ambient Temperature Sensor",
+        "HVAC Box",
+        "Blend Door Actuator",
+        "Mode Door Actuator",
+        "Recirculation Door Actuator",
+        "Air Mix Door",
+        "Air Ducts",
+        "Cabin Air Filter",
+        "Vent Louvers",
+        "Condenser Fan",
+        "Radiator Fan",
+        "A/C Belt",
+        "Serpentine Belt",
+        "Pulleys",
+        "Tensioners",
+        "Seals",
+        "O-rings",
+        "Insulation Foam"
+      ]
+    }
+  },
+  "Body Parts": {
+    "Exterior Parts": {
+         "image": "assets/images/auto_parts/car_spare_part/exterior.png",
+      "items": [
+        "Front Bumper",
+        "Rear Bumper",
+        "Bumper Brackets",
+        "Crash Absorbers",
+        "Front Fender",
+        "Rear Fender",
+        "Fender Liners",
+        "Hood Panel",
+        "Hood Hinges",
+        "Hood Struts",
+        "Hood Latch",
+        "Door Shell",
+        "Door Hinges",
+        "Door Panels",
+        "Door Weather Stripping",
+        "Radiator Grille",
+        "Grille Trim",
+        "Grille Emblem",
+        "Side Mirrors",
+        "Rearview Mirror",
+        "Mirror Adjustment Motors",
+        "Roof Rails",
+        "Spoilers",
+        "Antennas",
+        "Front Mud Flaps",
+        "Rear Mud Flaps",
+        "License Plate Frame",
+        "Mounting Screws",
+        "Door Mouldings",
+        "Rocker Panel Trim",
+        "Wheel Arch Mouldings",
+        "Boot Struts",
+        "Hood Struts",
+        "Tailgate Gas Springs",
+        "Power Tailgate Motor",
+        "Tailgate Actuator"
+      ]
+    },
+    "Interior Parts": {
+    "image": "assets/images/auto_parts/car_spare_part/interior.png",
+      "items": [
+        "Instrument Panel",
+        "Dashboard Trim",
+        "Front Seats",
+        "Rear Seats",
+        "Seat Upholstery",
+        "Seat Rails",
+        "Seat Motors",
+        "Lumbar Adjustment",
+        "Steering Wheel",
+        "Steering Column Trim",
+        "Storage Compartment",
+        "Cup Holders",
+        "Inner Door Panels",
+        "Armrests",
+        "Carpet Floor Mats",
+        "Trunk Floor Panels",
+        "Glove Compartment",
+        "Glove Box Lock",
+        "Decorative Engine Shroud",
+        "Plastic Engine Cover"
+      ]
+    },
+    "Lighting System": {
+     "image": "assets/images/auto_parts/car_spare_part/light_electric.png",
+      "items": [
+        "Halogen Headlights",
+        "HID Headlights",
+        "LED Headlights",
+        "Standard Tail Lights",
+        "LED Tail Lights",
+        "Fog Lamps",
+        "Side Turn Signals",
+        "Bumper Indicators",
+        "LED DRLs",
+        "Dome Light",
+        "Footwell Lights",
+        "Plate Illumination Light"
+      ]
+    },
+    "Glass & Windows": {
+             "image": "assets/images/auto_parts/wiper.jpg",
+      "items": [
+        "Front Windshield",
+        "Heated Windshield",
+        "Front Side Glass",
+        "Rear Side Glass",
+        "Quarter Glass",
+        "Rear Window",
+        "Defroster Glass",
+        "Sunroof Panel",
+        "Sunroof Motor",
+        "Power Window Motor",
+        "Manual Regulator",
+        "Window Channel",
+        "Door Glass Seals",
+        "Windshield Seal"
+      ]
+    }
+  },
+  "Accessories": {
+    "Interior Accessories": {
+       "image": "assets/images/auto_parts/car_spare_part/interior.png",
+      "items": [
+        "Seat Covers",
+        "Floor Mats",
+        "Trunk Mats",
+        "Steering Wheel Covers",
+        "Ambient Lighting",
+        "Additional Lighting",
+        "Cup Holders",
+        "Phone Accessories"
+      ]
+    },
+    "Exterior Accessories": {
+    "image": "assets/images/auto_parts/car_spare_part/exterior.png",
+      "items": [
+        "Car Covers",
+        "Spoilers",
+        "Roof Racks",
+        "Roof Bars and Accessories",
+        "Chrome Trim",
+        "Side Steps",
+        "Window Visors",
+        "Wheel Trims",
+        "Bike Carriers",
+        "Snow Chains and Socks",
+        "Winter Products"
+      ]
+    },
+    "Tech & Gadgets": {
+    "image": "assets/images/auto_parts/car_spare_part/tool.jpg",
+      "items": [
+        "GPS Navigation",
+        "Dash Cameras",
+        "Reversing Cameras",
+        "Universal Parking Sensors",
+        "Parking Sensors",
+        "Wireless Chargers",
+        "EV Chargers",
+        "Inverters"
+      ]
+    },
+    "Safety & Security": {
+      "image": "assets/images/auto_parts/car_spare_part/security.png",
+      "items": [
+        "Car Alarm",
+        "Fire Extinguisher",
+        "First Aid Kit",
+        "Blind Spot Mirrors",
+        "Jump Starters",
+        "Jump Start Cables",
+        "Battery Chargers",
+        "Batteries"
+      ]
+    }
+  },
+  "Tools": {
+    "image": "assets/images/auto_parts/car_spare_part/tool.jpg",
+    "items": []
+  }
+}
