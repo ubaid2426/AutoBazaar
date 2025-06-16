@@ -1,9 +1,25 @@
 import 'package:autobazzaar/core/theme/colors.dart';
-import 'package:autobazzaar/presentation/screens/PostScreens/components/bodytype.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/Choose_plan/choose_ad_post.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/state_area.dart';
+// import 'package:autobazzaar/presentation/screens/PostScreens/components/bodytype.dart';
 import 'package:flutter/material.dart';
 
 class PhoneNumberInputScreen extends StatefulWidget {
-  const PhoneNumberInputScreen({super.key});
+  final String? autotype;
+  final String? mainheading;
+  final String? name;
+  final String? namesub;
+  final List<String>? subheading;
+  final Map<String, Set<String>>? services;
+  const PhoneNumberInputScreen({
+    super.key,
+    this.autotype,
+    this.mainheading,
+    this.subheading,
+    this.services,
+    this.name,
+    this.namesub,
+  });
 
   @override
   State<PhoneNumberInputScreen> createState() => _PhoneNumberInputScreenState();
@@ -41,7 +57,28 @@ class _PhoneNumberInputScreenState extends State<PhoneNumberInputScreen> {
 
     debugPrint('Home Service Available: $homeServiceAvailable');
     // You can proceed to save this or navigate
-        Navigator.push(context, MaterialPageRoute(builder: (context) => BodyTypeScreen(category: 'Shop Services',)));
+    if (widget.namesub == "Auto Sales") {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ChooseAdPostTypeScreen()),
+      );
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder:
+              (context) => StateArea(
+                autotype: widget.autotype,
+                mainheading: widget.mainheading,
+                subheading: widget.subheading,
+                services: widget.services,
+                name: widget.name,
+                namesub: widget.namesub,
+                contactnumber: numbers,
+              ),
+        ),
+      );
+    }
   }
 
   @override
@@ -159,5 +196,6 @@ class _PhoneNumberInputScreenState extends State<PhoneNumberInputScreen> {
         ),
       ),
     );
+    // }
   }
 }

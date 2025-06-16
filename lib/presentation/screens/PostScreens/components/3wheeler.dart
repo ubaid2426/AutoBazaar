@@ -72,9 +72,10 @@ class _ThreeWheelerScreenState extends State<ThreeWheelerScreen> {
   void filterBrands(String query) {
     final lowercaseQuery = query.toLowerCase();
     setState(() {
-      filteredBrands = brands
-          .where((brand) => brand.toLowerCase().startsWith(lowercaseQuery))
-          .toList();
+      filteredBrands =
+          brands
+              .where((brand) => brand.toLowerCase().startsWith(lowercaseQuery))
+              .toList();
     });
   }
 
@@ -105,83 +106,91 @@ class _ThreeWheelerScreenState extends State<ThreeWheelerScreen> {
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      body: threeWheelerData.isEmpty
-          ? const Center(child: CircularProgressIndicator())
-          : Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: TextField(
-                    controller: searchController,
-                    onChanged: filterBrands,
-                    decoration: InputDecoration(
-                      hintText: 'Search brand...',
-                      prefixIcon: const Icon(Icons.search),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+      body:
+          threeWheelerData.isEmpty
+              ? const Center(child: CircularProgressIndicator())
+              : Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: TextField(
+                      controller: searchController,
+                      onChanged: filterBrands,
+                      decoration: InputDecoration(
+                        hintText: 'Search brand...',
+                        prefixIcon: const Icon(Icons.search),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: filteredBrands.length,
-                    itemBuilder: (context, index) {
-                      final brand = filteredBrands[index];
-                      return Card(
-                        elevation: 4,
-                        margin: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 8,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ModelScreen(
-                                  brand: brand,
-                                  models: threeWheelerData[brand]!,
-                                  icon: getIconForType(widget.type), filteruse: false, category: 'extra',
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: filteredBrands.length,
+                      itemBuilder: (context, index) {
+                        final brand = filteredBrands[index];
+                        return Card(
+                          elevation: 4,
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder:
+                                      (context) => ModelScreen(
+                                        brand: brand,
+                                        models: threeWheelerData[brand]!,
+                                        icon: getIconForType(widget.type),
+                                        filteruse: false,
+                                        namesub: 'extra',
+                                      ),
                                 ),
-                              ),
-                            );
-                          },
-                          borderRadius: BorderRadius.circular(16),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  getIconForType(widget.type),
-                                  size: 28,
-                                  color: red,
-                                ),
-                                const SizedBox(width: 16),
-                                Expanded(
-                                  child: Text(
-                                    brand,
-                                    style: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black87,
+                              );
+                            },
+                            borderRadius: BorderRadius.circular(16),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    getIconForType(widget.type),
+                                    size: 28,
+                                    color: red,
+                                  ),
+                                  const SizedBox(width: 16),
+                                  Expanded(
+                                    child: Text(
+                                      brand,
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.black87,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Icon(Icons.arrow_forward_ios, size: 20, color: red),
-                              ],
+                                  Icon(
+                                    Icons.arrow_forward_ios,
+                                    size: 20,
+                                    color: red,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
     );
   }
 }

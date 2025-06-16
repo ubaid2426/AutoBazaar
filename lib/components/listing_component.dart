@@ -23,7 +23,7 @@ class ListingMain extends StatelessWidget {
                 height: 200,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("assets/images/listing_form/con3.png"),
+                    image: AssetImage("assets/images/listing_form/back3.png"),
                     fit: BoxFit.contain, // Changed to cover
                   ),
                 ),
@@ -37,7 +37,7 @@ class ListingMain extends StatelessWidget {
             child: _buildCardContainer(
               context: context,
               imagePath:
-                  "assets/images/listing_form/con2.png", // Background image
+                  "assets/images/listing_form/back2.png", // Background image
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 60,

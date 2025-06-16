@@ -2,7 +2,7 @@ import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/data/models/dummy_autopart.dart';
 import 'package:autobazzaar/models/product.dart';
 import 'package:autobazzaar/models/vehicle_category.dart';
-import 'package:autobazzaar/presentation/screens/AutoParts/components/autopart_subcategory.dart';
+// import 'package:autobazzaar/presentation/screens/AutoParts/components/autopart_subcategory.dart';
 import 'package:autobazzaar/presentation/screens/AutoSalesMain/Vehicle_type/components/vehicle_categories.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Auto_Parts/auto_partform_sub.dart';
 import 'package:autobazzaar/presentation/widgets/product_widget.dart';

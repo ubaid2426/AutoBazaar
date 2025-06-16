@@ -1,4 +1,6 @@
 // car_year_screen.dart
+import 'dart:io';
+
 import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/Insuranced.dart';
 // import 'package:autobazzaar/presentation/screens/PostScreens/components/excolor.dart';
@@ -7,7 +9,45 @@ import 'package:flutter/material.dart';
 // import 'dummy_years.dart'; // Import the dummy data
 
 class BodyCondition extends StatefulWidget {
-  const BodyCondition({super.key});
+  final String namesub;
+  final String brand;
+  final List<String> models;
+  final List<File> images; // <-- new param
+  final String title;
+  final String description;
+  final String transmission;
+  final String year;
+  final String region;
+  final String fueltype;
+  final String enginesize;
+  final String excolor;
+  final String incolor;
+  final List<String> inoption;
+  final List<String> technology;
+  final String bodytype;
+  final String seats;
+  final String repainted;
+  const BodyCondition({
+    super.key,
+    required this.namesub,
+    required this.brand,
+    required this.models,
+    required this.images,
+    required this.title,
+    required this.description,
+    required this.transmission,
+    required this.year,
+    required this.region,
+    required this.fueltype,
+    required this.enginesize,
+    required this.excolor,
+    required this.incolor,
+    required this.inoption,
+    required this.technology,
+    required this.bodytype,
+    required this.seats,
+    required this.repainted,
+  });
 
   @override
   _BodyConditionState createState() => _BodyConditionState();
@@ -15,7 +55,7 @@ class BodyCondition extends StatefulWidget {
 
 class _BodyConditionState extends State<BodyCondition> {
   List<String> filteredtransmission = condition;
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
@@ -47,7 +87,29 @@ class _BodyConditionState extends State<BodyCondition> {
         onTap:
             () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => BodyCondition()),
+              MaterialPageRoute(
+                builder:
+                    (context) => BodyCondition(
+                      namesub: widget.namesub,
+                      brand: widget.brand,
+                      models: widget.models,
+                      images: widget.images,
+                      title: widget.title,
+                      description: widget.description,
+                      transmission: widget.transmission,
+                      year: widget.year,
+                      region: widget.region,
+                      fueltype: widget.fueltype,
+                      enginesize: widget.enginesize,
+                      excolor: widget.excolor,
+                      incolor: widget.incolor,
+                      inoption: widget.inoption,
+                      technology: widget.technology,
+                      bodytype: widget.bodytype,
+                      seats: widget.seats,
+                      repainted: widget.repainted,
+                    ),
+              ),
             ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -93,7 +155,28 @@ class _BodyConditionState extends State<BodyCondition> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Insuranced(),
+                              builder:
+                                  (context) => Insuranced(
+                                    namesub: widget.namesub,
+                                    brand: widget.brand,
+                                    models: widget.models,
+                                    images: widget.images,
+                                    title: widget.title,
+                                    description: widget.description,
+                                    transmission: widget.transmission,
+                                    year: widget.year,
+                                    region: widget.region,
+                                    fueltype: widget.fueltype,
+                                    enginesize: widget.enginesize,
+                                    excolor: widget.excolor,
+                                    incolor: widget.incolor,
+                                    inoption: widget.inoption,
+                                    technology: widget.technology,
+                                    bodytype: widget.bodytype,
+                                    seats: widget.seats,
+                                    repainted: widget.repainted,
+                                    bodycondition: year,
+                                  ),
                             ),
                           );
                           // Handle year selection

@@ -1,10 +1,42 @@
+import 'dart:io';
+
 import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/bodytype.dart';
 import 'package:flutter/material.dart';
 
 class TechOptions extends StatefulWidget {
-  const TechOptions({super.key});
+  final String namesub;
+  final String brand;
+  final List<String> models;
+  final List<File> images; // <-- new param
+  final String title;
+  final String description;
+  final String transmission;
+  final String year;
+  final String region;
+  final String fueltype;
+  final String enginesize;
+  final String excolor;
+  final String incolor;
+  final List<String> inoption;
+  const TechOptions({
+    super.key,
+    required this.namesub,
+    required this.brand,
+    required this.models,
+    required this.images,
+    required this.title,
+    required this.description,
+    required this.transmission,
+    required this.year,
+    required this.region,
+    required this.fueltype,
+    required this.enginesize,
+    required this.excolor,
+    required this.incolor,
+    required this.inoption,
+  });
 
   @override
   State<TechOptions> createState() => _TechOptionsState();
@@ -12,8 +44,6 @@ class TechOptions extends StatefulWidget {
 
 class _TechOptionsState extends State<TechOptions> {
   final TextEditingController _searchController = TextEditingController();
-
-
 
   List<String> filteredOptions = [];
   List<String> selectedOptions = [];
@@ -129,7 +159,7 @@ class _TechOptionsState extends State<TechOptions> {
             ),
             Center(
               child: SizedBox(
-                width: MediaQuery.of(context).size.width-100,
+                width: MediaQuery.of(context).size.width - 100,
                 height: 70,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -143,11 +173,27 @@ class _TechOptionsState extends State<TechOptions> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>  BodyTypeScreen(category: 'Auto Sales',),
+                        builder:
+                            (context) => BodyTypeScreen(
+                              namesub: widget.namesub,
+                              brand: widget.brand,
+                              models: widget.models,
+                              images: widget.images,
+                              year: widget.year,
+                              title: widget.title,
+                              description: widget.description,
+                              region: widget.region,
+                              transmission: widget.transmission,
+                              fueltype: widget.fueltype,
+                              enginesize: widget.enginesize,
+                              excolor: widget.excolor,
+                              incolor: widget.incolor,
+                              inoption: selectedOptions, technology: selectedOptions,
+                            ),
                       ),
                     );
                   },
-                  child: const Text("Next →", style: TextStyle(fontSize: 20),),
+                  child: const Text("Next →", style: TextStyle(fontSize: 20)),
                 ),
               ),
             ),

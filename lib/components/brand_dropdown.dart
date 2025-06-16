@@ -7,10 +7,10 @@ class BrandDropdown extends StatefulWidget {
   final Function(BrandItem) onSelected;
 
   const BrandDropdown({
-    Key? key,
+    super.key,
     required this.brands,
     required this.onSelected,
-  }) : super(key: key);
+  });
 
   @override
   _BrandDropdownState createState() => _BrandDropdownState();

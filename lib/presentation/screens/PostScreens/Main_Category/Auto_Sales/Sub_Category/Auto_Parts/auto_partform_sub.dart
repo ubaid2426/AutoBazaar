@@ -1,13 +1,13 @@
 import 'dart:convert';
-import 'package:autobazzaar/presentation/screens/AutoParts/components/autoparts_listing.dart';
-import 'package:autobazzaar/presentation/screens/AutoShop_Service/auto_shop_service_sub_options.dart';
-import 'package:autobazzaar/presentation/screens/MainFilter/main_filter_service.dart';
+// import 'package:autobazzaar/presentation/screens/AutoParts/components/autoparts_listing.dart';
+// import 'package:autobazzaar/presentation/screens/AutoShop_Service/auto_shop_service_sub_options.dart';
+// import 'package:autobazzaar/presentation/screens/MainFilter/main_filter_service.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/brand_show.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:autobazzaar/components/custom_appbarsearch.dart';
-import 'package:autobazzaar/components/home_carousel.dart';
-import 'package:autobazzaar/data/models/dummy_data.dart';
+// import 'package:autobazzaar/components/custom_appbarsearch.dart';
+// import 'package:autobazzaar/components/home_carousel.dart';
+// import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/models/vehicle_category.dart';
 import 'package:autobazzaar/presentation/screens/AutoSalesMain/Vehicle_type/components/vehicle_categories.dart';
 
@@ -145,9 +145,10 @@ class _AutoPartsSubCategoryState extends State<AutoPartsSubform> {
                                 MaterialPageRoute(
                                   builder:
                                       (_) => BrandScreen(
-                                        type: widget.autotype,
+                                        autotype: widget.autotype,
                                         filteruse: false,
-                                        category: "Auto Parts",
+                                        namesub: "Auto Parts",
+                                        name: "Auto Sales",
                                       ),
                                 ),
                               );

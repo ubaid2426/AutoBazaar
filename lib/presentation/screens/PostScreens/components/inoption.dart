@@ -1,10 +1,40 @@
+import 'dart:io';
+
 import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/techoption.dart';
 import 'package:flutter/material.dart';
 
 class InteriorOptions extends StatefulWidget {
-  const InteriorOptions({super.key});
+  final String namesub;
+  final String brand;
+  final List<String> models;
+  final List<File> images; // <-- new param
+  final String title;
+  final String description;
+  final String transmission;
+  final String year;
+  final String region;
+  final String fueltype;
+  final String enginesize;
+  final String excolor;
+  final String incolor;
+  const InteriorOptions({
+    super.key,
+    required this.namesub,
+    required this.brand,
+    required this.models,
+    required this.images,
+    required this.title,
+    required this.description,
+    required this.transmission,
+    required this.year,
+    required this.region,
+    required this.fueltype,
+    required this.enginesize,
+    required this.excolor,
+    required this.incolor,
+  });
 
   @override
   State<InteriorOptions> createState() => _InteriorOptionsState();
@@ -12,8 +42,6 @@ class InteriorOptions extends StatefulWidget {
 
 class _InteriorOptionsState extends State<InteriorOptions> {
   final TextEditingController _searchController = TextEditingController();
-
-
 
   List<String> filteredOptions = [];
   List<String> selectedOptions = [];
@@ -112,7 +140,7 @@ class _InteriorOptionsState extends State<InteriorOptions> {
                     ),
                     margin: const EdgeInsets.symmetric(vertical: 6),
                     child: CheckboxListTile(
-                       checkColor: red,
+                      checkColor: red,
                       fillColor: MaterialStateProperty.all(Colors.white),
                       value: selectedOptions.contains(option),
                       onChanged: (_) => _toggleOption(option),
@@ -126,9 +154,9 @@ class _InteriorOptionsState extends State<InteriorOptions> {
                 },
               ),
             ),
-              Center(
+            Center(
               child: SizedBox(
-                width: MediaQuery.of(context).size.width-100,
+                width: MediaQuery.of(context).size.width - 100,
                 height: 70,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -142,11 +170,27 @@ class _InteriorOptionsState extends State<InteriorOptions> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const TechOptions(),
+                        builder:
+                            (context) => TechOptions(
+                              namesub: widget.namesub,
+                              brand: widget.brand,
+                              models: widget.models,
+                              images: widget.images,
+                              year: widget.year,
+                              title: widget.title,
+                              description: widget.description,
+                              region: widget.region,
+                              transmission: widget.transmission,
+                              fueltype: widget.fueltype,
+                              enginesize: widget.enginesize,
+                              excolor: widget.excolor,
+                              incolor: widget.incolor,
+                              inoption: selectedOptions,
+                            ),
                       ),
                     );
                   },
-                  child: const Text("Next →", style: TextStyle(fontSize: 20),),
+                  child: const Text("Next →", style: TextStyle(fontSize: 20)),
                 ),
               ),
             ),

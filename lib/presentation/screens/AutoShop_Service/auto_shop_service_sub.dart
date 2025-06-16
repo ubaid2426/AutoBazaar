@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:autobazzaar/presentation/screens/Horizontal_Filter/components/multi_select_option1.dart';
-import 'package:autobazzaar/presentation/widgets/horizontal_filter_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:autobazzaar/presentation/screens/AutoShop_Service/auto_shop_service_sub_options.dart';
@@ -9,11 +8,13 @@ class AutoServiceSubCategoryView extends StatefulWidget {
   final String autotype;
   final String selectedCategory;
   final bool ispost;
+  final String? name;
+  final String? namesub;
   const AutoServiceSubCategoryView({
     super.key,
     required this.autotype,
     required this.selectedCategory,
-    required this.ispost,
+    required this.ispost, this.name, this.namesub,
   });
 
   @override
@@ -121,12 +122,15 @@ class _AutoServiceSubCategoryViewState
                         context,
                         MaterialPageRoute(
                           builder:
-                              (_) => MultiSelectOption1(options: selectedServicesMap, ispost:true)
-                              // HorizontalFilterService(
-                              //   items: selectedServicesMap.keys.toList(),
-                              //   mainCategory: 'Service Options',
-                              //   items1: selectedServicesMap,
-                              // ),
+                              (_) => MultiSelectOption1(
+                                options: selectedServicesMap,
+                                ispost: true,
+                                autotype: widget.autotype,
+                                subheading: selectedSubcategories.toList(),
+                                mainheading: widget.selectedCategory,
+                                name: widget.name!,
+                                namesub: widget.namesub!,
+                              ),
                         ),
                       );
                     } else {

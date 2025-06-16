@@ -1,5 +1,3 @@
-// import 'package:autobazzaar/components/buildTextField.dart';
-import 'package:autobazzaar/presentation/screens/Home/Screens/auto_parts.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Accident_Autos/accident_auto_form.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Auto_Parts/autopartmain.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Scraps_Autos/scraps_auto_form.dart';
@@ -9,27 +7,41 @@ import 'package:autobazzaar/components/buildTextField.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/postingimages.dart';
 import 'package:autobazzaar/core/constants/validators.dart';
 import 'package:autobazzaar/core/theme/colors.dart';
-import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Auto_Parts/auto_parts_form.dart';
-// import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Vehicle_Listing/vehicle_listing_form.dart';
-// import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Wanted/auto_wanted.dart';
-import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Shop_Service/shop_service.dart';
+// import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Shop_Service/shop_service.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/region.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/years.dart';
-// import 'package:autobazzaar/screens/PostScreens/listing_main.dart';
 import 'package:flutter/material.dart';
-// import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 class CarPostAdScreen extends StatefulWidget {
-  final String title;
-  final String name;
-  final String namesub;
-  final String type;
+  // final String title;
+  final String? name;
+  final String? namesub;
+  final String? autotype;
+  // for auto services
+  final String? mainheading;
+  final List<String>? subheading;
+  final Map<String, Set<String>>? services;
+  final List<String>? contactnumber;
+  final String? country;
+  final String? state;
+  final String? city;
+  final String? region;
+
   const CarPostAdScreen({
     super.key,
-    required this.title,
-    required this.name,
-    required this.namesub,
-    required this.type,
+    // required this.title,
+    this.name,
+    this.namesub,
+    this.autotype,
+    this.mainheading,
+    this.subheading,
+    this.services,
+    this.contactnumber,
+    this.country,
+    this.state,
+    this.city,
+    this.region,
   });
 
   @override
@@ -47,61 +59,61 @@ class _CarPostAdScreenState extends State<CarPostAdScreen> {
   List<File> selectedImages = [];
   void navigateToVehicleScreen(
     BuildContext context,
-    String title,
+    // String title,
     String name,
     String namesub,
-    String type,
+    String autotype,
+    String title,
+    String description,
+    List<File> images, // <-- new param
   ) {
     Widget? screen;
 
     if (namesub == "Vehicle") {
       print(namesub);
       // screen = BrandScreen(type: type,);
-      if (type == "Car" ||
-          type == "Taxi" ||
-          type == "Motor bike" ||
-          type == "Water Crafts") {
-        screen = BrandScreen(type: type, filteruse: false, category: namesub,);
-      } else if (type == "Quad/Buggy" || type == "3-Wheeler") {
-        screen = ThreeWheelerScreen(type: type);
-      } else if (type == "Van" ||
-          type == "Lorry" ||
-          type == "Bus" ||
-          type == "RV/Camper van") {
-        screen = YearScreen(category: '',);
+      if (autotype == "Car" ||
+          autotype == "Taxi" ||
+          autotype == "Motor bike" ||
+          autotype == "Water Crafts") {
+        screen = BrandScreen(
+          autotype: autotype,
+          filteruse: false,
+          namesub: namesub,
+          images: images,
+          title: '',
+          description: '',
+        );
+      } else if (autotype == "Quad/Buggy" || autotype == "3-Wheeler") {
+        screen = ThreeWheelerScreen(type: autotype);
+      } else if (autotype == "Van" ||
+          autotype == "Lorry" ||
+          autotype == "Bus" ||
+          autotype == "RV/Camper van") {
+        screen = YearScreen(
+          namesub: namesub,
+          // brand: brand,
+          // models: models,
+          images: images,
+          title: title,
+          description: description,
+        );
       }
-      // screen = VehicleAuotsForm(
-      //   title: 'Vehicle Form',
-      // ); // Replace with the actual screen
     } else if (name == "Shop &\n Services") {
-      screen = AutoServicePost(
-        autotype: type,
-        // title: 'Shop & Service',
-      ); // Replace with actual screen
+      screen = RegionScreen(autotype: autotype); // Replace with actual screen
     } else if (namesub == "Auto\n Parts") {
-      screen = AutopartForm(selectedVehicleType: type,); // Replace with actual screen
+      screen = AutopartForm(
+        selectedVehicleType: autotype,
+      ); // Replace with actual screen
     } else if (namesub == "Accidental & Autos") {
       screen = AccidentAutoForm(); // Replace with actual screen
     } else if (namesub == "Scraps & Autos") {
       screen = ScrapsAutosForm(); // Replace with actual screen
-    } else {
-      // screen = VehicleAuotsForm(title: title); // Default screen
-    }
+    } else {}
     Navigator.push(context, MaterialPageRoute(builder: (context) => screen!));
   }
 
   final List<String> titleOptions = ["SUV", "Sedan", "Hatchback", "Truck"];
-
-  // void _pickImage() async {
-  //   final picker = ImagePicker();
-  //   final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-
-  //   if (pickedFile != null) {
-  //     setState(() {
-  //       selectedImages.add(File(pickedFile.path));
-  //     });
-  //   }
-  // }
 
   @override
   void initState() {
@@ -126,7 +138,7 @@ class _CarPostAdScreenState extends State<CarPostAdScreen> {
       backgroundColor: white, // Light background for premium feel
       appBar: AppBar(
         title: Text(
-          widget.title,
+          widget.autotype!,
           style: const TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
@@ -186,7 +198,13 @@ class _CarPostAdScreenState extends State<CarPostAdScreen> {
               SizedBox(
                 height:
                     320, // You can adjust this height based on your design needs
-                child: PostingImages(),
+                child: PostingImages(
+                  onImagesSelected: (List<File> images) {
+                    setState(() {
+                      selectedImages = images;
+                    });
+                  },
+                ),
               ),
 
               const SizedBox(height: 30),
@@ -208,10 +226,13 @@ class _CarPostAdScreenState extends State<CarPostAdScreen> {
                   onPressed: () {
                     navigateToVehicleScreen(
                       context,
-                      widget.title,
-                      widget.name,
-                      widget.namesub,
-                      widget.type,
+                      // widget.title,
+                      widget.name!,
+                      widget.namesub!,
+                      widget.autotype!,
+                      _descriptionController.text,
+                      _titleController.text,
+                      selectedImages,
                     );
                   },
                   child: const Text(
@@ -247,57 +268,4 @@ class _CarPostAdScreenState extends State<CarPostAdScreen> {
       ),
     );
   }
-
-  // **Image Picker Grid**
-  // Widget _buildImagePicker() {
-  //   return Container(
-  //     padding: const EdgeInsets.all(10),
-  //     decoration: BoxDecoration(
-  //       color: Colors.white,
-  //       borderRadius: BorderRadius.circular(12),
-  //       boxShadow: [
-  //         BoxShadow(
-  //           color: Colors.grey.withOpacity(0.2),
-  //           blurRadius: 6,
-  //           spreadRadius: 2,
-  //         ),
-  //       ],
-  //     ),
-  //     child: Wrap(
-  //       spacing: 10,
-  //       runSpacing: 10,
-  //       children: [
-  //         ...selectedImages.map(
-  //           (image) => ClipRRect(
-  //             borderRadius: BorderRadius.circular(8),
-  //             child: Image.file(
-  //               image,
-  //               width: 80,
-  //               height: 80,
-  //               fit: BoxFit.cover,
-  //             ),
-  //           ),
-  //         ),
-  //         if (selectedImages.length < 10)
-  //           GestureDetector(
-  //             onTap: _pickImage,
-  //             child: Container(
-  //               width: 80,
-  //               height: 80,
-  //               decoration: BoxDecoration(
-  //                 color: Colors.grey[200],
-  //                 borderRadius: BorderRadius.circular(8),
-  //                 border: Border.all(color: Colors.grey.shade400),
-  //               ),
-  //               child: const Icon(
-  //                 Icons.add_photo_alternate,
-  //                 color: Colors.grey,
-  //                 size: 30,
-  //               ),
-  //             ),
-  //           ),
-  //       ],
-  //     ),
-  //   );
-  // }
 }

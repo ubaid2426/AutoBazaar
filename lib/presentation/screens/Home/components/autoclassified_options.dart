@@ -1,5 +1,5 @@
 import 'package:autobazzaar/components/app_bar.dart';
-import 'package:autobazzaar/components/custom_appbarsearch.dart';
+// import 'package:autobazzaar/components/custom_appbarsearch.dart';
 import 'package:autobazzaar/components/home_carousel.dart';
 // import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/data/models/dummy_data.dart';

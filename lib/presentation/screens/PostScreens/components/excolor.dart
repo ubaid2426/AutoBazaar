@@ -1,9 +1,35 @@
+import 'dart:io';
+
 import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/incolor.dart';
 import 'package:flutter/material.dart';
 
 class ExteriorColor extends StatefulWidget {
-  const ExteriorColor({super.key});
+  final String namesub;
+  final String brand;
+  final List<String> models;
+  final List<File> images; // <-- new param
+  final String title;
+  final String description;
+  final String transmission;
+  final String year;
+  final String region;
+  final String fueltype;
+  final String enginesize;
+  const ExteriorColor({
+    super.key,
+    required this.namesub,
+    required this.brand,
+    required this.models,
+    required this.images,
+    required this.title,
+    required this.description,
+    required this.transmission,
+    required this.year,
+    required this.region,
+    required this.fueltype,
+    required this.enginesize,
+  });
 
   @override
   State<ExteriorColor> createState() => _ExteriorColorState();
@@ -26,9 +52,10 @@ class _ExteriorColorState extends State<ExteriorColor> {
   void _filterColors() {
     String query = _searchController.text.toLowerCase();
     setState(() {
-      filteredColors = carColors
-          .where((color) => color["name"].toLowerCase().contains(query))
-          .toList();
+      filteredColors =
+          carColors
+              .where((color) => color["name"].toLowerCase().contains(query))
+              .toList();
     });
   }
 
@@ -83,7 +110,10 @@ class _ExteriorColorState extends State<ExteriorColor> {
               ),
             ),
             SizedBox(height: 16),
-            Text("Exterior Color", style: TextStyle(fontWeight: FontWeight.bold)),
+            Text(
+              "Exterior Color",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             SizedBox(height: 8),
             Expanded(
               child: ListView.builder(
@@ -96,21 +126,33 @@ class _ExteriorColorState extends State<ExteriorColor> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: item["color"],
-                      ),
+                      leading: CircleAvatar(backgroundColor: item["color"]),
                       title: Text(
                         item["name"],
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       trailing: Icon(Icons.chevron_right),
                       onTap: () {
-                           Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => InteriorColor(),
-                            ),
-                          );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) => InteriorColor(
+                                  namesub: widget.namesub,
+                                  brand: widget.brand,
+                                  models: widget.models,
+                                  images: widget.images,
+                                  year: widget.year,
+                                  title: widget.title,
+                                  description: widget.description,
+                                  region: widget.region,
+                                  transmission: widget.transmission,
+                                  fueltype: widget.fueltype,
+                                  enginesize: widget.enginesize,
+                                  excolor: item["name"],
+                                ),
+                          ),
+                        );
                         print("Selected Color: ${item["name"]}");
                         // You can navigate or return result here
                       },

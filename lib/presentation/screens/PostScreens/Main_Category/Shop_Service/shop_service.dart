@@ -5,14 +5,20 @@ import 'package:autobazzaar/presentation/screens/AutoShop_Service/auto_shop_serv
 // import 'package:autobazzaar/presentation/screens/AutoShop_Service/auto_shop_service_sub_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:autobazzaar/components/home_carousel.dart';
-import 'package:autobazzaar/data/models/dummy_data.dart';
+// import 'package:autobazzaar/components/home_carousel.dart';
+// import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AutoServicePost extends StatelessWidget {
   final String autotype;
-
-  const AutoServicePost({super.key, required this.autotype});
+  final String name;
+  final String namesub;
+  const AutoServicePost({
+    super.key,
+    required this.autotype,
+    required this.name,
+    required this.namesub,
+  });
 
   Future<Map<String, dynamic>> loadCategoryData(String type) async {
     final assetPath = 'assets/json/auto_services/auto_service_car.json';
@@ -65,7 +71,7 @@ class AutoServicePost extends StatelessWidget {
                               ),
                           itemBuilder: (context, index) {
                             final categoryName = categoryNames[index];
-                            final subCategories = categories[categoryName];
+                            // final subCategories = categories[categoryName];
 
                             return GestureDetector(
                               onTap: () {
@@ -75,10 +81,11 @@ class AutoServicePost extends StatelessWidget {
                                     builder:
                                         (_) => AutoServiceSubCategoryView(
                                           autotype: autotype,
-                                          selectedCategory:
-                                              categoryName, ispost: true, // the clicked main category
-                                          // title: categoryName,
-                                          // items: subCategories,
+                                          selectedCategory: categoryName,
+                                          ispost:
+                                              true, // the clicked main category
+                                          namesub: namesub,
+                                          name: name,
                                         ),
                                   ),
                                 );

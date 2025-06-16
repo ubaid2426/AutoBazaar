@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/state_area.dart';
 import 'package:flutter/material.dart';
@@ -6,15 +8,57 @@ import 'package:autobazzaar/data/models/dummy_data.dart';
 // import 'package:autobazzaar/presentation/screens/PostScreens/components/Insuranced.dart';
 
 class PaymentMethod extends StatefulWidget {
-  const PaymentMethod({super.key});
+  final String namesub;
+  final String brand;
+  final List<String> models;
+  final List<File> images; // <-- new param
+  final String title;
+  final String description;
+  final String transmission;
+  final String year;
+  final String region;
+  final String fueltype;
+  final String enginesize;
+  final String excolor;
+  final String incolor;
+  final List<String> inoption;
+  final List<String> technology;
+  final String bodytype;
+  final String seats;
+  final String repainted;
+  final String bodycondition;
+  final String insurance;
+  const PaymentMethod({
+    super.key,
+    required this.namesub,
+    required this.brand,
+    required this.models,
+    required this.images,
+    required this.title,
+    required this.description,
+    required this.transmission,
+    required this.year,
+    required this.region,
+    required this.fueltype,
+    required this.enginesize,
+    required this.excolor,
+    required this.incolor,
+    required this.inoption,
+    required this.technology,
+    required this.bodytype,
+    required this.seats,
+    required this.repainted,
+    required this.bodycondition,
+    required this.insurance,
+  });
 
   @override
   _PaymentMethodState createState() => _PaymentMethodState();
 }
 
 class _PaymentMethodState extends State<PaymentMethod> {
-  TextEditingController _transmissionController = TextEditingController();
-  TextEditingController _paymentController = TextEditingController();
+  final TextEditingController _transmissionController = TextEditingController();
+  final TextEditingController _paymentController = TextEditingController();
 
   List<String> filteredTransmissions = used;
   List<String> filteredPayments = payment;
@@ -32,9 +76,8 @@ class _PaymentMethodState extends State<PaymentMethod> {
   void _filterTransmission() {
     String query = _transmissionController.text.toLowerCase();
     setState(() {
-      filteredTransmissions = used
-          .where((t) => t.toLowerCase().contains(query))
-          .toList();
+      filteredTransmissions =
+          used.where((t) => t.toLowerCase().contains(query)).toList();
     });
   }
 
@@ -77,9 +120,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
           decoration: InputDecoration(
             hintText: "Search...",
             prefixIcon: Icon(Icons.search),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
           ),
         ),
         SizedBox(height: 16),
@@ -96,7 +137,10 @@ class _PaymentMethodState extends State<PaymentMethod> {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: ListTile(
-                title: Text(item, style: TextStyle(fontWeight: FontWeight.bold)),
+                title: Text(
+                  item,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 trailing: Checkbox(
                   value: isSelected,
                   onChanged: (_) => onItemTap(item),
@@ -116,7 +160,33 @@ class _PaymentMethodState extends State<PaymentMethod> {
     print("Payment Method Selected: $selectedPayment");
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => StateArea()),
+      MaterialPageRoute(
+        builder:
+            (context) => StateArea(
+              namesub: widget.namesub,
+              brand: widget.brand,
+              models: widget.models,
+              images: widget.images,
+              title: widget.title,
+              description: widget.description,
+              transmission: widget.transmission,
+              year: widget.year,
+              region: widget.region,
+              fueltype: widget.fueltype,
+              enginesize: widget.enginesize,
+              excolor: widget.excolor,
+              incolor: widget.incolor,
+              inoption: widget.inoption,
+              technology: widget.technology,
+              bodytype: widget.bodytype,
+              seats: widget.seats,
+              repainted: widget.repainted,
+              bodycondition: widget.bodycondition,
+              insurance: widget.insurance,
+              carcondition: selectedTransmission.toString(),
+              paymentmethod: selectedPayment.toString(),
+            ),
+      ),
     );
   }
 
@@ -165,7 +235,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              child: Text("Next >", style: TextStyle(color: black),),
+              child: Text("Next >", style: TextStyle(color: black)),
             ),
           ],
         ),

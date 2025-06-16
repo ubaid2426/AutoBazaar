@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/years.dart';
 import 'package:flutter/material.dart';
@@ -7,13 +9,20 @@ class ModelScreen extends StatelessWidget {
   final List<String> models;
   final IconData icon;
   final bool? filteruse;
-  final String category;
+  final String namesub;
+  final List<File>? images; // <-- new param
+  final String? title;
+  final String? description;
   const ModelScreen({
     super.key,
     required this.brand,
     required this.models,
     required this.icon,
-    required this.filteruse, required this.category,
+    required this.filteruse,
+    required this.namesub,
+    this.images,
+    this.title,
+    this.description,
   });
 
   @override
@@ -45,7 +54,17 @@ class ModelScreen extends StatelessWidget {
               } else {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => YearScreen(category: category,)),
+                  MaterialPageRoute(
+                    builder:
+                        (context) => YearScreen(
+                          namesub: namesub,
+                          brand: brand,
+                          models: models,
+                          images: images!,
+                          title: title!,
+                          description: description!,
+                        ),
+                  ),
                 );
               }
             },

@@ -1,24 +1,59 @@
+import 'dart:io';
+
 import 'package:autobazzaar/data/models/dummy_data.dart';
-import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Shop_Service/shop_service.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/seats.dart';
+// import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Shop_Service/shop_service.dart';
+// import 'package:autobazzaar/presentation/screens/PostScreens/components/seats.dart';
 import 'package:flutter/material.dart';
 
 class BodyTypeScreen extends StatefulWidget {
-  final String category;
-  final String autotype;
-  const BodyTypeScreen({super.key, required this.category, required this.autotype});
+  final String? name;
+  final String? namesub;
+  final String? brand;
+  final List<String>? models;
+  final List<File>? images; // <-- new param
+  final String? title;
+  final String? description;
+  final String? transmission;
+  final String? year;
+  final String? region;
+  final String? fueltype;
+  final String? enginesize;
+  final String? excolor;
+  final String? incolor;
+  final List<String>? inoption;
+  final List<String>? technology;
+  const BodyTypeScreen({
+    super.key,
+    this.namesub,
+    this.brand,
+    this.models,
+    this.images,
+    this.title,
+    this.description,
+    this.transmission,
+    this.year,
+    this.region,
+    this.fueltype,
+    this.enginesize,
+    this.excolor,
+    this.incolor,
+    this.inoption,
+    this.technology,
+    this.name,
+  });
 
   @override
   State<BodyTypeScreen> createState() => _BodyTypeScreenState();
 }
 
 class _BodyTypeScreenState extends State<BodyTypeScreen> {
-  Map<String, Widget Function()> categoryRoutes = {
-    "Auto Sales": () => SeatsScreen(),
-    "Shop Services": () => AutoServicePost(autotype: widget.autotype,),
-    // "Trucks": () => TruckDetailsScreen(),
-    // Add more mappings
-  };
+  // Map<String, Widget Function()> categoryRoutes = {
+  //   "Auto Sales": () => SeatsScreen(),
+  //   "Shop Services": () => AutoServicePost(autotype: widget.autotype,),
+  //   // "Trucks": () => TruckDetailsScreen(),
+  //   // Add more mappings
+  // };
 
   @override
   Widget build(BuildContext context) {
@@ -70,29 +105,36 @@ class _BodyTypeScreenState extends State<BodyTypeScreen> {
                       ),
                       trailing: Icon(Icons.chevron_right),
                       onTap: () {
-                        final nextScreenBuilder = categoryRoutes[widget.category];
-
-                        if (nextScreenBuilder != null) {
+                        if (widget.namesub == "Auto Sales") {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => nextScreenBuilder(),
-                            ),
-                          );
-                        } else {
-                          // Fallback or error
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                "No screen found for category: ${widget.category}",
-                              ),
+                              builder:
+                                  (context) => SeatsScreen(
+                                    namesub: widget.namesub!,
+                                    brand: widget.brand!,
+                                    models: widget.models!,
+                                    images: widget.images!,
+                                    title: widget.title!,
+                                    description: widget.description!,
+                                    transmission: widget.transmission!,
+                                    year: widget.year!,
+                                    region: widget.region!,
+                                    fueltype: widget.fueltype!,
+                                    enginesize: widget.enginesize!,
+                                    excolor: widget.excolor!,
+                                    incolor: widget.incolor!,
+                                    inoption: widget.inoption!,
+                                    technology: widget.technology!,
+                                    bodytype: item["title"],
+                                  ),
                             ),
                           );
                         }
 
-                        print(
-                          "Selected Body Type: ${item["title"]} in category: ${widget.category}",
-                        );
+                        // print(
+                        //   "Selected Body Type: ${item["title"]} in category: ${widget.category}",
+                        // );
                       },
                     ),
                   );

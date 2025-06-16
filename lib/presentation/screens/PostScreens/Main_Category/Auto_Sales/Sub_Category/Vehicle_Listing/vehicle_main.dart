@@ -1,5 +1,6 @@
 import 'package:autobazzaar/core/theme/colors.dart';
-import 'package:autobazzaar/presentation/screens/PostScreens/components/bodytype.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Shop_Service/shop_service.dart';
+// import 'package:autobazzaar/presentation/screens/PostScreens/components/bodytype.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/car_post_ad.dart';
 import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/presentation/widgets/cetagory_design.dart';
@@ -48,26 +49,27 @@ class VehicleSelectionScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder:
-                          (context) => BodyTypeScreen(category: 'Shop Services'),
+                          (context) => AutoServicePost(
+                            autotype: selectedCategory.name,
+                            name: name,
+                            namesub: namesub,
+                          ),
+                    ),
+                  );
+                } else {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (context) => CarPostAdScreen(
+                            // title: selectedCategory.name,
+                            namesub: namesub,
+                            name: name,
+                            autotype: selectedCategory.name,
+                          ),
                     ),
                   );
                 }
-                else{
-                      Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder:
-                        (context) => CarPostAdScreen(
-                          title: selectedCategory.name,
-                          namesub: namesub,
-                          name: name,
-                          type: selectedCategory.name,
-                        ),
-                  ),
-                );
-                }
-
-                
               },
             );
           },

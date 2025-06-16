@@ -1,19 +1,40 @@
 // car_year_screen.dart
+import 'dart:io';
+
 import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/fuel.dart';
 import 'package:flutter/material.dart';
 // import 'dummy_years.dart'; // Import the dummy data
 
 class TransmissionScreen extends StatefulWidget {
-  const TransmissionScreen({super.key});
+  final String namesub;
+  final String brand;
+  final List<String> models;
+  final List<File> images; // <-- new param
+  final String title;
+  final String description;
+  final String year;
+  final String region;
+  const TransmissionScreen({
+    super.key,
+    required this.namesub,
+    required this.brand,
+    required this.models,
+    required this.images,
+    required this.title,
+    required this.description,
+    required this.year,
+    required this.region,
+  });
 
   @override
+  // ignore: library_private_types_in_public_api
   _TransmissionScreenState createState() => _TransmissionScreenState();
 }
 
 class _TransmissionScreenState extends State<TransmissionScreen> {
   List<String> filteredtransmission = transmission;
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
@@ -45,7 +66,19 @@ class _TransmissionScreenState extends State<TransmissionScreen> {
         onTap:
             () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => TransmissionScreen()),
+              MaterialPageRoute(
+                builder:
+                    (context) => TransmissionScreen(
+                      namesub: widget.namesub,
+                      brand: widget.brand,
+                      models: widget.models,
+                      images: widget.images,
+                      year: widget.year,
+                      title: widget.title,
+                      description: widget.description,
+                      region: widget.region,
+                    ),
+              ),
             ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -91,7 +124,17 @@ class _TransmissionScreenState extends State<TransmissionScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FuelScreen(),
+                              builder:
+                                  (context) => FuelScreen(
+                                    namesub: widget.namesub,
+                                    brand: widget.brand,
+                                    models: widget.models,
+                                    images: widget.images,
+                                    year: widget.year,
+                                    title: widget.title,
+                                    description: widget.description,
+                                    region: widget.region, transmission: year,
+                                  ),
                             ),
                           );
                           // Handle year selection

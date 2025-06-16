@@ -1,21 +1,21 @@
 // import 'package:autobazzaar/components/Header.dart';
 // import 'package:autobazzaar/components/data_carousel.dart';
 import 'package:autobazzaar/components/app_bar.dart';
-import 'package:autobazzaar/components/custom_appbarsearch.dart';
-import 'package:autobazzaar/components/data_carousel.dart';
+// import 'package:autobazzaar/components/custom_appbarsearch.dart';
+// import 'package:autobazzaar/components/data_carousel.dart';
 import 'package:autobazzaar/components/header.dart';
 import 'package:autobazzaar/components/home_carousel.dart';
 // import 'package:autobazzaar/components/image_ad.dart';
 // import 'package:autobazzaar/components/main_filter.dart';
-import 'package:autobazzaar/core/theme/colors.dart';
+// import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/presentation/screens/AutoSalesMain/Vehicle_type/components/vehicle_categories.dart';
 import 'package:autobazzaar/presentation/screens/AutoSalesMain/Vehicle_type/vehicle_detail.dart';
 // import 'package:autobazzaar/presentation/screens/Home/components/top_category.dart';
 // import 'package:autobazzaar/presentation/widgets/button.dart';
-import 'package:autobazzaar/presentation/widgets/drawers_main.dart';
-import 'package:autobazzaar/presentation/widgets/horizontal_filter.dart';
-import 'package:autobazzaar/presentation/widgets/shortfilter.dart';
+// import 'package:autobazzaar/presentation/widgets/drawers_main.dart';
+// import 'package:autobazzaar/presentation/widgets/horizontal_filter.dart';
+// import 'package:autobazzaar/presentation/widgets/shortfilter.dart';
 // import 'package:autobazzaar/presentation/widgets/shortfilter.dart';
 import 'package:flutter/material.dart';
 

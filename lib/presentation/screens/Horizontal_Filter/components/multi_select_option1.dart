@@ -5,10 +5,22 @@ import 'package:flutter/material.dart';
 class MultiSelectOption1 extends StatefulWidget {
   final Map<String, dynamic> options;
   final bool ispost;
+  final String? autotype;
+  final String? mainheading;
+  final List<String>? subheading;
+  final String? name;
+  final String? namesub;
+  // final List<String> services;
   const MultiSelectOption1({
     super.key,
     required this.options,
     required this.ispost,
+    this.autotype,
+    this.mainheading,
+    this.subheading,
+    this.name,
+    this.namesub,
+    // required this.services,
   });
 
   @override
@@ -119,7 +131,14 @@ class _MultiSelectOption1State extends State<MultiSelectOption1> {
                     context,
                     MaterialPageRoute(
                       builder:
-                          (_) => PhoneNumberInputScreen(),
+                          (_) => PhoneNumberInputScreen(
+                            autotype: widget.autotype,
+                            mainheading: widget.mainheading,
+                            subheading: widget.subheading,
+                            services: selectedItems,
+                            name: widget.name,
+                            namesub: widget.namesub,
+                          ),
                     ),
                   );
                 } else {

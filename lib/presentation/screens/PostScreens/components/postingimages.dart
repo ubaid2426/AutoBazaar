@@ -4,7 +4,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:animated_reorderable_list/animated_reorderable_list.dart';
 
 class PostingImages extends StatefulWidget {
-  const PostingImages({super.key});
+   final Function(List<File>) onImagesSelected;
+  const PostingImages({super.key, required this.onImagesSelected});
 
   @override
   _PostingImagesState createState() => _PostingImagesState();
@@ -21,6 +22,7 @@ class _PostingImagesState extends State<PostingImages> {
       setState(() {
         selectedImages.addAll(images.map((e) => File(e.path)));
       });
+        widget.onImagesSelected(selectedImages); // <-- Notify parent
     }
   }
 
@@ -32,6 +34,7 @@ class _PostingImagesState extends State<PostingImages> {
       setState(() {
         selectedImages[index] = File(newImage.path);
       });
+      widget.onImagesSelected(selectedImages); // <-- Notify parent
     }
   }
 
@@ -59,7 +62,7 @@ class _PostingImagesState extends State<PostingImages> {
                   crossAxisCount: 4,
                   crossAxisSpacing: 5,
                   mainAxisSpacing: 5,
-                  childAspectRatio: 1,
+                  childAspectRatio: .9,
                 ),
                 itemBuilder: (context, index) {
                   final image = selectedImages[index];

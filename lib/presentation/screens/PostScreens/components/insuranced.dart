@@ -1,4 +1,6 @@
 // car_year_screen.dart
+import 'dart:io';
+
 import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/payment.dart';
 // import 'package:autobazzaar/presentation/screens/PostScreens/components/excolor.dart';
@@ -7,7 +9,47 @@ import 'package:flutter/material.dart';
 // import 'dummy_years.dart'; // Import the dummy data
 
 class Insuranced extends StatefulWidget {
-  const Insuranced({super.key});
+  final String? namesub;
+  final String? brand;
+  final List<String>? models;
+  final List<File>? images; // <-- new param
+  final String? title;
+  final String? description;
+  final String? transmission;
+  final String? year;
+  final String? region;
+  final String? fueltype;
+  final String? enginesize;
+  final String? excolor;
+  final String? incolor;
+  final List<String>? inoption;
+  final List<String>? technology;
+  final String? bodytype;
+  final String? seats;
+  final String? repainted;
+  final String? bodycondition;
+  const Insuranced({
+    super.key,
+    this.namesub,
+    this.brand,
+    this.models,
+    this.images,
+    this.title,
+    this.description,
+    this.transmission,
+    this.year,
+    this.region,
+    this.fueltype,
+    this.enginesize,
+    this.excolor,
+    this.incolor,
+    this.inoption,
+    this.technology,
+    this.bodytype,
+    this.seats,
+    this.repainted,
+    this.bodycondition,
+  });
 
   @override
   _InsurancedState createState() => _InsurancedState();
@@ -47,7 +89,30 @@ class _InsurancedState extends State<Insuranced> {
         onTap:
             () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Insuranced()),
+              MaterialPageRoute(
+                builder:
+                    (context) => Insuranced(
+                      namesub: widget.namesub,
+                      brand: widget.brand,
+                      models: widget.models,
+                      images: widget.images,
+                      title: widget.title,
+                      description: widget.description,
+                      transmission: widget.transmission,
+                      year: widget.year,
+                      region: widget.region,
+                      fueltype: widget.fueltype,
+                      enginesize: widget.enginesize,
+                      excolor: widget.excolor,
+                      incolor: widget.incolor,
+                      inoption: widget.inoption,
+                      technology: widget.technology,
+                      bodytype: widget.bodytype,
+                      seats: widget.seats,
+                      repainted: widget.repainted,
+                      bodycondition: widget.bodycondition,
+                    ),
+              ),
             ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -93,7 +158,29 @@ class _InsurancedState extends State<Insuranced> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => PaymentMethod(),
+                              builder:
+                                  (context) => PaymentMethod(
+                                    namesub: widget.namesub!,
+                                    brand: widget.brand!,
+                                    models: widget.models!,
+                                    images: widget.images!,
+                                    title: widget.title!,
+                                    description: widget.description!,
+                                    transmission: widget.transmission!,
+                                    year: widget.year!,
+                                    region: widget.region!,
+                                    fueltype: widget.fueltype!,
+                                    enginesize: widget.enginesize!,
+                                    excolor: widget.excolor!,
+                                    incolor: widget.incolor!,
+                                    inoption: widget.inoption!,
+                                    technology: widget.technology!,
+                                    bodytype: widget.bodytype!,
+                                    seats: widget.seats!,
+                                    repainted: widget.repainted!,
+                                    bodycondition: widget.bodycondition!,
+                                    insurance: year,
+                                  ),
                             ),
                           );
                           // Handle year selection

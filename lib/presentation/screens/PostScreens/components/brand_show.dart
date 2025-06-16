@@ -1,14 +1,46 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/models_show.dart';
 import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class BrandScreen extends StatefulWidget {
-  final String type;
+  final String? name;
+  final String? namesub;
+  final String? autotype;
   final bool? filteruse;
-  final String category;
-  const BrandScreen({super.key, required this.type, required this.filteruse, required this.category});
+  // final String? namesub;
+  final List<File>? images; // <-- new param
+  final String? title;
+  final String? description;
+  // for auto services
+  final String? mainheading;
+  final List<String>? subheading;
+  final Map<String, Set<String>>? services;
+  final String? contactnumber;
+  final String? country;
+  final String? state;
+  final String? region;
+  final String? city;
+  const BrandScreen({
+    super.key,
+    this.autotype,
+    this.filteruse,
+    this.namesub,
+    this.images,
+    this.title,
+    this.description,
+    this.mainheading,
+    this.subheading,
+    this.services,
+    this.contactnumber,
+    this.country,
+    this.state,
+    this.city,
+    this.name,
+    this.region,
+  });
   @override
   State<BrandScreen> createState() => _BrandScreenState();
 }
@@ -28,16 +60,16 @@ class _BrandScreenState extends State<BrandScreen> {
   Future<void> loadCarData() async {
     String jsonFile = '';
 
-    if (widget.type == "Car" || widget.type == "Taxi") {
+    if (widget.autotype == "Car" || widget.autotype == "Taxi") {
       jsonFile = 'assets/json/carbrand.json';
-    } else if (widget.type == "Motor bike") {
+    } else if (widget.autotype == "Motor bike") {
       jsonFile = 'assets/json/bikebrand.json';
-    } else if (widget.type == "Quad/Buggy") {
+    } else if (widget.autotype == "Quad/Buggy") {
       jsonFile = 'assets/json/quadbikebrand.json';
-    } else if (widget.type == "Water Crafts") {
+    } else if (widget.autotype == "Water Crafts") {
       jsonFile = 'assets/json/boatbrand.json';
     } else {
-      debugPrint("Invalid type: ${widget.type}");
+      debugPrint("Invalid type: ${widget.autotype}");
       return;
     }
 
@@ -150,8 +182,12 @@ class _BrandScreenState extends State<BrandScreen> {
                                       (context) => ModelScreen(
                                         brand: brand,
                                         models: carData[brand]!,
-                                        icon: getIconForType(widget.type),
-                                        filteruse: widget.filteruse!, category: widget.category,
+                                        icon: getIconForType(widget.autotype!),
+                                        filteruse: widget.filteruse!,
+                                        namesub: widget.namesub!,
+                                        images: widget.images!,
+                                        title: widget.title!,
+                                        description: widget.description!,
                                       ),
                                 ),
                               );
@@ -164,7 +200,7 @@ class _BrandScreenState extends State<BrandScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Icon(
-                                    getIconForType(widget.type),
+                                    getIconForType(widget.autotype!),
                                     size: 28,
                                     color: red,
                                   ),

@@ -1,13 +1,28 @@
 // car_year_screen.dart
+import 'dart:io';
+
 import 'package:autobazzaar/data/models/dummy_data.dart';
-import 'package:autobazzaar/presentation/screens/PostScreens/components/payment.dart';
+// import 'package:autobazzaar/presentation/screens/PostScreens/components/payment.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/region.dart';
 import 'package:flutter/material.dart';
 // import 'dummy_years.dart'; // Import the dummy data
 
 class YearScreen extends StatefulWidget {
-  final String category;
-  const YearScreen({super.key, required this.category});
+  final String namesub;
+  final String? brand;
+  final List<String>? models;
+  final List<File> images; // <-- new param
+  final String title;
+  final String description;
+  const YearScreen({
+    super.key,
+    required this.namesub,
+    this.brand,
+    this.models,
+    required this.images,
+    required this.title,
+    required this.description,
+  });
 
   @override
   _YearScreenState createState() => _YearScreenState();
@@ -84,24 +99,31 @@ class _YearScreenState extends State<YearScreen> {
                       ),
                       trailing: Icon(Icons.chevron_right),
                       onTap: () {
-                        if (widget.category == 'Auto Parts') {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder:
-                                  (context) => PaymentMethod(
-                                    // category: 'Auto Sales',
-                                    // year: year,
-                                  ),
-                            ),
-                          );
+                        if (widget.namesub == 'Auto Parts') {
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder:
+                          //         (context) => PaymentMethod(
+                          //           // category: 'Auto Sales',
+                          //           // year: year,
+                          //         ),
+                          //   ),
+                          // );
                         } else {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder:
-                                  (context) =>
-                                      RegionScreen(category: 'Auto Sales'),
+                                  (context) => RegionScreen(
+                                    namesub: widget.namesub,
+                                    brand: widget.brand,
+                                    models: widget.models,
+                                    images: widget.images,
+                                    title: widget.title,
+                                    description: widget.description,
+                                    year: year,
+                                  ),
                             ),
                           );
                         }

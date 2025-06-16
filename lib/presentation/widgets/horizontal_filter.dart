@@ -40,7 +40,9 @@ class _HorizontalFilterState extends State<HorizontalFilter> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MainFilterScreen(type: widget.type,)),
+                  MaterialPageRoute(
+                    builder: (context) => MainFilterScreen(type: widget.type),
+                  ),
                 );
               },
               child: SizedBox(
@@ -95,7 +97,11 @@ class _HorizontalFilterState extends State<HorizontalFilter> {
                     items: [],
                     options: [],
                     multiseslect: false,
-                    navigate: BrandScreen(type: widget.type, filteruse: true, category: 'extra',),
+                    navigate: BrandScreen(
+                      autotype: widget.type,
+                      filteruse: true,
+                      // : 'extra',
+                    ),
                   ),
                   // FilterButton(
                   //   title: 'Models',

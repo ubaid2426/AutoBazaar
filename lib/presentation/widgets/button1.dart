@@ -1,6 +1,6 @@
 // import 'package:autobazzaar/components/main_filter.dart';
 import 'package:autobazzaar/core/theme/colors.dart';
-import 'package:autobazzaar/presentation/screens/Horizontal_Filter/components/multi_select_option.dart';
+// import 'package:autobazzaar/presentation/screens/Horizontal_Filter/components/multi_select_option.dart';
 import 'package:autobazzaar/presentation/screens/Horizontal_Filter/components/multi_select_option1.dart';
 // import 'package:autobazzaar/presentation/screens/MainFilter/main_filter.dart';
 // import 'package:autobazzaar/presentation/screens/MainFilter/main_filter_service.dart';
@@ -32,7 +32,9 @@ class FilterButton1 extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => MultiSelectOption1(options: options!, ispost:false),
+                builder:
+                    (context) =>
+                        MultiSelectOption1(options: options!, ispost: false),
                 // builder: (context) => const QiblaApp(),
               ),
             );
@@ -49,7 +51,9 @@ class FilterButton1 extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => MultiSelectOption1(options: options!, ispost:false),
+              builder:
+                  (context) =>
+                      MultiSelectOption1(options: options!, ispost: false),
               // builder: (context) => const QiblaApp(),
             ),
           );

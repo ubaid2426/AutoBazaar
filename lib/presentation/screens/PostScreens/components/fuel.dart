@@ -1,11 +1,33 @@
 // car_year_screen.dart
+import 'dart:io';
+
 import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/engine.dart';
 import 'package:flutter/material.dart';
 // import 'dummy_years.dart'; // Import the dummy data
 
 class FuelScreen extends StatefulWidget {
-  const FuelScreen({super.key});
+  final String namesub;
+  final String brand;
+  final List<String> models;
+  final List<File> images; // <-- new param
+  final String title;
+  final String description;
+  final String transmission;
+  final String year;
+  final String region;
+  const FuelScreen({
+    super.key,
+    required this.namesub,
+    required this.brand,
+    required this.models,
+    required this.images,
+    required this.title,
+    required this.description,
+    required this.transmission,
+    required this.year,
+    required this.region,
+  });
 
   @override
   _FuelScreenState createState() => _FuelScreenState();
@@ -25,9 +47,7 @@ class _FuelScreenState extends State<FuelScreen> {
     String query = _searchController.text.toLowerCase();
     setState(() {
       filteredtransmission =
-          fuel
-              .where((year) => year.toLowerCase().contains(query))
-              .toList();
+          fuel.where((year) => year.toLowerCase().contains(query)).toList();
     });
   }
 
@@ -45,7 +65,20 @@ class _FuelScreenState extends State<FuelScreen> {
         onTap:
             () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => FuelScreen()),
+              MaterialPageRoute(
+                builder:
+                    (context) => FuelScreen(
+                      namesub: widget.namesub,
+                      brand: widget.brand,
+                      models: widget.models,
+                      images: widget.images,
+                      year: widget.year,
+                      title: widget.title,
+                      description: widget.description,
+                      region: widget.region,
+                      transmission: widget.transmission,
+                    ),
+              ),
             ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -91,7 +124,18 @@ class _FuelScreenState extends State<FuelScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => EngineScreen(),
+                              builder:
+                                  (context) => EngineScreen(
+                                    namesub: widget.namesub,
+                                    brand: widget.brand,
+                                    models: widget.models,
+                                    images: widget.images,
+                                    year: widget.year,
+                                    title: widget.title,
+                                    description: widget.description,
+                                    region: widget.region,
+                                    transmission: widget.transmission, fueltype: year,
+                                  ),
                             ),
                           );
                           // Handle year selection

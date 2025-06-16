@@ -84,7 +84,7 @@ class HorizontalFilterService extends StatelessWidget {
                     items: items!,
                     options: [],
                     multiseslect: false,
-                    navigate: BodyTypeScreen(category: "Auto Services"),
+                    navigate: BodyTypeScreen(name: "Shop & Services"),
                   ),
                   FilterButton(
                     title: 'Regional Specs',
