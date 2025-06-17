@@ -1,16 +1,18 @@
 import 'package:autobazzaar/core/theme/colors.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/bodytype.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/number.dart';
 import 'package:flutter/material.dart';
 
 class AutoServiceDetailScreen extends StatefulWidget {
   final String categoryTitle;
   final List<String> items;
-
+  final String name;
+  final String namesub;
   const AutoServiceDetailScreen({
-    Key? key,
+    super.key,
     required this.categoryTitle,
-    required this.items,
-  }) : super(key: key);
+    required this.items, required this.name, required this.namesub,
+  });
 
   @override
   State<AutoServiceDetailScreen> createState() => _AutoServiceDetailScreenState();
@@ -31,12 +33,23 @@ class _AutoServiceDetailScreenState extends State<AutoServiceDetailScreen> {
 
   void _onNextPressed() {
     if (_selectedItems.isNotEmpty) {
+      if(widget.namesub=="Auto Parts"){
+          Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => BodyTypeScreen(), // you can also pass selected items
+        ),
+      );
+      }
+      else{
       Navigator.push(
         context,
         MaterialPageRoute(
           builder: (_) => PhoneNumberInputScreen(), // you can also pass selected items
         ),
       );
+      }
+
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please select at least one option.')),

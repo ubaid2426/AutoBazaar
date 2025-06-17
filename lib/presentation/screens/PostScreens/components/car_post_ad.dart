@@ -103,7 +103,7 @@ class _CarPostAdScreenState extends State<CarPostAdScreen> {
       screen = RegionScreen(autotype: autotype); // Replace with actual screen
     } else if (namesub == "Auto\n Parts") {
       screen = AutopartForm(
-        selectedVehicleType: autotype,
+        autotype: autotype, name: name, namesub: namesub,
       ); // Replace with actual screen
     } else if (namesub == "Accidental & Autos") {
       screen = AccidentAutoForm(); // Replace with actual screen

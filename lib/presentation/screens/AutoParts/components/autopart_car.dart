@@ -212,14 +212,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class AutopartCar extends StatelessWidget {
   final String autotype;
+  final String name;
+  final String namesub;
+  const AutopartCar({super.key, required this.autotype, required this.name, required this.namesub});
 
-  const AutopartCar({super.key, required this.autotype});
-
-  Future<Map<String, dynamic>> _loadAutoPartsData(String type) async {
-    final String path = 'assets/json/auto_parts/auto_parts_car.json'; // Adjust path if needed
+  Future<Map<String, dynamic>> _loadAutoPartsData() async {
+    final String path = 'assets/json/auto_parts/car/car_data.json'; // Adjust path if needed
     final String jsonStr = await rootBundle.loadString(path);
     final Map<String, dynamic> decoded = json.decode(jsonStr);
-    return decoded[type] ?? {};
+    print(decoded);
+    return decoded;
   }
 
   @override
@@ -249,7 +251,7 @@ class AutopartCar extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   FutureBuilder<Map<String, dynamic>>(
-                    future: _loadAutoPartsData(autotype),
+                    future: _loadAutoPartsData(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(child: CircularProgressIndicator());
@@ -283,7 +285,7 @@ class AutopartCar extends StatelessWidget {
                                   MaterialPageRoute(
                                     builder: (_) => AutoPartsSubCategory(
                                       autotype: autotype,
-                                      category: category,
+                                      category: category, ispost: false, name: name, namesub: namesub,
                                     ),
                                   ),
                                 );

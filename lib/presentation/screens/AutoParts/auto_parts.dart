@@ -12,7 +12,8 @@ import 'package:flutter/material.dart';
 class AutoPartsMain extends StatelessWidget {
   final String title;
   const AutoPartsMain({super.key, required this.title});
-
+  // final String name;
+  // final String namesub;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,11 +68,10 @@ class AutoPartsMain extends StatelessWidget {
                                   case "RV/Camper van":
                                   case "Water Crafts":
                                     screen = AutopartCar(
-                                      selectedVehicleType: category.name,
+                                    autotype: category.name,
                                     );
                                     break;
                                 }
-
                                 if (screen != null) {
                                   Navigator.push(
                                     context,

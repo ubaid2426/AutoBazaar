@@ -9,6 +9,7 @@ import 'package:autobazzaar/presentation/screens/PostScreens/listing_sub_categor
 import 'package:flutter/material.dart';
 
 class ListingCategory extends StatelessWidget {
+
   const ListingCategory({super.key});
   void navigateToVehicleScreen(
     BuildContext context,
@@ -25,7 +26,7 @@ class ListingCategory extends StatelessWidget {
       screen = VehicleSelectionScreen(namesub: "", name: name);
     } else if (name == "Auto\n Rental") {
       screen = AutopartForm(
-        selectedVehicleType: 'Car',
+        autotype: 'Car', name: name, namesub: '',
         // title: 'Auto Part Form',
       ); // Replace with actual screen
     } else if (name == "Auto \n Wanted") {
