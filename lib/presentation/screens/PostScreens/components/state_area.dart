@@ -116,13 +116,42 @@ class _StateAreaState extends State<StateArea> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => PhoneNumberInputScreen(),
+                      builder: (context) => PhoneNumberInputScreen(
+                              namesub: widget.namesub,
+              brand: widget.brand,
+              models: widget.models,
+              images: widget.images,
+              title: widget.title,
+              description: widget.description,
+              transmission: widget.transmission,
+              year: widget.year,
+              region: widget.region,
+              fueltype: widget.fueltype,
+              enginesize: widget.enginesize,
+              excolor: widget.excolor,
+              incolor: widget.incolor,
+              inoption: widget.inoption,
+              technology: widget.technology,
+              bodytype: widget.bodytype,
+              seats: widget.seats,
+              repainted: widget.repainted,
+              bodycondition: widget.bodycondition,
+              insurance: widget.insurance,
+              carcondition: widget.carcondition,
+              paymentmethod: widget.paymentmethod,
+              name: widget.name,
+                      ),
                     ),
                   );
                 } else {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => RegionScreen(name: widget.name,)),
+                    MaterialPageRoute(builder: (context) => RegionScreen(name: widget.name,  autotype: widget.autotype,
+                                    mainheading: widget.mainheading,
+                                    subheading: widget.subheading,
+                                    services: widget.services,
+                                    // name: widget.name,
+                                    namesub: widget.namesub,)),
                   );
                 }
               },

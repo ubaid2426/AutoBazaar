@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/models_show.dart';
 import 'package:autobazzaar/core/theme/colors.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/working_hours.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -123,6 +124,7 @@ class _BrandScreenState extends State<BrandScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.autotype);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -175,13 +177,23 @@ class _BrandScreenState extends State<BrandScreen> {
                           ),
                           child: InkWell(
                             onTap: () {
-                              Navigator.push(
+                              if(widget.name=="Shop &\n Services"){
+                                   Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder:
+                                      (context) => BranchAndWorkingHoursScreen()
+                                ),
+                              );
+                              }
+                              else{
+                                     Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder:
                                       (context) => ModelScreen(
                                         brand: brand,
-                                        name: widget.name??"null name",
+                                        name: widget.name,
                                         models: carData[brand]!,
                                         icon: getIconForType(widget.autotype??"null type"),
                                         filteruse: widget.filteruse??false,
@@ -192,6 +204,8 @@ class _BrandScreenState extends State<BrandScreen> {
                                       ),
                                 ),
                               );
+                              }
+                         
                             },
                             borderRadius: BorderRadius.circular(16),
                             child: Padding(

@@ -131,7 +131,7 @@ class _RegionScreenState extends State<RegionScreen> {
                             MaterialPageRoute(
                               builder:
                                   (context) => TransmissionScreen(
-                                    name: widget.name ?? "null name",
+                                    name: widget.name,
                                     namesub: widget.namesub ?? "null namesub",
                                     brand: widget.brand ?? "null brand",
                                     models: widget.models ?? ["null models"],
@@ -155,11 +155,11 @@ class _RegionScreenState extends State<RegionScreen> {
                               builder:
                                   (context) => BrandScreen(
                                     autotype: widget.autotype,
-                                    mainheading: widget.mainheading!,
-                                    subheading: widget.subheading!,
-                                    services: widget.services!,
-                                    name: widget.name!,
-                                    namesub: widget.namesub!,
+                                    mainheading: widget.mainheading,
+                                    subheading: widget.subheading,
+                                    services: widget.services,
+                                    name: widget.name,
+                                    namesub: widget.namesub,
                                     region: _searchController.text,
                                   ),
                             ),

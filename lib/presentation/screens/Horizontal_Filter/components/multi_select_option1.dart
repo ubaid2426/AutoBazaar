@@ -152,7 +152,7 @@ class _MultiSelectOption1State extends State<MultiSelectOption1> {
                               mainheading: widget.mainheading,
                               subheading: widget.subheading,
                               services: selectedItems,
-                              name: widget.name,
+                              name: widget.name!,
                               namesub: widget.namesub,
                             ),
                       ),

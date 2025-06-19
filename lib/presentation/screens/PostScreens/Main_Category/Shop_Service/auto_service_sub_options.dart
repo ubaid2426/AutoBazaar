@@ -61,7 +61,7 @@ class _AutoServiceDetailScreenState extends State<AutoServiceDetailScreen> {
           MaterialPageRoute(
             builder:
                 (_) =>
-                    PhoneNumberInputScreen(), // you can also pass selected items
+                    PhoneNumberInputScreen(name: widget.name,), // you can also pass selected items
           ),
         );
       }
