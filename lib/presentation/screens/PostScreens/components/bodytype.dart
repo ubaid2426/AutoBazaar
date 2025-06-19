@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'dart:math';
+// import 'dart:math';
 
 import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/seats.dart';
