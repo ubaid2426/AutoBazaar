@@ -145,7 +145,7 @@ class _YearScreenState extends State<YearScreen> {
                                     title: widget.title,
                                     description: widget.description,
                                     year: year,
-                                    name: widget.name,
+                                    name: widget.name??"",
                                   ),
                             ),
                           );

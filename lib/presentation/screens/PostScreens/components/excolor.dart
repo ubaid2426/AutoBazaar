@@ -5,6 +5,7 @@ import 'package:autobazzaar/presentation/screens/PostScreens/components/incolor.
 import 'package:flutter/material.dart';
 
 class ExteriorColor extends StatefulWidget {
+  final String name;
   final String namesub;
   final String brand;
   final List<String> models;
@@ -29,7 +30,8 @@ class ExteriorColor extends StatefulWidget {
     required this.year,
     required this.region,
     required this.fueltype,
-    required this.enginesize, required this.autotype,
+    required this.enginesize,
+    required this.autotype, required this.name,
   });
 
   @override
@@ -139,6 +141,7 @@ class _ExteriorColorState extends State<ExteriorColor> {
                           MaterialPageRoute(
                             builder:
                                 (context) => InteriorColor(
+                                  name: widget.name,
                                   namesub: widget.namesub,
                                   brand: widget.brand,
                                   models: widget.models,

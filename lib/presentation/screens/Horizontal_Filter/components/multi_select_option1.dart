@@ -134,7 +134,7 @@ class _MultiSelectOption1State extends State<MultiSelectOption1> {
                       MaterialPageRoute(
                         builder:
                             (_) => BodyTypeScreen(
-                              name: widget.name,
+                              name: widget.name??"",
                               namesub: widget.namesub,
                               autotype: widget.autotype,
                               maincategory: widget.name,

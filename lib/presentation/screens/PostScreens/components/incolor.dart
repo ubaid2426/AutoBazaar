@@ -4,6 +4,7 @@ import 'package:autobazzaar/presentation/screens/PostScreens/components/inoption
 import 'package:flutter/material.dart';
 
 class InteriorColor extends StatefulWidget {
+  final String name;
   final String namesub;
   final String autotype;
   final String brand;
@@ -30,7 +31,9 @@ class InteriorColor extends StatefulWidget {
     required this.region,
     required this.fueltype,
     required this.enginesize,
-    required this.excolor, required this.autotype,
+    required this.excolor,
+    required this.autotype,
+    required this.name,
   });
 
   @override
@@ -160,6 +163,7 @@ class _InteriorColorState extends State<InteriorColor> {
                           MaterialPageRoute(
                             builder:
                                 (context) => InteriorOptions(
+                                  name: widget.name,
                                   namesub: widget.namesub,
                                   brand: widget.brand,
                                   models: widget.models,
@@ -172,7 +176,8 @@ class _InteriorColorState extends State<InteriorColor> {
                                   fueltype: widget.fueltype,
                                   enginesize: widget.enginesize,
                                   excolor: widget.excolor,
-                                  incolor: item["name"], autotpe: widget.autotype,
+                                  incolor: item["name"],
+                                  autotpe: widget.autotype,
                                 ),
                           ),
                         );

@@ -6,6 +6,7 @@ import 'package:autobazzaar/presentation/screens/PostScreens/components/techopti
 import 'package:flutter/material.dart';
 
 class InteriorOptions extends StatefulWidget {
+  final String name;
   final String namesub;
   final String brand;
   final String autotpe;
@@ -34,7 +35,8 @@ class InteriorOptions extends StatefulWidget {
     required this.fueltype,
     required this.enginesize,
     required this.excolor,
-    required this.incolor, required this.autotpe,
+    required this.incolor,
+    required this.autotpe, required this.name,
   });
 
   @override
@@ -173,6 +175,7 @@ class _InteriorOptionsState extends State<InteriorOptions> {
                       MaterialPageRoute(
                         builder:
                             (context) => TechOptions(
+                              name: widget.name,
                               namesub: widget.namesub,
                               brand: widget.brand,
                               models: widget.models,
@@ -186,7 +189,8 @@ class _InteriorOptionsState extends State<InteriorOptions> {
                               enginesize: widget.enginesize,
                               excolor: widget.excolor,
                               incolor: widget.incolor,
-                              inoption: selectedOptions, autotype: widget.autotpe,
+                              inoption: selectedOptions,
+                              autotype: widget.autotpe,
                             ),
                       ),
                     );

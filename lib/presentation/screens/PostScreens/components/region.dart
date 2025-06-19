@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 // import 'dummy_years.dart'; // Import the dummy data
 
 class RegionScreen extends StatefulWidget {
-  final String? name;
+  final String name;
   final String? namesub;
   final String? brand;
   final List<String>? models;
@@ -40,7 +40,7 @@ class RegionScreen extends StatefulWidget {
     this.autotype,
     // this.selectedCategory,
     // this.selectedSubCategory,
-    this.name,
+    required this.name,
     this.mainheading,
     this.subheading,
     this.services,
@@ -131,15 +131,20 @@ class _RegionScreenState extends State<RegionScreen> {
                             MaterialPageRoute(
                               builder:
                                   (context) => TransmissionScreen(
-                                    namesub: widget.namesub??"null namesub",
-                                    brand: widget.brand??"null brand",
-                                    models: widget.models??["null models"],
-                                    images: widget.images??[File("null images")],
-                                    title: widget.title??"null title",
-                                    description: widget.description??"null description",
-                                    year: widget.year??"null year",
+                                    name: widget.name ?? "null name",
+                                    namesub: widget.namesub ?? "null namesub",
+                                    brand: widget.brand ?? "null brand",
+                                    models: widget.models ?? ["null models"],
+                                    images:
+                                        widget.images ?? [File("null images")],
+                                    title: widget.title ?? "null title",
+                                    description:
+                                        widget.description ??
+                                        "null description",
+                                    year: widget.year ?? "null year",
                                     region: _searchController.text,
-                                    autotype: widget.autotype??"null autotype",
+                                    autotype:
+                                        widget.autotype ?? "null autotype",
                                   ),
                             ),
                           );

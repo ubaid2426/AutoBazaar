@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 // import 'dummy_years.dart'; // Import the dummy data
 
 class SeatsScreen extends StatefulWidget {
+  final String name;
   final String namesub;
   final String brand;
   final List<String> models;
@@ -42,6 +43,7 @@ class SeatsScreen extends StatefulWidget {
     required this.inoption,
     required this.technology,
     required this.bodytype,
+    required this.name,
   });
 
   @override
@@ -83,6 +85,7 @@ class _SeatsScreenState extends State<SeatsScreen> {
               MaterialPageRoute(
                 builder:
                     (context) => SeatsScreen(
+                      name: widget.name,
                       namesub: widget.namesub,
                       brand: widget.brand,
                       models: widget.models,
@@ -148,6 +151,7 @@ class _SeatsScreenState extends State<SeatsScreen> {
                             MaterialPageRoute(
                               builder:
                                   (context) => RepaintScreen(
+                                    name: widget.name,
                                     namesub: widget.namesub,
                                     brand: widget.brand,
                                     models: widget.models,

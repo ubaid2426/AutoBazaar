@@ -4,14 +4,13 @@ import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/state_area.dart';
 import 'package:flutter/material.dart';
 import 'package:autobazzaar/data/models/dummy_data.dart';
-// import 'package:autobazzaar/presentation/screens/PostScreens/components/fuel.dart';
-// import 'package:autobazzaar/presentation/screens/PostScreens/components/Insuranced.dart';
 
 class PaymentMethod extends StatefulWidget {
+  final String name;
   final String namesub;
   final String brand;
   final List<String> models;
-  final List<File> images; // <-- new param
+  final List<File> images;
   final String title;
   final String description;
   final String transmission;
@@ -28,6 +27,7 @@ class PaymentMethod extends StatefulWidget {
   final String repainted;
   final String bodycondition;
   final String insurance;
+
   const PaymentMethod({
     super.key,
     required this.namesub,
@@ -49,7 +49,7 @@ class PaymentMethod extends StatefulWidget {
     required this.seats,
     required this.repainted,
     required this.bodycondition,
-    required this.insurance,
+    required this.insurance, required this.name,
   });
 
   @override
@@ -59,6 +59,8 @@ class PaymentMethod extends StatefulWidget {
 class _PaymentMethodState extends State<PaymentMethod> {
   final TextEditingController _transmissionController = TextEditingController();
   final TextEditingController _paymentController = TextEditingController();
+  final TextEditingController _priceController =
+      TextEditingController(); // Added
 
   List<String> filteredTransmissions = used;
   List<String> filteredPayments = payment;
@@ -71,6 +73,11 @@ class _PaymentMethodState extends State<PaymentMethod> {
     super.initState();
     _transmissionController.addListener(_filterTransmission);
     _paymentController.addListener(_filterPayment);
+    _priceController.addListener(_updateNextButton);
+  }
+
+  void _updateNextButton() {
+    setState(() {}); // Just to rebuild the button when user types in price
   }
 
   void _filterTransmission() {
@@ -93,6 +100,8 @@ class _PaymentMethodState extends State<PaymentMethod> {
   void dispose() {
     _transmissionController.dispose();
     _paymentController.dispose();
+    _priceController.removeListener(_updateNextButton); // optional cleanup
+    _priceController.dispose(); // Dispose the new controller
     super.dispose();
   }
 
@@ -158,6 +167,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
   void _handleNext() {
     print("Transmission Selected: $selectedTransmission");
     print("Payment Method Selected: $selectedPayment");
+    print("Price: ${_priceController.text}");
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -185,13 +195,18 @@ class _PaymentMethodState extends State<PaymentMethod> {
               insurance: widget.insurance,
               carcondition: selectedTransmission.toString(),
               paymentmethod: selectedPayment.toString(),
+              name: widget.name,
+              // You may add price as well if needed
+              // price: _priceController.text,
             ),
       ),
     );
   }
 
   bool get isNextEnabled =>
-      selectedTransmission != null && selectedPayment != null;
+      selectedTransmission != null &&
+      selectedPayment != null &&
+      _priceController.text.isNotEmpty;
 
   @override
   Widget build(BuildContext context) {
@@ -225,7 +240,18 @@ class _PaymentMethodState extends State<PaymentMethod> {
                 });
               },
             ),
-            SizedBox(height: 16),
+            TextField(
+              controller: _priceController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: "Enter Price (PKR)",
+                prefixIcon: Icon(Icons.attach_money),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            ),
+            SizedBox(height: 24),
             ElevatedButton(
               onPressed: isNextEnabled ? _handleNext : null,
               style: ElevatedButton.styleFrom(

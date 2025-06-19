@@ -72,7 +72,7 @@ class _PhoneNumberInputScreenState extends State<PhoneNumberInputScreen> {
                 mainheading: widget.mainheading,
                 subheading: widget.subheading,
                 services: widget.services,
-                name: widget.name,
+                name: widget.name??"null name in number",
                 namesub: widget.namesub,
                 contactnumber: numbers,
               ),

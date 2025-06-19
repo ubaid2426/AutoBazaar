@@ -101,7 +101,7 @@ class _CarPostAdScreenState extends State<CarPostAdScreen> {
         );
       }
     } else if (name == "Shop &\n Services") {
-      screen = RegionScreen(autotype: autotype); // Replace with actual screen
+      screen = RegionScreen(autotype: autotype, name: name, namesub: namesub); // Replace with actual screen
     } else if (namesub == "Auto\n Parts") {
       screen = AutopartForm(
         autotype: autotype, name: name, namesub: namesub,

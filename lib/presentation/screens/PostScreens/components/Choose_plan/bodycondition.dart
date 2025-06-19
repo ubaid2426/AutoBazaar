@@ -170,6 +170,7 @@ class _BodyConditionState extends State<BodyCondition> {
                             MaterialPageRoute(
                               builder:
                                   (context) => Insuranced(
+                                    name: widget.name,
                                     namesub: widget.namesub,
                                     brand: widget.brand,
                                     models: widget.models,

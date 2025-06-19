@@ -9,7 +9,7 @@ import 'package:autobazzaar/presentation/screens/PostScreens/components/years.da
 import 'package:flutter/material.dart';
 
 class BodyTypeScreen extends StatefulWidget {
-  final String? name;
+  final String name;
   final String? namesub;
   final String? brand;
   final String? maincategory;
@@ -46,7 +46,7 @@ class BodyTypeScreen extends StatefulWidget {
     this.incolor,
     this.inoption,
     this.technology,
-    this.name,
+    required this.name,
     this.maincategory,
     this.subcategory,
     this.autotype,
@@ -160,7 +160,7 @@ class _BodyTypeScreenState extends State<BodyTypeScreen> {
                                     incolor: widget.incolor??"",
                                     inoption: widget.inoption??[],
                                     technology: widget.technology??[],
-                                    bodytype: item["title"],
+                                    bodytype: item["title"], name: widget.name,
                                   ),
                             ),
                           );

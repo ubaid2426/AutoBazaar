@@ -9,7 +9,7 @@ import 'package:country_state_city_pro/country_state_city_pro.dart';
 import 'package:flutter/material.dart';
 
 class StateArea extends StatefulWidget {
-  final String? name;
+  final String name;
   final String? namesub;
   final String? brand;
   final List<String>? models;
@@ -71,7 +71,7 @@ class StateArea extends StatefulWidget {
     this.mainheading,
     this.subheading,
     this.services,
-    this.name,
+   required this.name,
     this.contactnumber,
     this.country,
     this.state,
@@ -88,6 +88,7 @@ class _StateAreaState extends State<StateArea> {
   TextEditingController city = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    print(widget.name);
     return Scaffold(
       appBar: AppBar(backgroundColor: red, title: Text('Country Choose')),
       body: Padding(
@@ -111,7 +112,7 @@ class _StateAreaState extends State<StateArea> {
             Text("${country.text}, ${state.text}, ${city.text}"),
             ElevatedButton(
               onPressed: () {
-                if (widget.namesub == "Auto Sales") {
+                if (widget.name == "Auto \n Sales") {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -121,9 +122,7 @@ class _StateAreaState extends State<StateArea> {
                 } else {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => RegionScreen(
-
-                    )),
+                    MaterialPageRoute(builder: (context) => RegionScreen(name: widget.name,)),
                   );
                 }
               },

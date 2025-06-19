@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 // import 'dummy_years.dart'; // Import the dummy data
 
 class TransmissionScreen extends StatefulWidget {
+  final String name;
   final String namesub;
   final String brand;
   final String autotype;
@@ -27,6 +28,7 @@ class TransmissionScreen extends StatefulWidget {
     required this.year,
     required this.region,
     required this.autotype,
+    required this.name,
   });
 
   @override
@@ -71,6 +73,7 @@ class _TransmissionScreenState extends State<TransmissionScreen> {
               MaterialPageRoute(
                 builder:
                     (context) => TransmissionScreen(
+                      name: widget.name,
                       namesub: widget.namesub,
                       brand: widget.brand,
                       models: widget.models,
@@ -129,6 +132,7 @@ class _TransmissionScreenState extends State<TransmissionScreen> {
                             MaterialPageRoute(
                               builder:
                                   (context) => FuelScreen(
+                                    name: widget.name,
                                     namesub: widget.namesub,
                                     brand: widget.brand,
                                     models: widget.models,

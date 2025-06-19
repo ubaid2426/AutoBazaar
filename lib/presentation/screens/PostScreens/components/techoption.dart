@@ -6,6 +6,7 @@ import 'package:autobazzaar/presentation/screens/PostScreens/components/bodytype
 import 'package:flutter/material.dart';
 
 class TechOptions extends StatefulWidget {
+  final String name;
   final String namesub;
   final String brand;
   final String autotype;
@@ -36,7 +37,9 @@ class TechOptions extends StatefulWidget {
     required this.enginesize,
     required this.excolor,
     required this.incolor,
-    required this.inoption, required this.autotype,
+    required this.inoption,
+    required this.autotype,
+    required this.name,
   });
 
   @override
@@ -176,6 +179,7 @@ class _TechOptionsState extends State<TechOptions> {
                       MaterialPageRoute(
                         builder:
                             (context) => BodyTypeScreen(
+                              name: widget.name,
                               namesub: widget.namesub,
                               brand: widget.brand,
                               models: widget.models,

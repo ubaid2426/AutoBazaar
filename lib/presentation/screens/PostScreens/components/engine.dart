@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 // import 'dummy_years.dart'; // Import the dummy data
 
 class EngineScreen extends StatefulWidget {
+  final String name;
   final String namesub;
   final String autotype;
   final String brand;
@@ -29,7 +30,9 @@ class EngineScreen extends StatefulWidget {
     required this.transmission,
     required this.year,
     required this.region,
-    required this.fueltype, required this.autotype,
+    required this.fueltype,
+    required this.autotype,
+    required this.name,
   });
 
   @override
@@ -73,6 +76,7 @@ class _EngineScreenState extends State<EngineScreen> {
               MaterialPageRoute(
                 builder:
                     (context) => EngineScreen(
+                      name: widget.name,
                       namesub: widget.namesub,
                       brand: widget.brand,
                       models: widget.models,
@@ -82,7 +86,8 @@ class _EngineScreenState extends State<EngineScreen> {
                       description: widget.description,
                       region: widget.region,
                       transmission: widget.transmission,
-                      fueltype: widget.fueltype, autotype: widget.autotype,
+                      fueltype: widget.fueltype,
+                      autotype: widget.autotype,
                     ),
               ),
             ),
@@ -132,6 +137,7 @@ class _EngineScreenState extends State<EngineScreen> {
                             MaterialPageRoute(
                               builder:
                                   (context) => ExteriorColor(
+                                    name: widget.name,
                                     namesub: widget.namesub,
                                     brand: widget.brand,
                                     models: widget.models,

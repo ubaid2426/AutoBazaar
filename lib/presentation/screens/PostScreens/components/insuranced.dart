@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 // import 'dummy_years.dart'; // Import the dummy data
 
 class Insuranced extends StatefulWidget {
+  final String name;
   final String? namesub;
   final String? brand;
   final List<String>? models;
@@ -28,7 +29,7 @@ class Insuranced extends StatefulWidget {
   final String? seats;
   final String? repainted;
   final String? bodycondition;
-  const Insuranced({
+  Insuranced({
     super.key,
     this.namesub,
     this.brand,
@@ -49,6 +50,7 @@ class Insuranced extends StatefulWidget {
     this.seats,
     this.repainted,
     this.bodycondition,
+    required this.name,
   });
 
   @override
@@ -57,7 +59,7 @@ class Insuranced extends StatefulWidget {
 
 class _InsurancedState extends State<Insuranced> {
   List<String> filteredtransmission = insurance;
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
@@ -92,6 +94,7 @@ class _InsurancedState extends State<Insuranced> {
               MaterialPageRoute(
                 builder:
                     (context) => Insuranced(
+                      name: widget.name,
                       namesub: widget.namesub,
                       brand: widget.brand,
                       models: widget.models,
@@ -160,6 +163,7 @@ class _InsurancedState extends State<Insuranced> {
                             MaterialPageRoute(
                               builder:
                                   (context) => PaymentMethod(
+                                    name: widget.name,
                                     namesub: widget.namesub!,
                                     brand: widget.brand!,
                                     models: widget.models!,
