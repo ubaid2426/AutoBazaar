@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class BrandScreen extends StatefulWidget {
-  final String? name;
+  final String name;
   final String? namesub;
   final String? autotype;
   final bool? filteruse;
@@ -38,7 +38,7 @@ class BrandScreen extends StatefulWidget {
     this.country,
     this.state,
     this.city,
-    this.name,
+    required this.name,
     this.region,
   });
   @override
@@ -181,13 +181,14 @@ class _BrandScreenState extends State<BrandScreen> {
                                   builder:
                                       (context) => ModelScreen(
                                         brand: brand,
+                                        name: widget.name??"null name",
                                         models: carData[brand]!,
-                                        icon: getIconForType(widget.autotype!),
-                                        filteruse: widget.filteruse!,
-                                        namesub: widget.namesub!,
-                                        images: widget.images!,
-                                        title: widget.title!,
-                                        description: widget.description!,
+                                        icon: getIconForType(widget.autotype??"null type"),
+                                        filteruse: widget.filteruse??false,
+                                        namesub: widget.namesub??"null namesub",
+                                        images: widget.images??[],
+                                        title: widget.title??"null title",
+                                        description: widget.description??"null description",
                                       ),
                                 ),
                               );

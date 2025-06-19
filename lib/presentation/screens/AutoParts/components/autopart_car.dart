@@ -141,7 +141,6 @@
 //               ),
 //             ),
 
-
 //             // Product Sections with data
 //             ...sections.map((section) {
 //               final sectionProducts = products[section] ?? [];
@@ -156,12 +155,6 @@
 //     );
 //   }
 // }
-
-
-
-
-
-
 
 // // import 'package:flutter/material.dart';
 // // import 'package:autobazzaar/models/product.dart';
@@ -197,8 +190,6 @@
 //   }
 // }
 
-
-
 import 'dart:convert';
 import 'package:autobazzaar/components/app_bar.dart';
 import 'package:autobazzaar/core/theme/colors.dart';
@@ -212,12 +203,18 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class AutopartCar extends StatelessWidget {
   final String autotype;
-  final String name;
-  final String namesub;
-  const AutopartCar({super.key, required this.autotype, required this.name, required this.namesub});
+  final String? name;
+  final String? namesub;
+  const AutopartCar({
+    super.key,
+    required this.autotype,
+    this.name,
+    this.namesub,
+  });
 
   Future<Map<String, dynamic>> _loadAutoPartsData() async {
-    final String path = 'assets/json/auto_parts/car/car_data.json'; // Adjust path if needed
+    final String path =
+        'assets/json/auto_parts/car/car_data.json'; // Adjust path if needed
     final String jsonStr = await rootBundle.loadString(path);
     final Map<String, dynamic> decoded = json.decode(jsonStr);
     print(decoded);
@@ -268,25 +265,31 @@ class AutopartCar extends StatelessWidget {
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: categories.length,
-                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10,
-                            childAspectRatio: 0.85,
-                          ),
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3,
+                                mainAxisSpacing: 10,
+                                crossAxisSpacing: 10,
+                                childAspectRatio: 0.85,
+                              ),
                           itemBuilder: (context, index) {
                             final category = categories[index];
-                            final iconPath = "assets/images/icon/${category.replaceAll(" ", "_").toLowerCase()}.svg";
+                            final iconPath =
+                                "assets/images/icon/${category.replaceAll(" ", "_").toLowerCase()}.svg";
 
                             return GestureDetector(
                               onTap: () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (_) => AutoPartsSubCategory(
-                                      autotype: autotype,
-                                      category: category, ispost: false, name: name, namesub: namesub,
-                                    ),
+                                    builder:
+                                        (_) => AutoPartsSubCategory(
+                                          autotype: autotype,
+                                          maincategory: category,
+                                          isposting: false,
+                                          name: name!,
+                                          namesub: namesub!,
+                                        ),
                                   ),
                                 );
                               },

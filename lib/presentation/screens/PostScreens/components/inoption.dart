@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 class InteriorOptions extends StatefulWidget {
   final String namesub;
   final String brand;
+  final String autotpe;
   final List<String> models;
   final List<File> images; // <-- new param
   final String title;
@@ -33,7 +34,7 @@ class InteriorOptions extends StatefulWidget {
     required this.fueltype,
     required this.enginesize,
     required this.excolor,
-    required this.incolor,
+    required this.incolor, required this.autotpe,
   });
 
   @override
@@ -185,7 +186,7 @@ class _InteriorOptionsState extends State<InteriorOptions> {
                               enginesize: widget.enginesize,
                               excolor: widget.excolor,
                               incolor: widget.incolor,
-                              inoption: selectedOptions,
+                              inoption: selectedOptions, autotype: widget.autotpe,
                             ),
                       ),
                     );

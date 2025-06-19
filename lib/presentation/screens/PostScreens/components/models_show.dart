@@ -5,11 +5,12 @@ import 'package:autobazzaar/presentation/screens/PostScreens/components/years.da
 import 'package:flutter/material.dart';
 
 class ModelScreen extends StatelessWidget {
+  final String name;
+  final String namesub;
   final String brand;
   final List<String> models;
   final IconData icon;
   final bool? filteruse;
-  final String namesub;
   final List<File>? images; // <-- new param
   final String? title;
   final String? description;
@@ -22,7 +23,7 @@ class ModelScreen extends StatelessWidget {
     required this.namesub,
     this.images,
     this.title,
-    this.description,
+    this.description, required this.name,
   });
 
   @override
@@ -61,6 +62,7 @@ class ModelScreen extends StatelessWidget {
                           brand: brand,
                           models: models,
                           images: images!,
+                          name: name,
                           title: title!,
                           description: description!,
                         ),

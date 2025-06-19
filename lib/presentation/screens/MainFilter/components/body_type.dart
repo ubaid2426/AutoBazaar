@@ -49,6 +49,7 @@ class _BodyTypeFilterState extends State<BodyTypeFilter> {
                   setState(() {
                     selectedBodyType = item["title"];
                   });
+                  
                 },
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),

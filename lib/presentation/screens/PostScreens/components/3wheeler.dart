@@ -6,7 +6,14 @@ import 'package:flutter/services.dart';
 
 class ThreeWheelerScreen extends StatefulWidget {
   final String type;
-  const ThreeWheelerScreen({super.key, required this.type});
+  final String name;
+  final String namesub;
+  const ThreeWheelerScreen({
+    super.key,
+    required this.type,
+    required this.name,
+    required this.namesub,
+  });
 
   @override
   State<ThreeWheelerScreen> createState() => _ThreeWheelerScreenState();
@@ -150,7 +157,8 @@ class _ThreeWheelerScreenState extends State<ThreeWheelerScreen> {
                                         models: threeWheelerData[brand]!,
                                         icon: getIconForType(widget.type),
                                         filteruse: false,
-                                        namesub: 'extra',
+                                        namesub: widget.namesub,
+                                        name: widget.name,
                                       ),
                                 ),
                               );

@@ -21,7 +21,8 @@ class _ColorSelectionSectionState extends State<ColorSelectionSection> {
 
   @override
   Widget build(BuildContext context) {
-    final displayColors = _showAll ? widget.colors : widget.colors.take(9).toList();
+    final displayColors =
+        _showAll ? widget.colors : widget.colors.take(9).toList();
 
     return Card(
       color: lightgrey,
@@ -32,11 +33,14 @@ class _ColorSelectionSectionState extends State<ColorSelectionSection> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(widget.title,
-                style: const TextStyle(
-                    color: black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold)),
+            Text(
+              widget.title,
+              style: const TextStyle(
+                color: black,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             const SizedBox(height: 12),
             Wrap(
               spacing: 10,
@@ -59,12 +63,14 @@ class _ColorSelectionSectionState extends State<ColorSelectionSection> {
                   Text(
                     _showAll ? "Less Color" : "More Color",
                     style: const TextStyle(
-                        color: redlight, fontWeight: FontWeight.bold),
+                      color: redlight,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                  const Icon(Icons.add, color: redlight)
+                  const Icon(Icons.add, color: redlight),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -94,8 +100,11 @@ class _ColorSelectionSectionState extends State<ColorSelectionSection> {
           mainAxisSize: MainAxisSize.min,
           children: [
             if (isAll)
-              Icon(Icons.more_horiz,
-                  color: isSelected ? white : Colors.blueAccent, size: 18)
+              Icon(
+                Icons.more_horiz,
+                color: isSelected ? white : Colors.blueAccent,
+                size: 18,
+              )
             else
               Container(
                 width: 14,
@@ -110,8 +119,9 @@ class _ColorSelectionSectionState extends State<ColorSelectionSection> {
             Text(
               name,
               style: TextStyle(
-                  color: black,
-                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal),
+                color: black,
+                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+              ),
             ),
           ],
         ),

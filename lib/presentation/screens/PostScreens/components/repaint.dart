@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 // import 'dummy_years.dart'; // Import the dummy data
 
 class RepaintScreen extends StatefulWidget {
+  final String? name;
   final String namesub;
   final String brand;
   final List<String> models;
@@ -45,7 +46,7 @@ class RepaintScreen extends StatefulWidget {
     required this.inoption,
     required this.technology,
     required this.bodytype,
-    required this.seats,
+    required this.seats, this.name,
   });
 
   @override
@@ -107,6 +108,7 @@ class _RepaintScreenState extends State<RepaintScreen> {
                       technology: widget.technology,
                       bodytype: widget.bodytype,
                       seats: widget.seats,
+                      name: widget.name,
                     ),
               ),
             ),
@@ -176,6 +178,7 @@ class _RepaintScreenState extends State<RepaintScreen> {
                                     bodytype: widget.bodytype,
                                     seats: widget.seats,
                                     repainted: year,
+                                    name: widget.name!,
                                   ),
                             ),
                           );

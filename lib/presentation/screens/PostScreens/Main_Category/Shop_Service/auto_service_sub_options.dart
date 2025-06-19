@@ -4,18 +4,25 @@ import 'package:autobazzaar/presentation/screens/PostScreens/components/number.d
 import 'package:flutter/material.dart';
 
 class AutoServiceDetailScreen extends StatefulWidget {
-  final String categoryTitle;
-  final List<String> items;
+  final String subcategory;
+  final List<String> services;
   final String name;
   final String namesub;
+  final String autotype;
+  final String maincategory;
   const AutoServiceDetailScreen({
     super.key,
-    required this.categoryTitle,
-    required this.items, required this.name, required this.namesub,
+    required this.subcategory,
+    required this.services,
+    required this.name,
+    required this.namesub,
+    required this.maincategory,
+    required this.autotype,
   });
 
   @override
-  State<AutoServiceDetailScreen> createState() => _AutoServiceDetailScreenState();
+  State<AutoServiceDetailScreen> createState() =>
+      _AutoServiceDetailScreenState();
 }
 
 class _AutoServiceDetailScreenState extends State<AutoServiceDetailScreen> {
@@ -33,23 +40,31 @@ class _AutoServiceDetailScreenState extends State<AutoServiceDetailScreen> {
 
   void _onNextPressed() {
     if (_selectedItems.isNotEmpty) {
-      if(widget.namesub=="Auto Parts"){
-          Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (_) => BodyTypeScreen(), // you can also pass selected items
-        ),
-      );
-      }
-      else{
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (_) => PhoneNumberInputScreen(), // you can also pass selected items
-        ),
-      );
-      }
+      if (widget.namesub == "Auto\n Parts") {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder:
+                (_) => BodyTypeScreen(
+                      name: widget.name,
+                      namesub: widget.namesub,
+                      autotype: widget.autotype,
+                      maincategory: widget.maincategory,
+                      services: _selectedItems.toList(),
 
+                ), // you can also pass selected items
+          ),
+        );
+      } else {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder:
+                (_) =>
+                    PhoneNumberInputScreen(), // you can also pass selected items
+          ),
+        );
+      }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please select at least one option.')),
@@ -60,21 +75,21 @@ class _AutoServiceDetailScreenState extends State<AutoServiceDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.categoryTitle), backgroundColor: red),
+      appBar: AppBar(title: Text(widget.subcategory), backgroundColor: red),
       body: Column(
         children: [
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.all(16),
-              itemCount: widget.items.length,
+              itemCount: widget.services.length,
               itemBuilder: (context, index) {
-                final item = widget.items[index];
+                final item = widget.services[index];
                 final isSelected = _selectedItems.contains(item);
 
                 return Card(
                   elevation: 3,
                   margin: const EdgeInsets.symmetric(vertical: 8),
-                  color: isSelected ? Colors.red.shade50 :white,
+                  color: isSelected ? Colors.red.shade50 : white,
                   child: ListTile(
                     title: Text(item),
                     trailing: Icon(
@@ -94,7 +109,10 @@ class _AutoServiceDetailScreenState extends State<AutoServiceDetailScreen> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: red),
                 onPressed: _onNextPressed,
-                child: const Text("Next", style: TextStyle(color: white, fontSize: 16)),
+                child: const Text(
+                  "Next",
+                  style: TextStyle(color: white, fontSize: 16),
+                ),
               ),
             ),
           ),

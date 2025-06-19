@@ -8,6 +8,7 @@ class ExteriorColor extends StatefulWidget {
   final String namesub;
   final String brand;
   final List<String> models;
+  final String autotype;
   final List<File> images; // <-- new param
   final String title;
   final String description;
@@ -28,7 +29,7 @@ class ExteriorColor extends StatefulWidget {
     required this.year,
     required this.region,
     required this.fueltype,
-    required this.enginesize,
+    required this.enginesize, required this.autotype,
   });
 
   @override
@@ -150,6 +151,7 @@ class _ExteriorColorState extends State<ExteriorColor> {
                                   fueltype: widget.fueltype,
                                   enginesize: widget.enginesize,
                                   excolor: item["name"],
+                                  autotype: widget.autotype,
                                 ),
                           ),
                         );

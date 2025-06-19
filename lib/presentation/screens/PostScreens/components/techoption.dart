@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 class TechOptions extends StatefulWidget {
   final String namesub;
   final String brand;
+  final String autotype;
   final List<String> models;
   final List<File> images; // <-- new param
   final String title;
@@ -35,7 +36,7 @@ class TechOptions extends StatefulWidget {
     required this.enginesize,
     required this.excolor,
     required this.incolor,
-    required this.inoption,
+    required this.inoption, required this.autotype,
   });
 
   @override
@@ -188,7 +189,9 @@ class _TechOptionsState extends State<TechOptions> {
                               enginesize: widget.enginesize,
                               excolor: widget.excolor,
                               incolor: widget.incolor,
-                              inoption: selectedOptions, technology: selectedOptions,
+                              inoption: selectedOptions,
+                              technology: selectedOptions,
+                              autotype: widget.autotype,
                             ),
                       ),
                     );

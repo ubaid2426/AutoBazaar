@@ -2,18 +2,25 @@
 import 'dart:io';
 
 import 'package:autobazzaar/data/models/dummy_data.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/Choose_plan/bodycondition.dart';
 // import 'package:autobazzaar/presentation/screens/PostScreens/components/payment.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/region.dart';
 import 'package:flutter/material.dart';
 // import 'dummy_years.dart'; // Import the dummy data
 
 class YearScreen extends StatefulWidget {
+  final String? name;
   final String namesub;
   final String? brand;
   final List<String>? models;
   final List<File> images; // <-- new param
   final String title;
   final String description;
+  final String? maincategory;
+  final String? subcategory;
+  final List<String>? services;
+  final String? autotype;
+  final String? bodytype;
   const YearScreen({
     super.key,
     required this.namesub,
@@ -22,6 +29,12 @@ class YearScreen extends StatefulWidget {
     required this.images,
     required this.title,
     required this.description,
+    this.maincategory,
+    this.subcategory,
+    this.services,
+    this.autotype,
+    this.bodytype,
+    this.name,
   });
 
   @override
@@ -99,17 +112,26 @@ class _YearScreenState extends State<YearScreen> {
                       ),
                       trailing: Icon(Icons.chevron_right),
                       onTap: () {
-                        if (widget.namesub == 'Auto Parts') {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder:
-                          //         (context) => PaymentMethod(
-                          //           // category: 'Auto Sales',
-                          //           // year: year,
-                          //         ),
-                          //   ),
-                          // );
+                        if (widget.namesub == 'Auto\n Parts') {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder:
+                                  (context) => BodyCondition(
+                                    name: widget.name!,
+                                    namesub: widget.namesub,
+                                    autotype: widget.autotype,
+                                    title: widget.title,
+                                    images: widget.images,
+                                    description: widget.description,
+                                    maincategory: widget.maincategory,
+                                    subcategory: widget.subcategory,
+                                    services: widget.services,
+                                    bodytype: widget.bodytype,
+                                    year: year,
+                                  ),
+                            ),
+                          );
                         } else {
                           Navigator.push(
                             context,
@@ -123,6 +145,7 @@ class _YearScreenState extends State<YearScreen> {
                                     title: widget.title,
                                     description: widget.description,
                                     year: year,
+                                    name: widget.name,
                                   ),
                             ),
                           );

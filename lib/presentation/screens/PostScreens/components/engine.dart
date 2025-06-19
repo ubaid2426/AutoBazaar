@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 class EngineScreen extends StatefulWidget {
   final String namesub;
+  final String autotype;
   final String brand;
   final List<String> models;
   final List<File> images; // <-- new param
@@ -28,7 +29,7 @@ class EngineScreen extends StatefulWidget {
     required this.transmission,
     required this.year,
     required this.region,
-    required this.fueltype,
+    required this.fueltype, required this.autotype,
   });
 
   @override
@@ -81,7 +82,7 @@ class _EngineScreenState extends State<EngineScreen> {
                       description: widget.description,
                       region: widget.region,
                       transmission: widget.transmission,
-                      fueltype: widget.fueltype,
+                      fueltype: widget.fueltype, autotype: widget.autotype,
                     ),
               ),
             ),
@@ -140,7 +141,9 @@ class _EngineScreenState extends State<EngineScreen> {
                                     description: widget.description,
                                     region: widget.region,
                                     transmission: widget.transmission,
-                                    fueltype: widget.fueltype, enginesize: year,
+                                    fueltype: widget.fueltype,
+                                    enginesize: year,
+                                    autotype: widget.autotype,
                                   ),
                             ),
                           );

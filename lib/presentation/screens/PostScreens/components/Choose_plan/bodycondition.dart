@@ -9,44 +9,55 @@ import 'package:flutter/material.dart';
 // import 'dummy_years.dart'; // Import the dummy data
 
 class BodyCondition extends StatefulWidget {
-  final String namesub;
-  final String brand;
-  final List<String> models;
-  final List<File> images; // <-- new param
-  final String title;
-  final String description;
-  final String transmission;
-  final String year;
-  final String region;
-  final String fueltype;
-  final String enginesize;
-  final String excolor;
-  final String incolor;
-  final List<String> inoption;
-  final List<String> technology;
-  final String bodytype;
-  final String seats;
-  final String repainted;
+  final String name;
+  final String? namesub;
+  final String? brand;
+  final List<String>? models;
+  final List<File>? images; // <-- new param
+  final String? title;
+  final String? description;
+  final String? transmission;
+  final String? year;
+  final String? region;
+  final String? fueltype;
+  final String? enginesize;
+  final String? excolor;
+  final String? incolor;
+  final List<String>? inoption;
+  final List<String>? technology;
+  final String? bodytype;
+  final String? seats;
+  final String? repainted;
+  final String? autotype;
+  final List<String>? services;
+  final String? maincategory;
+  final String? subcategory;
+
   const BodyCondition({
     super.key,
-    required this.namesub,
-    required this.brand,
-    required this.models,
-    required this.images,
-    required this.title,
-    required this.description,
-    required this.transmission,
-    required this.year,
-    required this.region,
-    required this.fueltype,
-    required this.enginesize,
-    required this.excolor,
-    required this.incolor,
-    required this.inoption,
-    required this.technology,
-    required this.bodytype,
-    required this.seats,
-    required this.repainted,
+    this.namesub,
+    this.brand,
+    this.models,
+    this.images,
+    this.title,
+    this.description,
+    this.transmission,
+    this.year,
+    this.region,
+    this.fueltype,
+    this.enginesize,
+    this.excolor,
+    this.incolor,
+    this.inoption,
+    this.technology,
+    this.bodytype,
+    this.seats,
+    this.repainted,
+    this.autotype,
+    this.services,
+    this.maincategory,
+    this.subcategory,
+    required this.name,
   });
 
   @override
@@ -108,6 +119,8 @@ class _BodyConditionState extends State<BodyCondition> {
                       bodytype: widget.bodytype,
                       seats: widget.seats,
                       repainted: widget.repainted,
+                      name: widget.name,
+                      autotype: widget.autotype,
                     ),
               ),
             ),

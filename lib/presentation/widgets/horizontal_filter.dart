@@ -99,7 +99,7 @@ class _HorizontalFilterState extends State<HorizontalFilter> {
                     multiseslect: false,
                     navigate: BrandScreen(
                       autotype: widget.type,
-                      filteruse: true,
+                      filteruse: true, name: 'null name',
                       // : 'extra',
                     ),
                   ),

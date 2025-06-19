@@ -15,6 +15,7 @@ class RegionScreen extends StatefulWidget {
   final List<String>? models;
   final List<File>? images; // <-- new param
   final String? title;
+  // final String autotype;
   final String? description;
   final String? year;
   //auto services
@@ -42,7 +43,11 @@ class RegionScreen extends StatefulWidget {
     this.name,
     this.mainheading,
     this.subheading,
-    this.services, this.contactnumber, this.country, this.state, this.city,
+    this.services,
+    this.contactnumber,
+    this.country,
+    this.state,
+    this.city,
   });
 
   @override
@@ -52,12 +57,6 @@ class RegionScreen extends StatefulWidget {
 class _RegionScreenState extends State<RegionScreen> {
   List<String> filteredregion = regionalSpecifications;
   final TextEditingController _searchController = TextEditingController();
-  // Map<String, Widget Function()> categoryRoutes = {
-  //   "Auto Sales": () => TransmissionScreen(),
-  //   "Shop Services": () => StateArea(),
-  //   // "Trucks": () => TruckDetailsScreen(),
-  //   // Add more mappings
-  // };
   @override
   void initState() {
     super.initState();
@@ -82,6 +81,7 @@ class _RegionScreenState extends State<RegionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.name);
     return Scaffold(
       appBar: AppBar(title: Text("What are the regional specifications ?")),
       body: Padding(
@@ -125,37 +125,38 @@ class _RegionScreenState extends State<RegionScreen> {
                       ),
                       trailing: Icon(Icons.chevron_right),
                       onTap: () {
-                        if (widget.namesub == "Auto Sales") {
+                        if (widget.name == "Auto \n Sales") {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder:
                                   (context) => TransmissionScreen(
-                                    namesub: widget.namesub!,
-                                    brand: widget.brand!,
-                                    models: widget.models!,
-                                    images: widget.images!,
-                                    title: widget.title!,
-                                    description: widget.description!,
-                                    year: widget.year!,
+                                    namesub: widget.namesub??"null namesub",
+                                    brand: widget.brand??"null brand",
+                                    models: widget.models??["null models"],
+                                    images: widget.images??[File("null images")],
+                                    title: widget.title??"null title",
+                                    description: widget.description??"null description",
+                                    year: widget.year??"null year",
                                     region: _searchController.text,
+                                    autotype: widget.autotype??"null autotype",
                                   ),
                             ),
                           );
-                        } else if (widget.namesub == "Shop Services") {
+                        } else if (widget.name == "Shop &\n Services") {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder:
                                   (context) => BrandScreen(
-                                autotype: widget.autotype,
-                                mainheading: widget.mainheading!,
-                                subheading: widget.subheading!,
-                                services: widget.services!,
-                                name: widget.name!,
-                                namesub: widget.namesub!,
-                                region: _searchController.text,
-                              ),
+                                    autotype: widget.autotype,
+                                    mainheading: widget.mainheading!,
+                                    subheading: widget.subheading!,
+                                    services: widget.services!,
+                                    name: widget.name!,
+                                    namesub: widget.namesub!,
+                                    region: _searchController.text,
+                                  ),
                             ),
                           );
                         }

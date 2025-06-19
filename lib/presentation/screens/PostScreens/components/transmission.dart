@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 class TransmissionScreen extends StatefulWidget {
   final String namesub;
   final String brand;
+  final String autotype;
   final List<String> models;
   final List<File> images; // <-- new param
   final String title;
@@ -25,6 +26,7 @@ class TransmissionScreen extends StatefulWidget {
     required this.description,
     required this.year,
     required this.region,
+    required this.autotype,
   });
 
   @override
@@ -77,6 +79,7 @@ class _TransmissionScreenState extends State<TransmissionScreen> {
                       title: widget.title,
                       description: widget.description,
                       region: widget.region,
+                      autotype: widget.autotype,
                     ),
               ),
             ),
@@ -133,7 +136,9 @@ class _TransmissionScreenState extends State<TransmissionScreen> {
                                     year: widget.year,
                                     title: widget.title,
                                     description: widget.description,
-                                    region: widget.region, transmission: year,
+                                    region: widget.region,
+                                    transmission: year,
+                                    autotype: widget.autotype,
                                   ),
                             ),
                           );

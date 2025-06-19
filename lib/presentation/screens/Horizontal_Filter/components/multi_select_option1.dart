@@ -1,4 +1,5 @@
 import 'package:autobazzaar/core/theme/colors.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/bodytype.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/number.dart';
 import 'package:flutter/material.dart';
 
@@ -53,7 +54,6 @@ class _MultiSelectOption1State extends State<MultiSelectOption1> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.options);
     final filteredMap = widget.options.map((category, options) {
       final List<String> optionList = List<String>.from(options);
       final filteredOptions =
@@ -90,8 +90,9 @@ class _MultiSelectOption1State extends State<MultiSelectOption1> {
                   filteredMap.entries.map((entry) {
                     final category = entry.key;
                     final options = entry.value;
-                    if (options.isEmpty)
+                    if (options.isEmpty) {
                       return SizedBox(); // Hide empty categories from filter
+                    }
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
@@ -127,20 +128,36 @@ class _MultiSelectOption1State extends State<MultiSelectOption1> {
             child: ElevatedButton(
               onPressed: () {
                 if (widget.ispost == true) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder:
-                          (_) => PhoneNumberInputScreen(
-                            autotype: widget.autotype,
-                            mainheading: widget.mainheading,
-                            subheading: widget.subheading,
-                            services: selectedItems,
-                            name: widget.name,
-                            namesub: widget.namesub,
-                          ),
-                    ),
-                  );
+                  if (widget.name == "Auto \n Sales") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (_) => BodyTypeScreen(
+                              name: widget.name,
+                              namesub: widget.namesub,
+                              autotype: widget.autotype,
+                              maincategory: widget.name,
+                              services: selectedItems.keys.toList(),
+                            ),
+                      ),
+                    );
+                  } else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (_) => PhoneNumberInputScreen(
+                              autotype: widget.autotype,
+                              mainheading: widget.mainheading,
+                              subheading: widget.subheading,
+                              services: selectedItems,
+                              name: widget.name,
+                              namesub: widget.namesub,
+                            ),
+                      ),
+                    );
+                  }
                 } else {
                   Navigator.pop(context, selectedItems);
                 }

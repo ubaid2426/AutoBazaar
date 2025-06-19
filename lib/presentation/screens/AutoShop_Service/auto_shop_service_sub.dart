@@ -14,7 +14,9 @@ class AutoServiceSubCategoryView extends StatefulWidget {
     super.key,
     required this.autotype,
     required this.selectedCategory,
-    required this.ispost, this.name, this.namesub,
+    required this.ispost,
+    this.name,
+    this.namesub,
   });
 
   @override
@@ -56,10 +58,12 @@ class _AutoServiceSubCategoryViewState
   void initState() {
     super.initState();
     futureGroupedMap = loadGroupedMap();
+    print(widget.selectedCategory);
   }
 
   @override
   Widget build(BuildContext context) {
+    print(widget.selectedCategory);
     return Scaffold(
       appBar: AppBar(title: const Text("Select Service Groups")),
       body: FutureBuilder<Map<String, List<String>>>(

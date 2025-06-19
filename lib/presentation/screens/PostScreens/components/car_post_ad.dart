@@ -70,7 +70,7 @@ class _CarPostAdScreenState extends State<CarPostAdScreen> {
     Widget? screen;
 
     if (namesub == "Vehicle") {
-      print(namesub);
+      // print(namesub);
       // screen = BrandScreen(type: type,);
       if (autotype == "Car" ||
           autotype == "Taxi" ||
@@ -79,13 +79,14 @@ class _CarPostAdScreenState extends State<CarPostAdScreen> {
         screen = BrandScreen(
           autotype: autotype,
           filteruse: false,
+          name: name,
           namesub: namesub,
           images: images,
           title: '',
           description: '',
         );
       } else if (autotype == "Quad/Buggy" || autotype == "3-Wheeler") {
-        screen = ThreeWheelerScreen(type: autotype);
+        screen = ThreeWheelerScreen(type: autotype, name: name, namesub: namesub,);
       } else if (autotype == "Van" ||
           autotype == "Lorry" ||
           autotype == "Bus" ||

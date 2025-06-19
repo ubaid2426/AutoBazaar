@@ -19,8 +19,8 @@ class VehicleSelectionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(name);
-    print(namesub);
+    // print(name);
+    // print(namesub);
     return Scaffold(
       appBar: AppBar(
         title: Text("Select Vehicle Type"),

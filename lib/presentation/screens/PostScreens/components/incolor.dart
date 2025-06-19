@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 class InteriorColor extends StatefulWidget {
   final String namesub;
+  final String autotype;
   final String brand;
   final List<String> models;
   final List<File> images; // <-- new param
@@ -29,7 +30,7 @@ class InteriorColor extends StatefulWidget {
     required this.region,
     required this.fueltype,
     required this.enginesize,
-    required this.excolor,
+    required this.excolor, required this.autotype,
   });
 
   @override
@@ -171,7 +172,7 @@ class _InteriorColorState extends State<InteriorColor> {
                                   fueltype: widget.fueltype,
                                   enginesize: widget.enginesize,
                                   excolor: widget.excolor,
-                                  incolor: item["name"],
+                                  incolor: item["name"], autotpe: widget.autotype,
                                 ),
                           ),
                         );
