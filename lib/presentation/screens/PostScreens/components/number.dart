@@ -7,7 +7,7 @@ import 'package:autobazzaar/presentation/screens/PostScreens/components/state_ar
 import 'package:flutter/material.dart';
 
 class PhoneNumberInputScreen extends StatefulWidget {
-    final String name;
+  final String name;
   final String? namesub;
   final String? brand;
   final List<String>? models;
@@ -33,8 +33,6 @@ class PhoneNumberInputScreen extends StatefulWidget {
   //services screen
   final String? autotype;
   final String? mainheading;
-  // final String name;
-  // final String? namesub;
   final List<String>? subheading;
   final Map<String, Set<String>>? services;
   const PhoneNumberInputScreen({
@@ -43,8 +41,29 @@ class PhoneNumberInputScreen extends StatefulWidget {
     this.mainheading,
     this.subheading,
     this.services,
-   required this.name,
-    this.namesub, this.brand, this.models, this.images, this.title, this.description, this.transmission, this.year, this.region, this.fueltype, this.enginesize, this.excolor, this.incolor, this.inoption, this.technology, this.bodytype, this.seats, this.repainted, this.bodycondition, this.insurance, this.carcondition, this.paymentmethod,
+    required this.name,
+    this.namesub,
+    this.brand,
+    this.models,
+    this.images,
+    this.title,
+    this.description,
+    this.transmission,
+    this.year,
+    this.region,
+    this.fueltype,
+    this.enginesize,
+    this.excolor,
+    this.incolor,
+    this.inoption,
+    this.technology,
+    this.bodytype,
+    this.seats,
+    this.repainted,
+    this.bodycondition,
+    this.insurance,
+    this.carcondition,
+    this.paymentmethod,
   });
 
   @override
@@ -83,12 +102,16 @@ class _PhoneNumberInputScreenState extends State<PhoneNumberInputScreen> {
 
     debugPrint('Home Service Available: $homeServiceAvailable');
     // You can proceed to save this or navigate
-    if (widget.name == "Auto \n Sales ") {
+    if (widget.name == "Auto \n Sales") {
+      print("navigate to Auto Sales");
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ChooseAdPostTypeScreen()),
+        MaterialPageRoute(builder: (context) => ChooseAdPostTypeScreen(
+
+        )),
       );
     } else {
+      print("navigate to state area");
       Navigator.push(
         context,
         MaterialPageRoute(

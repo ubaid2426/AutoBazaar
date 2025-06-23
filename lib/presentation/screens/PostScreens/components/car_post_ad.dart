@@ -2,6 +2,7 @@ import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_
 import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Auto_Parts/autopartmain.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Auto_Sales/Sub_Category/Scraps_Autos/scraps_auto_form.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/3wheeler.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/Choose_plan/choose_ad_post.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/brand_show.dart';
 import 'package:autobazzaar/components/buildTextField.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/postingimages.dart';
@@ -27,7 +28,11 @@ class CarPostAdScreen extends StatefulWidget {
   final String? state;
   final String? city;
   final String? region;
-
+  final String? number;
+  final TimeOfDay? openingtime;
+  final TimeOfDay? closingtime;
+  final Map<String, bool>? workingdays;
+  final String? brand;
   const CarPostAdScreen({
     super.key,
     // required this.title,
@@ -42,6 +47,11 @@ class CarPostAdScreen extends StatefulWidget {
     this.state,
     this.city,
     this.region,
+    this.number,
+    this.openingtime,
+    this.closingtime,
+    this.workingdays,
+    this.brand,
   });
 
   @override
@@ -86,7 +96,11 @@ class _CarPostAdScreenState extends State<CarPostAdScreen> {
           description: '',
         );
       } else if (autotype == "Quad/Buggy" || autotype == "3-Wheeler") {
-        screen = ThreeWheelerScreen(type: autotype, name: name, namesub: namesub,);
+        screen = ThreeWheelerScreen(
+          type: autotype,
+          name: name,
+          namesub: namesub,
+        );
       } else if (autotype == "Van" ||
           autotype == "Lorry" ||
           autotype == "Bus" ||
@@ -101,10 +115,12 @@ class _CarPostAdScreenState extends State<CarPostAdScreen> {
         );
       }
     } else if (name == "Shop &\n Services") {
-      screen = RegionScreen(autotype: autotype, name: name, namesub: namesub); // Replace with actual screen
+      screen = ChooseAdPostTypeScreen();
     } else if (namesub == "Auto\n Parts") {
       screen = AutopartForm(
-        autotype: autotype, name: name, namesub: namesub,
+        autotype: autotype,
+        name: name,
+        namesub: namesub,
       ); // Replace with actual screen
     } else if (namesub == "Accidental & Autos") {
       screen = AccidentAutoForm(); // Replace with actual screen

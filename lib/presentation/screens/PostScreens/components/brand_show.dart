@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/models_show.dart';
 import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/working_hours.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/working_hours1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -19,7 +20,7 @@ class BrandScreen extends StatefulWidget {
   final String? mainheading;
   final List<String>? subheading;
   final Map<String, Set<String>>? services;
-  final String? contactnumber;
+  final List<String>? contactnumber;
   final String? country;
   final String? state;
   final String? region;
@@ -177,35 +178,49 @@ class _BrandScreenState extends State<BrandScreen> {
                           ),
                           child: InkWell(
                             onTap: () {
-                              if(widget.name=="Shop &\n Services"){
-                                   Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder:
-                                      (context) => BranchAndWorkingHoursScreen()
-                                ),
-                              );
+                              if (widget.name == "Shop &\n Services") {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder:
+                                        (context) => BusinessInfoScreen(
+                                          name: widget.name,
+                                          namesub: widget.namesub,
+                                          number: widget.contactnumber??[],
+                                          country: widget.country??"null country",
+                                          state: widget.state??"null state",
+                                          city: widget.city??"null city",
+                                          brand: brand,
+                                          mainheading: widget.mainheading,
+                                          subheading: widget.subheading,
+                                          services: widget.services,
+                                        ),
+                                  ),
+                                );
+                              } else {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder:
+                                        (context) => ModelScreen(
+                                          brand: brand,
+                                          name: widget.name,
+                                          models: carData[brand]!,
+                                          icon: getIconForType(
+                                            widget.autotype ?? "null type",
+                                          ),
+                                          filteruse: widget.filteruse ?? false,
+                                          namesub:
+                                              widget.namesub ?? "null namesub",
+                                          images: widget.images ?? [],
+                                          title: widget.title ?? "null title",
+                                          description:
+                                              widget.description ??
+                                              "null description",
+                                        ),
+                                  ),
+                                );
                               }
-                              else{
-                                     Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder:
-                                      (context) => ModelScreen(
-                                        brand: brand,
-                                        name: widget.name,
-                                        models: carData[brand]!,
-                                        icon: getIconForType(widget.autotype??"null type"),
-                                        filteruse: widget.filteruse??false,
-                                        namesub: widget.namesub??"null namesub",
-                                        images: widget.images??[],
-                                        title: widget.title??"null title",
-                                        description: widget.description??"null description",
-                                      ),
-                                ),
-                              );
-                              }
-                         
                             },
                             borderRadius: BorderRadius.circular(16),
                             child: Padding(

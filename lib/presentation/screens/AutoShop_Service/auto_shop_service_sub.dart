@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:autobazzaar/core/theme/colors.dart';
 import 'package:autobazzaar/presentation/screens/Horizontal_Filter/components/multi_select_option1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -151,7 +152,11 @@ class _AutoServiceSubCategoryViewState
                     }
                   }
                 },
-                child: const Text("Continue"),
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(double.infinity, 50),
+                  backgroundColor: red,
+                ),
+                child: const Text("Continue", style: TextStyle(color: white)),
               ),
               const SizedBox(height: 16),
             ],

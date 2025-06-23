@@ -1,15 +1,45 @@
+import 'package:autobazzaar/core/theme/colors.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/car_post_ad.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-
 class BusinessInfoScreen extends StatefulWidget {
-  const BusinessInfoScreen({super.key});
+  final String name;
+  final String? namesub;
+  final String? region;
+  final String? bodytype;
+  final List<String> number;
+  final String? country;
+  final String? state;
+  final String? city;
+  final String? autotype;
+  final String? mainheading;
+  final List<String>? subheading;
+  final String? brand;
+  final Map<String, Set<String>>? services;
+  const BusinessInfoScreen({
+    super.key,
+    required this.name,
+    this.namesub,
+    this.region,
+    this.bodytype,
+    required this.number,
+    this.autotype,
+    this.mainheading,
+    this.subheading,
+    this.services,
+     this.country,
+     this.state,
+     this.city,
+     this.brand,
+  });
 
   @override
   State<BusinessInfoScreen> createState() => _BusinessInfoScreenState();
 }
 
-class _BusinessInfoScreenState extends State<BusinessInfoScreen> with SingleTickerProviderStateMixin {
+class _BusinessInfoScreenState extends State<BusinessInfoScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _opacityAnimation;
   late Animation<double> _scaleAnimation;
@@ -39,7 +69,8 @@ class _BusinessInfoScreenState extends State<BusinessInfoScreen> with SingleTick
       CurvedAnimation(
         parent: _controller,
         curve: const Interval(0.0, 0.5, curve: Curves.easeInOut),
-    ));
+      ),
+    );
 
     _scaleAnimation = Tween<double>(begin: 0.95, end: 1).animate(
       CurvedAnimation(
@@ -65,7 +96,7 @@ class _BusinessInfoScreenState extends State<BusinessInfoScreen> with SingleTick
         return Theme(
           data: ThemeData.light().copyWith(
             colorScheme: const ColorScheme.light(
-              primary: Color(0xFF6C63FF),
+              primary: red,
               onPrimary: Colors.white,
               surface: Colors.white,
               onSurface: Colors.black,
@@ -108,15 +139,16 @@ class _BusinessInfoScreenState extends State<BusinessInfoScreen> with SingleTick
             child: Scaffold(
               backgroundColor: const Color(0xFFF8F9FA),
               appBar: AppBar(
+                backgroundColor: red,
                 systemOverlayStyle: SystemUiOverlayStyle.dark,
                 elevation: 0,
-                backgroundColor: Colors.transparent,
-                leading: IconButton(
-                  icon: const Icon(Icons.arrow_back_ios_new, color: Color(0xFF6C63FF)),
-                  onPressed: () {},
-                ),
+                // backgroundColor: Colors.transparent,
+                // leading: IconButton(
+                //   icon: const Icon(Icons.arrow_back_ios_new, color: red),
+                //   onPressed: () {},
+                // ),
                 title: const Text(
-                  'Business Information',
+                  'Working Hours',
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w600,
@@ -178,7 +210,7 @@ class _BusinessInfoScreenState extends State<BusinessInfoScreen> with SingleTick
                                 style: const TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
-                                  color: Color(0xFF6C63FF),
+                                  color: red,
                                 ),
                               ),
                               const SizedBox(width: 16),
@@ -240,23 +272,27 @@ class _BusinessInfoScreenState extends State<BusinessInfoScreen> with SingleTick
                           Wrap(
                             spacing: 8,
                             runSpacing: 8,
-                            children: _workingDays.keys.map((day) {
-                              return FilterChip(
-                                label: Text(day),
-                                selected: _workingDays[day]!,
-                                onSelected: (bool selected) {
-                                  _toggleDay(day);
-                                },
-                                selectedColor: const Color(0xFF6C63FF),
-                                checkmarkColor: Colors.white,
-                                labelStyle: TextStyle(
-                                  color: _workingDays[day]! ? Colors.white : Colors.black,
-                                ),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                              );
-                            }).toList(),
+                            children:
+                                _workingDays.keys.map((day) {
+                                  return FilterChip(
+                                    label: Text(day),
+                                    selected: _workingDays[day]!,
+                                    onSelected: (bool selected) {
+                                      _toggleDay(day);
+                                    },
+                                    selectedColor: red,
+                                    checkmarkColor: Colors.white,
+                                    labelStyle: TextStyle(
+                                      color:
+                                          _workingDays[day]!
+                                              ? Colors.white
+                                              : Colors.black,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                  );
+                                }).toList(),
                           ),
                           const SizedBox(height: 24),
                           // Hours Selection
@@ -297,9 +333,33 @@ class _BusinessInfoScreenState extends State<BusinessInfoScreen> with SingleTick
                       child: ElevatedButton(
                         onPressed: () {
                           // Handle submission
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder:
+                                  (context) => CarPostAdScreen(
+                                    name: widget.name,
+                                    namesub: widget.namesub,
+                                    contactnumber: widget.number,
+                                    country: widget.country??"",
+                                    state: widget.state,
+                                    city: widget.city,
+                                    brand: widget.brand,
+                                    mainheading: widget.mainheading,
+                                    subheading: widget.subheading??[],
+                                    services: widget.services??{},
+                                    autotype: widget.autotype??"",
+                                    workingdays: _workingDays,
+                                    openingtime: _openingTime,
+                                    closingtime: _closingTime,
+                                    region: widget.region??"",
+                                    // workinghours: widget.workinghours,
+                                  ),
+                            ),
+                          );
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF6C63FF),
+                          backgroundColor: red,
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
@@ -311,6 +371,7 @@ class _BusinessInfoScreenState extends State<BusinessInfoScreen> with SingleTick
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
+                            color: Colors.white,
                           ),
                         ),
                       ),
@@ -335,13 +396,8 @@ class _BusinessInfoScreenState extends State<BusinessInfoScreen> with SingleTick
         child: Container(
           width: 48,
           height: 48,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Icon(
-            icon,
-            color: const Color(0xFF6C63FF),
-          ),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+          child: Icon(icon, color: red),
         ),
       ),
     );
@@ -353,10 +409,7 @@ class _BusinessInfoScreenState extends State<BusinessInfoScreen> with SingleTick
       children: [
         Text(
           label,
-          style: const TextStyle(
-            fontSize: 14,
-            color: Color(0xFF718096),
-          ),
+          style: const TextStyle(fontSize: 14, color: Color(0xFF718096)),
         ),
         const SizedBox(height: 8),
         Material(
@@ -369,10 +422,7 @@ class _BusinessInfoScreenState extends State<BusinessInfoScreen> with SingleTick
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: const Color(0xFFE2E8F0),
-                  width: 1,
-                ),
+                border: Border.all(color: const Color(0xFFE2E8F0), width: 1),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -384,11 +434,7 @@ class _BusinessInfoScreenState extends State<BusinessInfoScreen> with SingleTick
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const Icon(
-                    Icons.access_time,
-                    color: Color(0xFF6C63FF),
-                    size: 20,
-                  ),
+                  const Icon(Icons.access_time, color: red, size: 20),
                 ],
               ),
             ),
