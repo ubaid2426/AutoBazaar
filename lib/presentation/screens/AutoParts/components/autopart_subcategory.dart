@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:autobazzaar/presentation/screens/AutoParts/components/autoparts_listing.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/Main_Category/Shop_Service/auto_service_sub_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -114,9 +115,10 @@ class _AutoPartsSubCategoryState extends State<AutoPartsSubCategory> {
                           context,
                           MaterialPageRoute(
                             builder:
-                                (_) => AutoShopServiceSubOptions(
+                                (_) => AutoPartsListing(
                                   title: subCatName,
-                                  items: {'items': items}, // Send as map
+                                  items:  items,
+                                  autotype: widget.autotype, // Send as map
                                 ),
                           ),
                         );

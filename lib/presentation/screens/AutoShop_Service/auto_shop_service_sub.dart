@@ -146,6 +146,7 @@ class _AutoServiceSubCategoryViewState
                               (_) => AutoShopServiceSubOptions(
                                 items: selectedServicesMap,
                                 title: "Selected Services",
+                                autotype: widget.autotype,
                               ),
                         ),
                       );

@@ -3,18 +3,20 @@ import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/presentation/screens/MainFilter/main_filter_service.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/bodytype.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/brand_show.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/payment.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/state_area.dart';
 import 'package:autobazzaar/presentation/screens/PostScreens/components/working_hours1.dart';
+import 'package:autobazzaar/presentation/screens/PostScreens/components/years.dart';
 import 'package:autobazzaar/presentation/widgets/button.dart';
 import 'package:autobazzaar/presentation/widgets/button1.dart';
 import 'package:flutter/material.dart';
 
-class HorizontalFilterService extends StatelessWidget {
+class HorizontalFilterPart extends StatelessWidget {
   final List<String>? items;
   final Map<String, dynamic>? items1;
   final String mainCategory;
   final String autotype;
-  const HorizontalFilterService({
+  const HorizontalFilterPart({
     super.key,
     required this.items,
     required this.mainCategory,
@@ -90,7 +92,7 @@ class HorizontalFilterService extends StatelessWidget {
                     items: items!,
                     options: [],
                     multiseslect: false,
-                    navigate: BrandScreen(autotype: autotype, ispost: true,),
+                    navigate: BrandScreen(autotype: autotype, ispost: true),
                   ),
                   FilterButton(
                     title: 'Body Type',
@@ -99,6 +101,22 @@ class HorizontalFilterService extends StatelessWidget {
                     options: [],
                     multiseslect: false,
                     navigate: BodyTypeScreen(name: "Shop & Services"),
+                  ),
+                  FilterButton(
+                    title: 'Year',
+                    filter: true,
+                    items: items!,
+                    options: [],
+                    multiseslect: false,
+                    navigate: YearScreen(ispost: true),
+                  ),
+                  FilterButton(
+                    title: 'Condition',
+                    filter: true,
+                    items: items!,
+                    options: [],
+                    multiseslect: false,
+                    navigate: PaymentMethod(ispost: true),
                   ),
                   FilterButton(
                     title: 'Regional Specs',

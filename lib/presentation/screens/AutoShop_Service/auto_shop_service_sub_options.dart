@@ -16,10 +16,11 @@ import 'package:flutter/material.dart';
 class AutoShopServiceSubOptions extends StatefulWidget {
   final String title;
   final Map<String, dynamic> items;
+  final String autotype;
   const AutoShopServiceSubOptions({
     super.key,
     required this.title,
-    required this.items,
+    required this.items, required this.autotype,
   });
 
   @override
@@ -69,7 +70,7 @@ class _AutoShopServiceSubOptionsState extends State<AutoShopServiceSubOptions> {
           HorizontalFilterService(
             items: widget.items.keys.toList(),
             mainCategory: 'Service Options',
-            items1: widget.items,
+            items1: widget.items, autotype: widget.autotype,
           ), // your filter widget
           SizedBox(height: 10),
           // ShortFilter(),

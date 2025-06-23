@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class BrandScreen extends StatefulWidget {
-  final String name;
+  final String? name;
   final String? namesub;
   final String? autotype;
   final bool? filteruse;
@@ -16,6 +16,7 @@ class BrandScreen extends StatefulWidget {
   final List<File>? images; // <-- new param
   final String? title;
   final String? description;
+  final bool? ispost;
   // for auto services
   final String? mainheading;
   final List<String>? subheading;
@@ -40,8 +41,9 @@ class BrandScreen extends StatefulWidget {
     this.country,
     this.state,
     this.city,
-    required this.name,
+    this.name,
     this.region,
+    this.ispost,
   });
   @override
   State<BrandScreen> createState() => _BrandScreenState();
@@ -178,48 +180,56 @@ class _BrandScreenState extends State<BrandScreen> {
                           ),
                           child: InkWell(
                             onTap: () {
-                              if (widget.name == "Shop &\n Services") {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder:
-                                        (context) => BusinessInfoScreen(
-                                          name: widget.name,
-                                          namesub: widget.namesub,
-                                          number: widget.contactnumber??[],
-                                          country: widget.country??"null country",
-                                          state: widget.state??"null state",
-                                          city: widget.city??"null city",
-                                          brand: brand,
-                                          mainheading: widget.mainheading,
-                                          subheading: widget.subheading,
-                                          services: widget.services,
-                                        ),
-                                  ),
-                                );
+                              if (widget.ispost == true) {
+                                Navigator.pop(context);
                               } else {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder:
-                                        (context) => ModelScreen(
-                                          brand: brand,
-                                          name: widget.name,
-                                          models: carData[brand]!,
-                                          icon: getIconForType(
-                                            widget.autotype ?? "null type",
+                                if (widget.name == "Shop &\n Services") {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) => BusinessInfoScreen(
+                                            name: widget.name,
+                                            namesub: widget.namesub,
+                                            number: widget.contactnumber ?? [],
+                                            country:
+                                                widget.country ??
+                                                "null country",
+                                            state: widget.state ?? "null state",
+                                            city: widget.city ?? "null city",
+                                            brand: brand,
+                                            mainheading: widget.mainheading,
+                                            subheading: widget.subheading,
+                                            services: widget.services,
                                           ),
-                                          filteruse: widget.filteruse ?? false,
-                                          namesub:
-                                              widget.namesub ?? "null namesub",
-                                          images: widget.images ?? [],
-                                          title: widget.title ?? "null title",
-                                          description:
-                                              widget.description ??
-                                              "null description",
-                                        ),
-                                  ),
-                                );
+                                    ),
+                                  );
+                                } else {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) => ModelScreen(
+                                            brand: brand,
+                                            name: widget.name!,
+                                            models: carData[brand]!,
+                                            icon: getIconForType(
+                                              widget.autotype ?? "null type",
+                                            ),
+                                            filteruse:
+                                                widget.filteruse ?? false,
+                                            namesub:
+                                                widget.namesub ??
+                                                "null namesub",
+                                            images: widget.images ?? [],
+                                            title: widget.title ?? "null title",
+                                            description:
+                                                widget.description ??
+                                                "null description",
+                                          ),
+                                    ),
+                                  );
+                                }
                               }
                             },
                             borderRadius: BorderRadius.circular(16),

@@ -9,7 +9,7 @@ import 'package:country_state_city_pro/country_state_city_pro.dart';
 import 'package:flutter/material.dart';
 
 class StateArea extends StatefulWidget {
-  final String name;
+  final String? name;
   final String? namesub;
   final String? brand;
   final List<String>? models;
@@ -41,7 +41,7 @@ class StateArea extends StatefulWidget {
   final String? country;
   final String? state;
   final String? city;
-
+  final bool? ispost;
   // final Map<String, Set<String>>? services;
   const StateArea({
     super.key,
@@ -71,11 +71,12 @@ class StateArea extends StatefulWidget {
     this.mainheading,
     this.subheading,
     this.services,
-   required this.name,
+    this.name,
     this.contactnumber,
     this.country,
     this.state,
     this.city,
+    this.ispost,
   });
 
   @override
@@ -112,48 +113,63 @@ class _StateAreaState extends State<StateArea> {
             Text("${country.text}, ${state.text}, ${city.text}"),
             ElevatedButton(
               onPressed: () {
-                if (widget.name == "Auto \n Sales") {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PhoneNumberInputScreen(
-                              namesub: widget.namesub,
-              brand: widget.brand,
-              models: widget.models,
-              images: widget.images,
-              title: widget.title,
-              description: widget.description,
-              transmission: widget.transmission,
-              year: widget.year,
-              region: widget.region,
-              fueltype: widget.fueltype,
-              enginesize: widget.enginesize,
-              excolor: widget.excolor,
-              incolor: widget.incolor,
-              inoption: widget.inoption,
-              technology: widget.technology,
-              bodytype: widget.bodytype,
-              seats: widget.seats,
-              repainted: widget.repainted,
-              bodycondition: widget.bodycondition,
-              insurance: widget.insurance,
-              carcondition: widget.carcondition,
-              paymentmethod: widget.paymentmethod,
-              name: widget.name,
-                      ),
-                    ),
-                  );
+                if (widget.ispost == true) {
+                  Navigator.pop(context);
                 } else {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => RegionScreen(name: widget.name,  autotype: widget.autotype,
-                                    mainheading: widget.mainheading,
-                                    subheading: widget.subheading,
-                                    services: widget.services,
-                                    // name: widget.name,
-                                    namesub: widget.namesub,)),
-                  );
+                  if (widget.name == "Auto \n Sales") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (context) => PhoneNumberInputScreen(
+                              namesub: widget.namesub,
+                              brand: widget.brand,
+                              models: widget.models,
+                              images: widget.images,
+                              title: widget.title,
+                              description: widget.description,
+                              transmission: widget.transmission,
+                              year: widget.year,
+                              region: widget.region,
+                              fueltype: widget.fueltype,
+                              enginesize: widget.enginesize,
+                              excolor: widget.excolor,
+                              incolor: widget.incolor,
+                              inoption: widget.inoption,
+                              technology: widget.technology,
+                              bodytype: widget.bodytype,
+                              seats: widget.seats,
+                              repainted: widget.repainted,
+                              bodycondition: widget.bodycondition,
+                              insurance: widget.insurance,
+                              carcondition: widget.carcondition,
+                              paymentmethod: widget.paymentmethod,
+                              name: widget.name!,
+                            ),
+                      ),
+                    );
+                  } else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (context) => RegionScreen(
+                              name: widget.name!,
+                              autotype: widget.autotype,
+                              mainheading: widget.mainheading,
+                              subheading: widget.subheading,
+                              services: widget.services,
+                              // name: widget.name,
+                              namesub: widget.namesub,
+                            ),
+                      ),
+                    );
+                  }
                 }
+
+                // if (widget.ispost == true) {
+                //   Navigator.pop(context);
+                // }
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: red,
@@ -167,8 +183,8 @@ class _StateAreaState extends State<StateArea> {
                 elevation: 6,
                 shadowColor: Colors.black54,
               ),
-              child: const Text(
-                "Submit",
+              child: Text(
+               widget.ispost == true ? "Apply Filter" : "Submit",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16,

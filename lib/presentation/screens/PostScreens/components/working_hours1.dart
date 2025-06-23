@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class BusinessInfoScreen extends StatefulWidget {
-  final String name;
+  final String? name;
   final String? namesub;
   final String? region;
   final String? bodytype;
-  final List<String> number;
+  final List<String>? number;
   final String? country;
   final String? state;
   final String? city;
@@ -17,21 +17,23 @@ class BusinessInfoScreen extends StatefulWidget {
   final List<String>? subheading;
   final String? brand;
   final Map<String, Set<String>>? services;
+  final bool? ispost;
   const BusinessInfoScreen({
     super.key,
-    required this.name,
+    this.name,
     this.namesub,
     this.region,
     this.bodytype,
-    required this.number,
+    this.number,
     this.autotype,
     this.mainheading,
     this.subheading,
     this.services,
-     this.country,
-     this.state,
-     this.city,
-     this.brand,
+    this.country,
+    this.state,
+    this.city,
+    this.brand,
+    this.ispost,
   });
 
   @override
@@ -163,67 +165,69 @@ class _BusinessInfoScreenState extends State<BusinessInfoScreen>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Branches Section
-                    AnimatedContainer(
-                      duration: const Duration(milliseconds: 500),
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.05),
-                            blurRadius: 20,
-                            offset: const Offset(0, 10),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Branch Information',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xFF2D3748),
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          const Text(
-                            'How many branches does your business have?',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Color(0xFF718096),
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          Row(
-                            children: [
-                              _buildCounterButton(Icons.remove, () {
-                                setState(() {
-                                  if (_branchCount > 1) _branchCount--;
-                                });
-                              }),
-                              const SizedBox(width: 16),
-                              Text(
-                                '$_branchCount',
-                                style: const TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: red,
-                                ),
+                    widget.ispost == true
+                        ? const SizedBox.shrink()
+                        : AnimatedContainer(
+                          duration: const Duration(milliseconds: 500),
+                          padding: const EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.05),
+                                blurRadius: 20,
+                                offset: const Offset(0, 10),
                               ),
-                              const SizedBox(width: 16),
-                              _buildCounterButton(Icons.add, () {
-                                setState(() {
-                                  _branchCount++;
-                                });
-                              }),
                             ],
                           ),
-                        ],
-                      ),
-                    ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Branch Information',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xFF2D3748),
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              const Text(
+                                'How many branches does your business have?',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Color(0xFF718096),
+                                ),
+                              ),
+                              const SizedBox(height: 20),
+                              Row(
+                                children: [
+                                  _buildCounterButton(Icons.remove, () {
+                                    setState(() {
+                                      if (_branchCount > 1) _branchCount--;
+                                    });
+                                  }),
+                                  const SizedBox(width: 16),
+                                  Text(
+                                    '$_branchCount',
+                                    style: const TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                      color: red,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 16),
+                                  _buildCounterButton(Icons.add, () {
+                                    setState(() {
+                                      _branchCount++;
+                                    });
+                                  }),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
                     const SizedBox(height: 24),
                     // Working Hours Section
                     AnimatedContainer(
@@ -333,30 +337,34 @@ class _BusinessInfoScreenState extends State<BusinessInfoScreen>
                       child: ElevatedButton(
                         onPressed: () {
                           // Handle submission
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder:
-                                  (context) => CarPostAdScreen(
-                                    name: widget.name,
-                                    namesub: widget.namesub,
-                                    contactnumber: widget.number,
-                                    country: widget.country??"",
-                                    state: widget.state,
-                                    city: widget.city,
-                                    brand: widget.brand,
-                                    mainheading: widget.mainheading,
-                                    subheading: widget.subheading??[],
-                                    services: widget.services??{},
-                                    autotype: widget.autotype??"",
-                                    workingdays: _workingDays,
-                                    openingtime: _openingTime,
-                                    closingtime: _closingTime,
-                                    region: widget.region??"",
-                                    // workinghours: widget.workinghours,
-                                  ),
-                            ),
-                          );
+                          if (widget.ispost == true) {
+                            Navigator.pop(context);
+                          } else {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder:
+                                    (context) => CarPostAdScreen(
+                                      name: widget.name,
+                                      namesub: widget.namesub,
+                                      contactnumber: widget.number,
+                                      country: widget.country ?? "",
+                                      state: widget.state,
+                                      city: widget.city,
+                                      brand: widget.brand,
+                                      mainheading: widget.mainheading,
+                                      subheading: widget.subheading ?? [],
+                                      services: widget.services ?? {},
+                                      autotype: widget.autotype ?? "",
+                                      workingdays: _workingDays,
+                                      openingtime: _openingTime,
+                                      closingtime: _closingTime,
+                                      region: widget.region ?? "",
+                                      // workinghours: widget.workinghours,
+                                    ),
+                              ),
+                            );
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: red,
@@ -366,8 +374,10 @@ class _BusinessInfoScreenState extends State<BusinessInfoScreen>
                           ),
                           elevation: 0,
                         ),
-                        child: const Text(
-                          'Save Information',
+                        child: Text(
+                          widget.ispost == true
+                              ? 'Apply Filter'
+                              : 'Save Information',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,

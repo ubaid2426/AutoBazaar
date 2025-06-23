@@ -6,50 +6,52 @@ import 'package:flutter/material.dart';
 import 'package:autobazzaar/data/models/dummy_data.dart';
 
 class PaymentMethod extends StatefulWidget {
-  final String name;
-  final String namesub;
-  final String brand;
-  final List<String> models;
-  final List<File> images;
-  final String title;
-  final String description;
-  final String transmission;
-  final String year;
-  final String region;
-  final String fueltype;
-  final String enginesize;
-  final String excolor;
-  final String incolor;
-  final List<String> inoption;
-  final List<String> technology;
-  final String bodytype;
-  final String seats;
-  final String repainted;
-  final String bodycondition;
-  final String insurance;
-
+  final String? name;
+  final String? namesub;
+  final String? brand;
+  final List<String>? models;
+  final List<File>? images;
+  final String? title;
+  final String? description;
+  final String? transmission;
+  final String? year;
+  final String? region;
+  final String? fueltype;
+  final String? enginesize;
+  final String? excolor;
+  final String? incolor;
+  final List<String>? inoption;
+  final List<String>? technology;
+  final String? bodytype;
+  final String? seats;
+  final String? repainted;
+  final String? bodycondition;
+  final String? insurance;
+  final bool? ispost;
   const PaymentMethod({
     super.key,
-    required this.namesub,
-    required this.brand,
-    required this.models,
-    required this.images,
-    required this.title,
-    required this.description,
-    required this.transmission,
-    required this.year,
-    required this.region,
-    required this.fueltype,
-    required this.enginesize,
-    required this.excolor,
-    required this.incolor,
-    required this.inoption,
-    required this.technology,
-    required this.bodytype,
-    required this.seats,
-    required this.repainted,
-    required this.bodycondition,
-    required this.insurance, required this.name,
+    this.namesub,
+    this.brand,
+    this.models,
+    this.images,
+    this.title,
+    this.description,
+    this.transmission,
+    this.year,
+    this.region,
+    this.fueltype,
+    this.enginesize,
+    this.excolor,
+    this.incolor,
+    this.inoption,
+    this.technology,
+    this.bodytype,
+    this.seats,
+    this.repainted,
+    this.bodycondition,
+    this.insurance,
+    this.name,
+    this.ispost,
   });
 
   @override
@@ -228,32 +230,43 @@ class _PaymentMethodState extends State<PaymentMethod> {
                 });
               },
             ),
-            _buildSection(
-              title: "Payment Method",
-              subtitle: "Choose the appropriate payment method",
-              controller: _paymentController,
-              items: filteredPayments,
-              selectedItem: selectedPayment,
-              onItemTap: (value) {
-                setState(() {
-                  selectedPayment = value;
-                });
-              },
-            ),
-            TextField(
-              controller: _priceController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: "Enter Price (PKR)",
-                prefixIcon: Icon(Icons.attach_money),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
+            widget.ispost == true
+                ? const SizedBox.shrink()
+                : _buildSection(
+                  title: "Payment Method",
+                  subtitle: "Choose the appropriate payment method",
+                  controller: _paymentController,
+                  items: filteredPayments,
+                  selectedItem: selectedPayment,
+                  onItemTap: (value) {
+                    setState(() {
+                      selectedPayment = value;
+                    });
+                  },
                 ),
-              ),
-            ),
+            widget.ispost == true
+                ? const SizedBox.shrink()
+                : TextField(
+                  controller: _priceController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: "Enter Price (PKR)",
+                    prefixIcon: Icon(Icons.attach_money),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
             SizedBox(height: 24),
             ElevatedButton(
-              onPressed: isNextEnabled ? _handleNext : null,
+              // onPressed: isNextEnabled ? _handleNext : null,
+              onPressed:
+                  widget.ispost == true
+                      ? () => Navigator.pop(context)
+                      : isNextEnabled
+                      ? _handleNext
+                      : null,
+
               style: ElevatedButton.styleFrom(
                 backgroundColor: red,
                 minimumSize: Size(double.infinity, 48),
@@ -261,7 +274,10 @@ class _PaymentMethodState extends State<PaymentMethod> {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              child: Text("Next >", style: TextStyle(color: black)),
+              child: Text(
+                widget.ispost == true ? "Apply Filter" : "Next >",
+                style: TextStyle(color: black),
+              ),
             ),
           ],
         ),

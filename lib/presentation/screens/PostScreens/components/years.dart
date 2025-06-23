@@ -10,31 +10,33 @@ import 'package:flutter/material.dart';
 
 class YearScreen extends StatefulWidget {
   final String? name;
-  final String namesub;
+  final String? namesub;
   final String? brand;
   final List<String>? models;
-  final List<File> images; // <-- new param
-  final String title;
-  final String description;
+  final List<File>? images; // <-- new param
+  final String? title;
+  final String? description;
   final String? maincategory;
   final String? subcategory;
   final List<String>? services;
   final String? autotype;
   final String? bodytype;
+  final bool? ispost;
   const YearScreen({
     super.key,
-    required this.namesub,
+    this.namesub,
     this.brand,
     this.models,
-    required this.images,
-    required this.title,
-    required this.description,
+    this.images,
+    this.title,
+    this.description,
     this.maincategory,
     this.subcategory,
     this.services,
     this.autotype,
     this.bodytype,
     this.name,
+    this.ispost,
   });
 
   @override
@@ -112,43 +114,47 @@ class _YearScreenState extends State<YearScreen> {
                       ),
                       trailing: Icon(Icons.chevron_right),
                       onTap: () {
-                        if (widget.namesub == 'Auto\n Parts') {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder:
-                                  (context) => BodyCondition(
-                                    name: widget.name!,
-                                    namesub: widget.namesub,
-                                    autotype: widget.autotype,
-                                    title: widget.title,
-                                    images: widget.images,
-                                    description: widget.description,
-                                    maincategory: widget.maincategory,
-                                    subcategory: widget.subcategory,
-                                    services: widget.services,
-                                    bodytype: widget.bodytype,
-                                    year: year,
-                                  ),
-                            ),
-                          );
+                        if (widget.ispost == true) {
+                          Navigator.pop(context);
                         } else {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder:
-                                  (context) => RegionScreen(
-                                    namesub: widget.namesub,
-                                    brand: widget.brand,
-                                    models: widget.models,
-                                    images: widget.images,
-                                    title: widget.title,
-                                    description: widget.description,
-                                    year: year,
-                                    name: widget.name??"",
-                                  ),
-                            ),
-                          );
+                          if (widget.namesub == 'Auto\n Parts') {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder:
+                                    (context) => BodyCondition(
+                                      name: widget.name!,
+                                      namesub: widget.namesub,
+                                      autotype: widget.autotype,
+                                      title: widget.title,
+                                      images: widget.images,
+                                      description: widget.description,
+                                      maincategory: widget.maincategory,
+                                      subcategory: widget.subcategory,
+                                      services: widget.services,
+                                      bodytype: widget.bodytype,
+                                      year: year,
+                                    ),
+                              ),
+                            );
+                          } else {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder:
+                                    (context) => RegionScreen(
+                                      namesub: widget.namesub,
+                                      brand: widget.brand,
+                                      models: widget.models,
+                                      images: widget.images,
+                                      title: widget.title,
+                                      description: widget.description,
+                                      year: year,
+                                      name: widget.name ?? "",
+                                    ),
+                              ),
+                            );
+                          }
                         }
 
                         // Handle year selection

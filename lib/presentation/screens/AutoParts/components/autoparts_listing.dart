@@ -6,25 +6,27 @@ import 'package:autobazzaar/core/theme/colors.dart';
 // import 'package:autobazzaar/data/models/dummy_data.dart';
 import 'package:autobazzaar/models/car_ad.dart';
 import 'package:autobazzaar/presentation/screens/AutoSalesMain/Vehicle_type/vehicle_detail.dart';
+import 'package:autobazzaar/presentation/widgets/horizontal_filter_parts.dart';
 // import 'package:autobazzaar/presentation/screens/MainFilter/main_filter_service.dart';
 // import 'package:autobazzaar/presentation/screens/detail_screen/detail_screen.dart';
 // import 'package:autobazzaar/presentation/widgets/horizontal_filter.dart';
-import 'package:autobazzaar/presentation/widgets/horizontal_filter_service.dart';
+// import 'package:autobazzaar/presentation/widgets/horizontal_filter_service.dart';
 // import 'package:autobazzaar/presentation/widgets/shortfilter.dart';
 import 'package:flutter/material.dart';
 
 class AutoPartsListing extends StatefulWidget {
   final String title;
   final List<String> items;
+  final String autotype;
   const AutoPartsListing({
     super.key,
     required this.title,
     required this.items,
+    required this.autotype,
   });
 
   @override
-  _AutoPartsListingState createState() =>
-      _AutoPartsListingState();
+  _AutoPartsListingState createState() => _AutoPartsListingState();
 }
 
 class _AutoPartsListingState extends State<AutoPartsListing> {
@@ -47,16 +49,16 @@ class _AutoPartsListingState extends State<AutoPartsListing> {
               });
             },
           ),
-            IconButton(
+          IconButton(
             icon: Icon(Icons.filter_list),
             onPressed: () {
-          //       Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) => MainFilterService(items: widget.items),
-          //     // builder: (context) => const QiblaApp(),
-          //   ),
-          // );
+              //       Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => MainFilterService(items: widget.items),
+              //     // builder: (context) => const QiblaApp(),
+              //   ),
+              // );
             },
           ),
         ],
@@ -64,7 +66,11 @@ class _AutoPartsListingState extends State<AutoPartsListing> {
       body: Column(
         children: [
           SizedBox(height: 10),
-          HorizontalFilterService(items: widget.items, mainCategory: 'Auto Parts Options',), // your filter widget
+          HorizontalFilterPart(
+            items: widget.items,
+            mainCategory: 'Auto Parts Options',
+            autotype: widget.autotype,
+          ), // your filter widget
           SizedBox(height: 10),
           // ShortFilter(),
           Text(
@@ -76,7 +82,14 @@ class _AutoPartsListingState extends State<AutoPartsListing> {
             ),
             textAlign: TextAlign.right,
           ),
-          Expanded(child: ListingCardDesignGrid(rateshow: true, timeshow: true, partcondition: true, experience: false))
+          Expanded(
+            child: ListingCardDesignGrid(
+              rateshow: true,
+              timeshow: true,
+              partcondition: true,
+              experience: false,
+            ),
+          ),
           // SizedBox(height: 10 ,),
           // Expanded(
           //   child:
@@ -106,7 +119,12 @@ class _AutoPartsListingState extends State<AutoPartsListing> {
             index < premiumCars.length
                 ? premiumCars[index]
                 : queuedCars[index - premiumCars.length];
-        return GridCard(car, isPremium: isPremium, rateshow: true, timeshow: false,);
+        return GridCard(
+          car,
+          isPremium: isPremium,
+          rateshow: true,
+          timeshow: false,
+        );
       },
     );
   }
@@ -122,7 +140,12 @@ class _AutoPartsListingState extends State<AutoPartsListing> {
             index < premiumCars.length
                 ? premiumCars[index]
                 : queuedCars[index - premiumCars.length];
-        return ListCard(car, isPremium: isPremium, rateshow: true, timeshow: false,);
+        return ListCard(
+          car,
+          isPremium: isPremium,
+          rateshow: true,
+          timeshow: false,
+        );
       },
     );
   }
